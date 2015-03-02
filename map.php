@@ -40,9 +40,21 @@
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
-      <div class="container">
-        <h1>Hello, world!</h1>
-        <p>Filter options will go here.</p>
+      <div class="container map-filters">
+        <h2>Hello, world!</h2>
+        	<div class="input-group" id="filter-activity">
+				<label for="donation-points">Donation points</label>
+				<input type="checkbox" activity="donation" id="donation-points" checked="checked">
+
+				<label for="distribution-points">Distribution points</label>
+				<input type="checkbox" activity="distribution" id="distribution-points" checked="checked">
+
+				<label for="volunteering-locations">Volunteering locations</label>
+				<input type="checkbox" activity="volunteering" id="volunteering-locations" checked="checked">
+
+				<label for="office-locations">Office locations</label>
+				<input type="checkbox" activity="office" id="office-locations" checked="checked">
+			</div>
       </div>
     </div>
 
