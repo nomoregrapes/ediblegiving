@@ -10,6 +10,14 @@
 	<!-- Optional theme -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css" />
 
+  <!-- for the map -->
+	<link rel="stylesheet" href="lib/jquery-ui-1.10.4/css/ui-lightness/jquery-ui-1.10.4.min.css" />
+	<link rel="stylesheet" href="https://api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.css" />
+	<link rel="stylesheet" href="lib/eg-styles.css" />
+	<script src="lib/jquery-ui-1.10.4/js/jquery-1.10.2.js"></script>
+	<script src="https://api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.js"></script>
+	<script src="lib/eg-map.js"></script>
+
 </head>
 
 <body>
@@ -41,7 +49,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-8">
-          <h2>Map</h2>
+        	<div id="map"></div>
         </div>
         <!-- side column of detailed info -->
         <div class="col-md-4">
@@ -60,5 +68,6 @@
 
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js" />
+
 </body>
 </html>
