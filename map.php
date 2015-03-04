@@ -55,6 +55,14 @@
 				<label for="office-locations">Office locations</label>
 				<input type="checkbox" activity="office" id="office-locations" checked="checked">
 			</div>
+        	<div class="input-group" id="filter-foodtype">
+        		<span class="filter-intro">Include places that accept</span>
+				<label for="unopened-food">Unopened food</label>
+				<input type="checkbox" foodtype="unopened" id="unopened-food" checked="checked">
+
+				<label for="fresh-food">Fresh food</label>
+				<input type="checkbox" foodtype="fresh" id="fresh-food" checked="checked">
+			</div>
       </div>
     </div>
 
@@ -64,9 +72,11 @@
         	<div id="map"></div>
         </div>
         <!-- side column of detailed info -->
-        <div class="col-md-4">
-          <h2></h2>
-          <p>.</p>
+        <div class="col-md-4" id="map-marker-details">
+			<h2 class="mmd-name"></h2>
+			<p class="mmd-telephone"></p>
+			<p class="mmd-address"></p>
+			<p class="mmd-opening"></p>
        </div>
 
       <hr>

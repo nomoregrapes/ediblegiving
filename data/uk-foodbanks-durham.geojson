@@ -11,7 +11,7 @@
 			"activity_donation": true,
 			"activity_volunteering": true,
 			"activity_distribution": false,
-			"food_type": "unopened",
+			"food_type_unopened": true,
 			"postal_address": "3 Fram Well House, Framwellgate Peth, Durham, DH1 5SU",
 			"telephone": "0191 303 7559",
 			"opening_times": "Mon-Fri 10-16"
@@ -26,7 +26,7 @@
 			"name": "County Durham Foodstore",
 			"activity_donation": true,
 			"activity_volunteering": true,
-			"food_type": "unopened",
+			"food_type_unopened": true,
 			"postal_address": "Evangel Church, Durham Rd, Chester-le-Street, DH3 3JL",
 			"telephone": "0191 388 9896"
 	    },
@@ -39,7 +39,7 @@
 	{ "type": "Feature", "properties": {
 			"name": "Community Shop",
 			"activity_donation": true,
-			"food_type": "unopened",
+			"food_type_unopened": true,
 			"postal_address": "Front Street, Framwellgate Moor"
 	    },
 	    "geometry": {
@@ -51,7 +51,7 @@
 	{ "type": "Feature", "properties": {
 			"name": "North Road Methodist Church",
 			"activity_distribution": true,
-			"food_type": "unopened",
+			"food_type_unopened": true,
 			"postal_address": "Caretaker's Cottage, North Road",
 			"opening_times": "Mon 13-15:30, Wed 13-15:30, Fri 13-15:30"
 	    },
