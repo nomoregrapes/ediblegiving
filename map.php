@@ -72,14 +72,21 @@
 				<div id="map"></div>
 			</div>
 			<!-- side column of detailed info -->
-			<div class="col-md-4" id="map-marker-details">
+			<div class="col-md-4 hide" id="map-marker-details">
 				<h2 class="mmd-dynamic mmd-name"></h2>
 				<p class="mmd-dynamic mmd-telephone"></p>
 				<p class="mmd-dynamic mmd-address"></p>
 				<p class="mmd-dynamic mmd-opening"></p>
 				<p class="mmd-links">
+					<span class="mmd-addtolist"><a href="#">add to list</a></span> | 
 					<span class="mmd-dynamic mmd-website"></span>
 				</p>
+			</div>
+			<div class="col-md-4 location-list-heading hide">
+				<hr>
+				<strong>Your location list</strong>
+			</div>
+			<div class="col-md-4" id="location-list">
 			</div>
 		</div>
 	</div> <!-- /container -->
