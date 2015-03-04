@@ -66,25 +66,29 @@
       </div>
     </div>
 
-    <div class="container">
-      <div class="row">
-        <div class="col-md-8">
-        	<div id="map"></div>
-        </div>
-        <!-- side column of detailed info -->
-        <div class="col-md-4" id="map-marker-details">
-			<h2 class="mmd-name"></h2>
-			<p class="mmd-telephone"></p>
-			<p class="mmd-address"></p>
-			<p class="mmd-opening"></p>
-       </div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8">
+				<div id="map"></div>
+			</div>
+			<!-- side column of detailed info -->
+			<div class="col-md-4" id="map-marker-details">
+				<h2 class="mmd-dynamic mmd-name"></h2>
+				<p class="mmd-dynamic mmd-telephone"></p>
+				<p class="mmd-dynamic mmd-address"></p>
+				<p class="mmd-dynamic mmd-opening"></p>
+				<p class="mmd-links">
+					<span class="mmd-dynamic mmd-website"></span>
+				</p>
+			</div>
+		</div>
+	</div> <!-- /container -->
 
       <hr>
 
       <footer>
         <p>Website by <a href="http://twitter.com/gregorymarler">Gregory Marler</a> of <a href="http://www.nomoregrapes.com">No More Grapes</a>.</p>
       </footer>
-    </div> <!-- /container -->
 
 
 
