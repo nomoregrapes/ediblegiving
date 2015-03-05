@@ -31,11 +31,15 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Edible Giving .org</a>
+          <a class="navbar-brand" href="/">Edible Giving .org</a>
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="map.php">Map</a></li>
+				<li><a href="about.php">About</a></li>
+				<li><a href="data.php">Add Locations</a></li>
+			</ul>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
         </div><!--/.navbar-collapse -->
-      </div>
     </nav>
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
