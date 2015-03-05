@@ -1,6 +1,6 @@
 <html>
 <head>
-	<title>Food Giving</title>
+	<title>Edible Giving .org</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -31,7 +31,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Edible Giving</a>
+          <a class="navbar-brand" href="#">Edible Giving .org</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
         </div><!--/.navbar-collapse -->
@@ -41,7 +41,7 @@
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
       <div class="container map-filters">
-        <h2>Hello, world!</h2>
+        <h2>Choose what to find...</h2>
         	<div class="input-group" id="filter-activity">
 				<label for="donation-points">Donation points</label>
 				<input type="checkbox" activity="donation" id="donation-points" checked="checked">
