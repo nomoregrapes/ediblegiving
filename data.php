@@ -47,9 +47,27 @@
 		<p>The code is on <a href="http://www.github.com">Github</a> including some geojson files. Fork the code, add or edit a geojson file, then the sources file. Send a pull request and I'll try to work out how to accept/merge it.</p>
 
 		<h2>Current sources</h2>
+		<ul>
 		<?php
 			//use our data source array here
+			require_once('data/sources.php');
+			foreach($sources as $s) {
+				echo '<li>';
+				echo '<strong>' . $s['name'] . '</strong>';
+				if(isset($s['updated_date'])) {
+					echo ', last update '. $s['updated_date'] .'';
+				}
+				if(isset($s['source_desc'])) {
+					echo ' - '. $s['source_desc'] .'';
+				}
+				echo ' <a href="'. $s['url'] .'">geojson</a>';
+				if(isset($s['desc_url'])) {
+					echo ' | <a href="'. $s['desc_url'] .'">information</a>';
+				}
+				echo '</li>';
+			}
 		?>
+		</ul>
 	</div> <!-- /container -->
 
       <hr>

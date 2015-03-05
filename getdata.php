@@ -6,24 +6,7 @@
  */
 
 //detail all the geoJSON files (internal or full URLs) that we want to use
-$sources = array(
-	array(
-		//Durham foodbanks
-		'url' => 'data/uk-foodbanks-durham.geojson',
-		'f_properties' => array(
-			'source' => 'compiled by Edible Giving',
-			'organisation' => 'County Durham Foodbank',
-			'website' => 'http://durham.foodbank.org.uk/'
-		)
-	),
-	array(
-		//foodcycles
-		'url' => 'data/uk-foodcycle.geojson',
-		'f_properties' => array(
-			'source' => 'compiled by Edible Giving',
-		)
-	)
-);
+require_once('data/sources.php');
 
 //let's make a geojson!
 $newJson = array(
