@@ -1,7 +1,7 @@
 {"type":"FeatureCollection",
 "properties":{
-	"source":"Manual entry by Gregory, incomplete. More found at http://www.batchgeo.com/map/7a4edfd360686967bae18243378aece7",
-	"last_update": "20150223"
+	"source":"Manual entry by Gregory. Distribution points from KML found at http://www.batchgeo.com/map/7a4edfd360686967bae18243378aece7",
+	"last_update": "20150305"
 	},
 "features":[
 
@@ -49,17 +49,323 @@
 	    }
 	},
 
-	{ "type": "Feature", "properties": {
-			"name": "North Road Methodist Church",
+	{	"type": "Feature",
+		"properties": {
+			"name": "Annfield Plain Community Centre, Durham Foodbank",
+			"opening_times": "Tuesday 1pm-3pm",
+			"postal_address": "Annfield Plain Community Centre, Fairview Terrace, Greencroft, Stanley DH9 8PP",
+			"activity_distribution": true,
+			"food_type_unopened": true
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [-1.749549344195,54.857634349677]
+		}
+	},
+
+	{	"type": "Feature",
+		"properties": {
+			"name": "Brandon Community Centre, Durham Foodbank",
+			"opening_times": "Tuesday  12pm-3pm",
+			"postal_address": "Brandon Community Centre, Brandon Lane, Brandon, Durham DH7 8SH",
+			"activity_distribution": true,
+			"food_type_unopened": true
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [-1.6324132030108,54.754568389078]
+		}
+	},
+
+	{	"type": "Feature",
+		"properties": {
+			"name": "The Parish Centre, Durham Foodbank",
+			"telephone": "0191 388 3295",
+			"opening_times": "Mon, Wed, Fri  10am - 12.30pm",
+			"postal_address": "The Parish Centre, Church Chare, Chester-le-Street DH3 3QB",
+			"activity_distribution": true,
+			"food_type_unopened": true
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [-1.5724374113857,54.856078078278]
+		}
+	},
+
+	{	"type": "Feature",
+		"properties": {
+			"name": "St Aidans Church Hall, Durham Foodbank",
+			"opening_times": "Mon  10am -12 noon",
+			"postal_address": "St Aidans Church Hall, Durham Rd, Chilton DL17 0EX",
+			"activity_distribution": true,
+			"food_type_unopened": true
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [-1.5562839833138,54.663926094271]
+		}
+	},
+	{	"type": "Feature",
+		"properties": {
+			"name": "Lipscomb Hall, Durham Foodbank",
+			"opening_times": "Tues, Thurs, Fri  10am - 4.30pm Sunday  11am - 1.30pm",
+			"postal_address": "Lipscomb Hall, Cockfield DL13 5DJ",
+			"activity_distribution": true,
+			"food_type_unopened": true
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [-1.8069801881843,54.612846059632]
+		}
+	},
+	{	"type": "Feature",
+		"properties": {
+			"name": "Glenroyd House, Durham Foodbank",
+			"opening_times": "Mon - Fri  10am - 12noon",
+			"postal_address": "Glenroyd House, Medomsley Road, Consett DH8 5HL",
+			"activity_distribution": true,
+			"food_type_unopened": true
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [-1.8321562206268,54.855549003223]
+		}
+	},
+	{	"type": "Feature",
+		"properties": {
+			"name": "Crook, Durham Foodbank",
+			"opening_times": "Mon - Fri  9am - 1pm",
+			"postal_address": "Salvation Army, Queen St, Crook DL15 8QQ",
+			"activity_distribution": true,
+			"food_type_unopened": true
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [-1.746599413552,54.714077208011]
+		}
+	},
+	{	"type": "Feature",
+		"properties": {
+			"name": "St Hild  nd St Helen, Durham Foodbank",
+			"opening_times": "Thursday, 2pm - 4pm",
+			"postal_address": "St Hild  nd St Helen Christian Fellowship, Mount Stewart Street, Dawdon SR7 7NF",
+			"activity_distribution": true,
+			"food_type_unopened": true
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [-1.3328018239437,54.827785537446]
+		}
+	},
+	{	"type": "Feature",
+		"properties": {
+			"name": "North Road Methodist Church, Durham Foodbank",
+			"opening_times": "Mon, Wed , Fri  1pm- 3.30pm",
+			"postal_address": "Caretaker’s Cottage, North Road Methodist Church, North Rd, Durham DH1 4SG",
+			"activity_distribution": true,
+			"food_type_unopened": true
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [-1.582385627455,54.777520219518]
+		}
+	},
+	{	"type": "Feature",
+		"properties": {
+			"name": "Elvet Methodist Church, Durham Foodbank",
+			"opening_times": "Tuesday 1:30pm - 3pm",
+			"postal_address": "Elvet Methodist Church, 8 Old Elvet, Durham DH1 3HL",
+			"activity_distribution": true,
+			"food_type_unopened": true
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [-1.5706131586158,54.775588824359]
+		}
+	},
+	{	"type": "Feature",
+		"properties": {
+			"name": "St Lukes Church, Durham Foodbank",
+			"opening_times": "Thursday 10:30am - 12noon",
+			"postal_address": "St Lukes Church, Church Lane, Ferryhill DL17 8LT",
+			"activity_distribution": true,
+			"food_type_unopened": true
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [-1.5542517709341,54.688676740564]
+		}
+	},
+	{	"type": "Feature",
+		"properties": {
+			"name": "Fishburn Youth and Community Centre, Durham Foodbank",
+			"opening_times": "Thursday 2pm - 4pm",
+			"postal_address": "Fishburn Youth and Community Centre, Butterwick Rd, Fishburn TS21 4ED",
+			"activity_distribution": true,
+			"food_type_unopened": true
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [-1.4347474238656,54.682592188951]
+		}
+	},
+	{	"type": "Feature",
+		"properties": {
+			"name": "Holy Trinity Church, Durham Foodbank",
+			"opening_times": "Sat 10am - 3:30pm",
+			"postal_address": "Holy Trinity Church, Church Lane, Murton SR7 9PG",
+			"activity_distribution": true,
+			"food_type_unopened": true
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [-1.3902466524742,54.815508326101]
+		}
+	},
+	{	"type": "Feature",
+		"properties": {
+			"name": "Newton Aycliffe, Durham Foodbank",
+			"opening_times": "Wed, Fri  1:30pm - 3:30pm",
+			"postal_address": "St Clare’s Church, Saint Cuthbert&apos;s Way, Newton Aycliffe DL5 5NT",
+			"activity_distribution": true,
+			"food_type_unopened": true
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [-1.5711731589489,54.618763582993]
+		}
+	},
+	{	"type": "Feature",
+		"properties": {
+			"name": "Sedgefield Methodist Church, Durham Foodbank",
+			"opening_times": "Monday 12noon - 2pm",
+			"postal_address": "Sedgefield Methodist Church, North End, Sedgefield TS21 2BT",
+			"activity_distribution": true,
+			"food_type_unopened": true
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [-1.450740576386,54.655740818025]
+		}
+	},
+	{	"type": "Feature",
+		"properties": {
+			"name": "Shildon, Durham Foodbank",
+			"telephone": "01388 664 277",
+			"opening_times": "Mon 2pm - 4pm, Thurs 10am - 2pm",
+			"postal_address": "The Salvation Army, Cross Street, Shildon, County Durham, DL4 1PF",
+			"activity_distribution": true,
+			"food_type_unopened": true
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [-1.6438856233255,54.626513099403]
+		}
+	},
+	{	"type": "Feature",
+		"properties": {
+			"name": "St Paul’s Centre, Durham Foodbank",
+			"opening_times": "Friday 10am - 12noon",
+			"postal_address": "St Paul’s Centre, Whitworth Terrace, Spennymoor DL16 7LS",
+			"activity_distribution": true,
+			"food_type_unopened": true
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [-1.6090238675164,54.69637107333]
+		}
+	},
+	{	"type": "Feature",
+		"properties": {
+			"name": "The Tommy Armstrong Centre, Durham Foodbank",
+			"opening_times": "Mon, Wed, Fri 10am - 12noon",
+			"postal_address": "The Tommy Armstrong Centre, Clifford Road, Stanley DH9 0XG",
+			"activity_distribution": true,
+			"food_type_unopened": true
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [-1.6962065162351,54.86889849033]
+		}
+	},
+	{	"type": "Feature",
+		"properties": {
+			"name": "St Alban’s Church, Durham Foodbank",
+			"opening_times": "Wed, Fri 2pm - 4pm",
+			"postal_address": "St Alban’s Church, Trimdon Grange TS29 6HB",
+			"activity_distribution": true,
+			"food_type_unopened": true
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [-1.4282883799065,54.71226324696]
+		}
+	},
+	{	"type": "Feature",
+		"properties": {
+			"name": "Trimdon Village, Durham Foodbank",
+			"opening_times": "Tuesday 2pm - 4pm",
+			"postal_address": "Trimdon Village Hall, Hallgarth Road, Trimdon Village TS29 6JX",
+			"activity_distribution": true,
+			"food_type_unopened": true
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [-1.4290815912599,54.697494470221]
+		}
+	},
+	{	"type": "Feature",
+		"properties": {
+			"name": "Trimdon Station, Durham Foodbank",
+			"opening_times": "Friday 10am - 12noon",
+			"postal_address": "Trimdon Station Community Centre, Station Road West, Trimdon Station TS29 6BS",
+			"activity_distribution": true,
+			"food_type_unopened": true
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [-1.4120937592444,54.721196285672]
+		}
+	},
+	{	"type": "Feature",
+		"properties": {
+			"name": "The Hive, Durham Foodbank",
+			"opening_times": "Wednesday 10am - 3pm",
+			"postal_address": "The Hive, 5 Station Road, Ushaw Moor, Durham DH7 7PX",
+			"activity_distribution": true,
+			"food_type_unopened": true
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [-1.6456659147186,54.777760221077]
+		}
+	},
+	{	"type": "Feature",
+		"properties": {
+			"name": "The Well, Durham Foodbank",
+			"opening_times": "Tues - Fri 9am - 3pm",
+			"postal_address": "The Well, 46 East Green, West Auckland DL14 9HJ",
+			"activity_distribution": true,
+			"food_type_unopened": true
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [-1.7186338721679,54.631714244606]
+		}
+	},
+	{	"type": "Feature",
+		"properties": {
+			"name": "Willington Community Action, Durham Foodbank",
+			"telephone": "01388 742000",
+			"opening_times": "Tues, Fri 1pm - 3pm",
 			"activity_distribution": true,
 			"food_type_unopened": true,
-			"postal_address": "Caretaker's Cottage, North Road",
-			"opening_times": "Mon 13-15:30, Wed 13-15:30, Fri 13-15:30"
-	    },
-	    "geometry": {
-	        "type": "Point",
-	        "coordinates": [-1.58197,54.77769]
-	    }
+			"postal_address": "Willington Community Action, 65 High Street, Willington DL15 0PF"
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [-1.695682965615,54.711933217979]
+		}
 	}
 
 
