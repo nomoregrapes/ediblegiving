@@ -1,0 +1,25 @@
+{"type":"FeatureCollection",
+"properties":{
+	"source":"Manual entry by Gregory, incomplete. More found at http://foodcycle.org.uk/locations/",
+	"last_update": "20150305"
+	},
+"features":[
+
+	{ "type": "Feature", "properties": {
+			"name": "Food Cycle, Durham Hub",
+			"activity_office": false,
+			"activity_donation": true,
+			"activity_volunteering": true,
+			"activity_distribution": true,
+			"food_type_unopened": true,
+			"food_type_fresh": true,
+			"postal_address": "Sanctuary 21, 48-49 Saddler Street, Durham, DH1 3NU",
+			"website": "http://foodcycle.org.uk/location/durham/",
+			"opening_times": "Wed 18:00-20:00"
+	    },
+	    "geometry": {
+	        "type": "Point",
+	        "coordinates": [-1.57408,54.77498]
+	    }
+	}
+]}
