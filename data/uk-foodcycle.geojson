@@ -1,8 +1,9 @@
 {
-  "type": "FeatureCollection",,
+  "type": "FeatureCollection",
 	"properties":{
 		"source":"Manual entry by Gregory. More found at http://foodcycle.org.uk/locations/",
 		"last_update": "20150311"
+	},
   "features": [
     {
       "type": "Feature",
