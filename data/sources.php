@@ -18,11 +18,11 @@ $sources = array(
 		//foodcycles
 		'name' => 'Food Cycle Hubs',
 		'url' => 'data/uk-foodcycle.geojson',
-		'updated_date' => 'manually from website on 5/3/15 (incomplete)',
-		'source_desc' => 'some locations',
+		'updated_date' => 'manually from website on 11/3/15',
+		'source_desc' => 'places that hot & healthy meals are served from food waste',
 		'desc_url' => 'http://foodcycle.org.uk/locations/',
 		'f_properties' => array(
-			'source' => 'compiled by Edible Giving',
+			'source' => 'compiled by Edible Giving from Food Cycle website',
 		)
 	)
 );
