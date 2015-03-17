@@ -1,0 +1,8 @@
+RewriteEngine on
+
+#Map page
+RewriteRule ^/map$ map.php
+
+#Static pages
+RewriteRule ^/about$ about.php
+RewriteRule ^/data$ data.php

@@ -31,9 +31,9 @@
 		</div>
 	<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
-				<li><a href="map.php">Map</a></li>
-				<li class="active"><a href="about.php">About</a></li>
-				<li><a href="data.php">Add Locations</a></li>
+				<li><a href="map">Map</a></li>
+				<li class="active"><a href="about">About</a></li>
+				<li><a href="data">Add Locations</a></li>
 			</ul>
 	</div>
 	</nav>
