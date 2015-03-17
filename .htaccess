@@ -1,7 +1,7 @@
 RewriteEngine on
 
 #Map page
-RewriteRule ^/map$ map.php
+RewriteRule ^/map(/)?$ map.php [NC,L]
 
 #Static pages
 RewriteRule ^/about$ about.php
