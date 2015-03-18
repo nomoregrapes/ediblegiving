@@ -1,7 +1,7 @@
 <html>
 <?php require_once('config.php'); ?>
 <head>
-	<base href="<?= $base_url; ?>" target="_blank">
+	<base href="<?= $base_url; ?>">
 	<title>Edible Giving .org</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
