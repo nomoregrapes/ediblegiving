@@ -2,7 +2,6 @@
 <?php require_once('config.php'); ?>
 <head>
 	<base href="<?= $base_url; ?>" target="_blank">
-
 	<title>Edible Giving .org</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -80,6 +79,7 @@
 		<div class="row">
 			<div class="col-md-8">
 				<div id="map"></div>
+				Sharable link to: <a href="#" id="permalink-map">current view of map</a>.
 			</div>
 			<!-- side column of detailed info -->
 			<div class="col-md-4 hide" id="map-marker-details">
