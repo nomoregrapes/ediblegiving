@@ -13,6 +13,7 @@
 		<!-- CSS are placed here -->
 		{!! HTML::style('css/bootstrap.min.css') !!}
 		{!! HTML::style('css/bootstrap-theme.min.css') !!}
+		@yield('extra-css')
 	</head>
 
 	<body>
@@ -38,12 +39,9 @@
 			</div>
 		</nav>
 
+		@yield('precontent')
 
 		<div class="container">
-			<div class="page-header">
-				<h1>@yield('title')</h1>
-			</div>
-
             <!-- Content -->
             @yield('content')
 		</div> <!-- /container -->
@@ -58,6 +56,7 @@
         <!-- Scripts are placed here -->
         {!! HTML::script('js/jquery-1.11.2.min.js') !!}
         {!! HTML::script('js/bootstrap.min.js') !!}
+        @yield('extra-js')
 
 		<script>
 		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

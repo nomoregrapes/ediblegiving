@@ -19,6 +19,12 @@ Route::get('about', function() {
 	return view('about');
 });
 
+Route::get('map', function() {
+	return view('map');
+});
+
+Route::get('data/{data_request}.json', 'DataController@returnData');
+
 /*
 Route::get('home', 'HomeController@index');
 Route::get('about', 'AboutController@index');
