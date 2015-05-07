@@ -18,6 +18,9 @@ Route::get('/', function() {
 Route::get('about', function() {
 	return view('about');
 });
+Route::get('about/addlocations', function() {
+	return view('about-addlocations');
+});
 
 Route::get('map', function() {
 	return view('map');
