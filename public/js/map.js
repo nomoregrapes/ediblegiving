@@ -98,6 +98,44 @@
 			$($(this).context).parentsUntil('#location-list').remove();
 		}
 
+		//
+		function filterMarkers() {
+			//define the function to filter each marker
+			lyrStuff.setFilter(function(f) {
+				tickedActivity = false; //shall we show this marker?
+
+				//go through each of the CHECKED activity filters
+				$('#filter-activity input:checked').each(function(index, thisCheck) {
+					//for this filter, does the layer have that activity?
+					var thisFilter = 'activity_' + $(thisCheck).attr('activity');
+					if(f.properties[thisFilter] != undefined && f.properties[thisFilter] == true) {
+						tickedActivity = true;
+						//one filter being true is enough, skip out of the each loop
+						return false;
+					}
+				});
+
+				tickedFoodType = false;
+				//go through each of the CHECKED food types
+				$('#filter-foodtype input:checked').each(function(index, thisCheck) {
+					//for this filter, does the layer have that activity?
+					var thisFoodType = 'food_type_' + $(thisCheck).attr('foodtype');
+					if(f.properties[thisFoodType] != undefined && f.properties[thisFoodType] == true) {
+						tickedFoodType = true;
+						//one filter being true is enough, skip out of the each loop
+						return false;
+					}
+				});
+
+				//if the marker is a checked activity AND a checked food type, show it
+				if(tickedActivity && tickedFoodType) {
+					return true; //show
+				} else {
+					return false; //hide
+				}
+			});
+		} //end filterMarkers function
+
 		$( document ).ready(function() {
 			//load map
 			if( location.hash != undefined && location.hash != '') {
@@ -147,43 +185,9 @@
 			});
 
 			$(".map-filters input").change(function(e){
-
-				//define the function to filter each marker
-				lyrStuff.setFilter(function(f) {
-					tickedActivity = false; //shall we show this marker?
-
-					//go through each of the CHECKED activity filters
-					$('#filter-activity input:checked').each(function(index, thisCheck) {
-						//for this filter, does the layer have that activity?
-						var thisFilter = 'activity_' + $(thisCheck).attr('activity');
-						if(f.properties[thisFilter] != undefined && f.properties[thisFilter] == true) {
-							tickedActivity = true;
-							//one filter being true is enough, skip out of the each loop
-							return false;
-						}
-					});
-
-					tickedFoodType = false;
-					//go through each of the CHECKED food types
-					$('#filter-foodtype input:checked').each(function(index, thisCheck) {
-						//for this filter, does the layer have that activity?
-						var thisFoodType = 'food_type_' + $(thisCheck).attr('foodtype');
-						if(f.properties[thisFoodType] != undefined && f.properties[thisFoodType] == true) {
-							tickedFoodType = true;
-							//one filter being true is enough, skip out of the each loop
-							return false;
-						}
-					});
-
-					//if the marker is a checked activity AND a checked food type, show it
-					if(tickedActivity && tickedFoodType) {
-						return true; //show
-					} else {
-						return false; //hide
-					}
-				});
-
-			}); //end filtering
+				filterMarkers();
+			});
+			filterMarkers();
 
 			//js links...
 			$('#map-marker-details').on('click', '.mmd-addtolist a', addToList);
