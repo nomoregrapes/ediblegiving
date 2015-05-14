@@ -17,28 +17,28 @@
 @section('precontent')
 	<div class="jumbotron">
 		<div class="container map-filters">
-		<h2>Choose what to find...</h2>
-		<div class="input-group" id="filter-activity">
-			<label for="donation-points">Donation points</label>
-			<input type="checkbox" activity="donation" id="donation-points" checked="checked">
+			<h2>Choose what to find...</h2>
+			<div class="input-group" id="filter-activity">
+				<label for="donation-points">Donation points</label>
+				<input type="checkbox" activity="donation" id="donation-points" checked="checked">
 
-			<label for="distribution-points">Distribution points</label>
-			<input type="checkbox" activity="distribution" id="distribution-points" checked="checked">
+				<label for="distribution-points">Distribution points</label>
+				<input type="checkbox" activity="distribution" id="distribution-points" checked="checked">
 
-			<label for="volunteering-locations">Volunteering locations</label>
-			<input type="checkbox" activity="volunteering" id="volunteering-locations" checked="checked">
+				<label for="volunteering-locations">Volunteering locations</label>
+				<input type="checkbox" activity="volunteering" id="volunteering-locations" checked="checked">
 
-			<label for="office-locations">Office locations</label>
-			<input type="checkbox" activity="office" id="office-locations" checked="checked">
-		</div>
-		<div class="input-group" id="filter-foodtype">
-			<span class="filter-intro">Include places that accept</span>
-			<label for="unopened-food">Unopened food</label>
-			<input type="checkbox" foodtype="unopened" id="unopened-food" checked="checked">
+				<label for="office-locations">Office locations</label>
+				<input type="checkbox" activity="office" id="office-locations" checked="checked">
+			</div>
+			<div class="input-group" id="filter-foodtype">
+				<span class="filter-intro">Include places that accept</span>
+				<label for="unopened-food">Unopened food</label>
+				<input type="checkbox" foodtype="unopened" id="unopened-food" checked="checked">
 
-			<label for="fresh-food">Fresh food</label>
-			<input type="checkbox" foodtype="fresh" id="fresh-food" checked="checked">
-		</div>
+				<label for="fresh-food">Fresh food</label>
+				<input type="checkbox" foodtype="fresh" id="fresh-food" checked="checked">
+			</div>
 		</div>
 	</div>
 @endsection
