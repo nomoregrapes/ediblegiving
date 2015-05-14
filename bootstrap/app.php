@@ -15,6 +15,12 @@ $app = new Illuminate\Foundation\Application(
 	realpath(__DIR__.'/../')
 );
 
+/* change public folder to public_html, needed for vidahost webserver */
+$app->bind('path.public', function ()
+{
+    return base_path() . '/public_html';
+});
+
 /*
 |--------------------------------------------------------------------------
 | Bind Important Interfaces
