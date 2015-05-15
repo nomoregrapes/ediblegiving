@@ -136,6 +136,7 @@ return [
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Html\HtmlServiceProvider', /* for blade */
+		'Laravel\Socialite\SocialiteServiceProvider', /* for oAuth */
 
 
 		/*
@@ -196,6 +197,7 @@ return [
 		'View'      => 'Illuminate\Support\Facades\View',
         'HTML'      => 'Illuminate\Html\HtmlFacade', /* for blade */
         'Form'      => 'Illuminate\Html\Facades\FormFacade', /* for blade */
+        'Socialite' => 'Laravel\Socialite\Facades\Socialite', /* for oAuth */
 
 
 	],
