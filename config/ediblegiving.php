@@ -17,6 +17,18 @@ return array(
 				)
 			),
 			array(
+				//Newcastle foodbanks
+				'name' => 'Foodbanks in Newcastle',
+				'url' => 'sources/uk-foodbanks-newcastle.geojson',
+				'updated_date' => 'manually from Newcastle Council on 18/5/15',
+				'source_desc' => 'various locations of food banks in Newcastle, taken from a pdf compiled by Newcastle Council with additional information from food bank websites.',
+				'desc_url' => 'https://www.newcastle.gov.uk/sites/drupalncc.newcastle.gov.uk/files/wwwfileroot/benefits-and-council-tax/welfare_rights_and_money_advice/foodbank_information_sheet_march_2013.pdf',
+				'f_properties' => array(
+					'source' => 'compiled by Edible Giving',
+					'organisation' => 'County Durham Foodbank'
+				)
+			),
+			array(
 				//foodcycles
 				'name' => 'Food Cycle Hubs',
 				'url' => 'sources/uk-foodcycle.geojson',

@@ -1,0 +1,99 @@
+{"type":"FeatureCollection",
+"properties":{
+	"source":"Manual entry by Gregory. Foodbank locations from pdf at https://www.newcastle.gov.uk/sites/drupalncc.newcastle.gov.uk/files/wwwfileroot/benefits-and-council-tax/welfare_rights_and_money_advice/foodbank_information_sheet_march_2013.pdf",
+	"last_update": "20150518"
+	},
+"features":[
+
+	{ "type": "Feature", "properties": {
+			"name": "Newcastle East Food Bank",
+			"activity_office": false,
+			"activity_donation": true,
+			"activity_volunteering": true,
+			"activity_distribution": true,
+			"food_type_unopened": true,
+			"postal_address": "Elim Pentecostal Church, Heaton Road, Heaton, Newcastle Upon Tyne, NE6 1SD ",
+			"telephone": "01914474675 ",
+			"website": "http://newcastleeast.foodbank.org.uk ",
+			"opening_times": "Mon, Wed, Fri 10-12:30"
+	    },
+	    "geometry": {
+	        "type": "Point",
+	        "coordinates": [-1.57965,54.97994]
+	    }
+	},
+
+	{ "type": "Feature", "properties": {
+			"name": "Newcastle West Food Bank",
+			"activity_office": false,
+			"activity_donation": true,
+			"activity_volunteering": true,
+			"activity_distribution": true,
+			"food_type_unopened": true,
+			"postal_address": "Church of the Venerable Bede, Benwell Grove, Newcastle Upon Tyne, NE4 8AN",
+			"telephone": "07580751365",
+			"website": "http://newcastlewestend.foodbank.org.uk/",
+			"opening_times": "Mon, Thu 10-12 & 14-16"
+	    },
+	    "geometry": {
+	        "type": "Point",
+	        "coordinates": [-1.65192,54.97506]
+	    }
+	},
+
+	{ "type": "Feature", "properties": {
+			"name": "Storehouse at the Tyneside vineyard",
+			"activity_office": false,
+			"activity_donation": true,
+			"activity_volunteering": true,
+			"activity_distribution": true,
+			"food_type_unopened": true,
+			"postal_address": "Aerial House, 85 City Road, Newcastle, NE1 2AQ ",
+			"telephone": "0191 475 0955",
+			"website": "http://tynesidevineyard.org.uk/",
+			"opening_times": "Thu 13-15, Drop in Café Sat 10.30am",
+			"loc_text": "Provides a food box of standard grocery items; donated clothes and baby equipment; to those referred from certain agencies."
+	    },
+	    "geometry": {
+	        "type": "Point",
+	        "coordinates": [-1.59897,54.97214]
+	    }
+	},
+
+	{ "type": "Feature", "properties": {
+			"name": "Children's Society",
+			"activity_office": false,
+			"activity_donation": true,
+			"activity_distribution": true,
+			"food_type_unopened": true,
+			"postal_address": "Brunswick Methodist Church, Newcastle upon Tyne, NE1 7BJ",
+			"telephone": "0191 256 5037",
+			"website": "http://www.childrenssociety.org.uk/what-we-do/helping-children/our-programmes/young-refugees/help-and-hope",
+			"opening_times": "Mon 1:30-15:30"
+	    },
+	    "geometry": {
+	        "type": "Point",
+	        "coordinates": [-1.61363,54.9744]
+	    }
+	},
+
+	{ "type": "Feature", "properties": {
+			"name": "Walking With",
+			"activity_office": false,
+			"activity_donation": true,
+			"activity_volunteering": true,
+			"activity_distribution": true,
+			"food_type_unopened": true,
+			"postal_address": "Wallsend People's Centre, Frank Street, Wallsend, Tyne and Wear, NE28 6RN",
+			"telephone": "0191 263 5029 ",
+			"email": "walkingwithwcwt@msn.com",
+			"opening_times": "Mon,Wed 10-15"
+	    },
+	    "geometry": {
+	        "type": "Point",
+	        "coordinates": [-1.53460,54.99045]
+	    }
+	}
+
+]
+}
