@@ -55,6 +55,7 @@
 			<p class="mmd-dynamic mmd-telephone"></p>
 			<p class="mmd-dynamic mmd-address"></p>
 			<p class="mmd-dynamic mmd-opening"></p>
+			<p class="mmd-dynamic mmd-description"></p>
 			<p class="mmd-links">
 				<span class="mmd-addtolist"><a href="#">add to list</a></span> | 
 				<span class="mmd-dynamic mmd-website"></span>

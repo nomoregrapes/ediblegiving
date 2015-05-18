@@ -72,6 +72,8 @@
 				}
 				$('#map-marker-details .mmd-opening').text(thisFeature.properties.opening_times);
 
+				$('#map-marker-details .mmd-description').text(thisFeature.properties.loc_text);
+
 				$('#map-marker-details').removeClass('hide').fadeIn();
 			});
 			
