@@ -11,7 +11,12 @@ class AuthController extends Controller {
 
 	public function login(AuthenticateUser $authenticateUser, Request $request) {
 
-		return $authenticateUser->execute($request->has('code'));
+		return $authenticateUser->execute($request->has('code'), $this);
+	}
+
+	public function userHasLoggedIn($user) {
+		//when they log in, send them back to the manage index.
+		return redirect('/manage');
 	}
 
 }
