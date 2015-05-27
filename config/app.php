@@ -137,6 +137,7 @@ return [
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Html\HtmlServiceProvider', /* for blade */
 		'Laravel\Socialite\SocialiteServiceProvider', /* for oAuth */
+		'Zizaco\Entrust\EntrustServiceProvider', /* for ACL */
 
 
 		/*
@@ -198,6 +199,7 @@ return [
         'HTML'      => 'Illuminate\Html\HtmlFacade', /* for blade */
         'Form'      => 'Illuminate\Html\Facades\FormFacade', /* for blade */
         'Socialite' => 'Laravel\Socialite\Facades\Socialite', /* for oAuth */
+        'Entrust' => 'Zizaco\Entrust\EntrustFacade', /* for ACL */
 
 
 	],
