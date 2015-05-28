@@ -24,14 +24,15 @@ class EdibleGivingOrganisations extends Migration {
 
 		Schema::table('role_user', function($table)
 		{
-			$table->integer('organisation_id')->unsigned();
+			$table->integer('organisation_id')->unsigned()->nullable();
             $table->foreign('organisation_id')->references('id')->on('organisations')
                 ->onUpdate('cascade')->onDelete('cascade');
 
 			//$table->dropPrimary('role_user_user_id_role_id_primary');
 			//$table->primary(['user_id', 'role_id', 'organisation_id']);
 		});
-		DB::unprepared('ALTER TABLE `role_user` DROP PRIMARY KEY, ADD PRIMARY KEY (`user_id`, `role_id`, `organisation_id` )');
+		DB::unprepared('ALTER TABLE `role_user` DROP PRIMARY KEY, ADD UNIQUE (`user_id`, `role_id`, `organisation_id`);');
+
 	}
 
 	/**

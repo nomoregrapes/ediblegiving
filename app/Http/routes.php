@@ -37,6 +37,8 @@ Route::get('manage', function() {
 });
 
 Route::get('manage/login', 'AuthController@login');
+Route::get('manage/power', 'Manage\PowerController@index');
+Route::get('manage/power/bootup/{function}', 'Manage\PowerController@bootup');
 
 
 /*
