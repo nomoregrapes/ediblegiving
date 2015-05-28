@@ -27,7 +27,6 @@ class PowerController extends \App\Http\Controllers\Controller {
 	 */
 	public function index()
 	{
-		echo "power index <br>";
 		//check login and are an admin
 		if(!$curr_user = Auth::user())
 		{
@@ -38,8 +37,55 @@ class PowerController extends \App\Http\Controllers\Controller {
 			die('404');	
 		}
 
-		echo "You're in <br>";
-		dd($curr_user);
+		return view('power.index');
+	}
+
+
+	public function users()
+	{
+		//check login and are an admin
+		if(!$curr_user = Auth::user())
+		{
+			return redirect('/manage');
+		}
+		if(!$curr_user->hasOrgRole('admin', 'edible-giving'))
+		{
+			die('404');	
+		}
+
+		return view('power.users');
+	}
+
+
+	public function orgs()
+	{
+		//check login and are an admin
+		if(!$curr_user = Auth::user())
+		{
+			return redirect('/manage');
+		}
+		if(!$curr_user->hasOrgRole('admin', 'edible-giving'))
+		{
+			die('404');	
+		}
+
+		return view('power.orgs');
+	}
+
+
+	public function statistics()
+	{
+		//check login and are an admin
+		if(!$curr_user = Auth::user())
+		{
+			return redirect('/manage');
+		}
+		if(!$curr_user->hasOrgRole('admin', 'edible-giving'))
+		{
+			die('404');	
+		}
+
+		return view('power.statistics');
 	}
 
 
