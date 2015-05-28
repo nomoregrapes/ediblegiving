@@ -6,6 +6,7 @@ use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Zizaco\Entrust\Traits\EntrustUserTrait;
+use DB;
 
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract {
 
@@ -32,6 +33,69 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 */
 	protected $hidden = ['password', 'remember_token'];
 
+
+
+
+    /**
+     * Checks if the user has a role by its name.
+     *
+     * @param string|array $name       Role name or array of role names.
+     * @param bool         $requireAll All roles in the array are required.
+     *
+     * @return bool
+     */
+    public function hasOrgRole($name, $org = null, $requireAll = false)
+    {
+        if (is_array($name)) {
+            foreach ($name as $roleName) {
+                $hasRole = $this->hasOrgRole($roleName, $org);
+
+                if ($hasRole && !$requireAll) {
+                    return true;
+                } elseif (!$hasRole && $requireAll) {
+                    return false;
+                }
+            }
+
+            // If we've made it this far and $requireAll is FALSE, then NONE of the roles were found
+            // If we've made it this far and $requireAll is TRUE, then ALL of the roles were found.
+            // Return the value of $requireAll;
+            return $requireAll;
+        } else {
+            //get roles of this user
+            if($org == null)
+            {
+                $org_roles = DB::select('SELECT * FROM roles 
+                    LEFT JOIN role_user ON roles.id=role_user.role_id 
+                    WHERE role_user.user_id = ?', 
+                    [$this->id]);
+            }
+            else if(is_integer($org))
+            {
+                $org_roles = DB::select('SELECT * FROM roles 
+                LEFT JOIN role_user ON roles.id=role_user.role_id 
+                WHERE role_user.user_id = ?
+                AND role_user.organisation_id = ?', 
+                [$this->id, $org]);
+            }
+            else
+            {
+                //look up $org as a slug
+                $the_org = DB::select('SELECT id FROM organisations
+                    WHERE slug = ? LIMIT 1;', [$org])[0];
+                //rerun this func
+                return $this->hasOrgRole($name, (int)$the_org->id);
+            }
+            //check each of the users roles
+            foreach ($org_roles as $role) {
+                if ($role->name == $name) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
 
 
     /**

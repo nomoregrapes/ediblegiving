@@ -2,6 +2,7 @@
 
 use Auth;
 use Zizaco\Entrust\EntrustPermission; /* for detecting existance */
+use App\User;
 use App\Models\Role;
 use App\Models\Permission;
 use DB;
@@ -26,8 +27,19 @@ class PowerController extends \App\Http\Controllers\Controller {
 	 */
 	public function index()
 	{
-		die('404');
-		//return view('home');
+		echo "power index <br>";
+		//check login and are an admin
+		if(!$curr_user = Auth::user())
+		{
+			return redirect('/manage');
+		}
+		if(!$curr_user->hasOrgRole('admin', 'edible-giving'))
+		{
+			die('404');	
+		}
+
+		echo "You're in <br>";
+		dd($curr_user);
 	}
 
 
