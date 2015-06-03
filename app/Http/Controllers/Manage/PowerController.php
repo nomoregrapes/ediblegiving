@@ -87,7 +87,13 @@ class PowerController extends \App\Http\Controllers\Controller {
 			die('404');	
 		}
 
-		return view('power.orgs');
+		//get users
+		$query = 'SELECT O.*, count(*) AS user_count FROM organisations AS O
+			LEFT JOIN role_user ON O.id = organisation_id
+			GROUP BY O.id;';
+		$data['organisations'] = DB::select($query);
+
+		return view('power.orgs', $data);
 	}
 
 
