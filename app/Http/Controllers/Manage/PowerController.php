@@ -53,7 +53,25 @@ class PowerController extends \App\Http\Controllers\Controller {
 			die('404');	
 		}
 
-		return view('power.users');
+
+		$data = array();
+
+		//get users
+		$data['users'] = DB::select('SELECT * FROM users where 1=1');
+		foreach($data['users'] as $u => $user)
+		{
+			$query = 'SELECT
+					organisations.name,
+					organisations.slug,
+					roles.display_name
+				FROM role_user 
+				LEFT JOIN organisations ON organisation_id = organisations.id 
+				LEFT JOIN roles ON role_id = roles.id
+				WHERE user_id = ?';
+			$data['users'][$u]->orgs = DB::select($query, [$user->id]);
+		}
+
+		return view('power.users', $data);
 	}
 
 
