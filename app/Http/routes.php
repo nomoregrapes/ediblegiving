@@ -37,9 +37,15 @@ Route::get('manage', function() {
 });
 
 Route::get('manage/login', 'AuthController@login');
+
 Route::get('manage/power', 'Manage\PowerController@index');
+
 Route::get('manage/power/users', 'Manage\PowerController@users');
+
 Route::get('manage/power/orgs', 'Manage\PowerController@orgs');
+Route::get('manage/power/orgs/create', 'Manage\PowerController@orgsCreate');
+Route::post('manage/power/orgs', 'Manage\PowerController@orgsStore');
+
 Route::get('manage/power/statistics', 'Manage\PowerController@statistics');
 Route::get('manage/power/bootup/{function}', 'Manage\PowerController@bootup');
 

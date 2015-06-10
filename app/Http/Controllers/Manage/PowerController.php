@@ -6,6 +6,7 @@ use App\User;
 use App\Models\Role;
 use App\Models\Permission;
 use DB;
+use Request;
 
 class PowerController extends \App\Http\Controllers\Controller {
 
@@ -87,13 +88,31 @@ class PowerController extends \App\Http\Controllers\Controller {
 			die('404');	
 		}
 
-		//get users
+		//get orgs
 		$query = 'SELECT O.*, count(*) AS user_count FROM organisations AS O
 			LEFT JOIN role_user ON O.id = organisation_id
 			GROUP BY O.id;';
 		$data['organisations'] = DB::select($query);
 
 		return view('power.orgs', $data);
+	}
+
+
+	public function orgsCreate()
+	{
+		$data = array();
+		return view('power.orgsCreate', $data);
+	}
+
+
+	public function orgsStore()
+	{
+		$input = Request::all();
+		//$input['slug'] = '';
+
+		\App\Models\Organisation::create($input);
+
+		return redirect('manage/power/orgs');
 	}
 
 

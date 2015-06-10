@@ -28,4 +28,23 @@
 	@endforeach
 	</table>
 
+
+	<h2>Add a new organisation</h2>
+	<form>
+		<div class="form-group">
+			<label for="newOrgName">Name</label>
+			<input type="text" class="form-control" id="newOrgName" placeholder="Enter organisation name">
+		</div>
+		<div class="form-group">
+			<label for="newOrgDescription">Description</label>
+			<input type="text" class="form-control" id="newOrgDescription" placeholder="Public description of the organisation">
+		</div>
+		<div class="form-group">
+			<label for="newOrgNote">Note</label>
+			<input type="text" class="form-control" id="newOrgNote" placeholder="Optional note about this organisation">
+		</div>
+		
+		<button type="submit" class="btn btn-default">Add</button>
+	</form>
+
 @endsection

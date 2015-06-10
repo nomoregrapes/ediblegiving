@@ -135,7 +135,7 @@ return [
 		'Illuminate\Translation\TranslationServiceProvider',
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
-		'Illuminate\Html\HtmlServiceProvider', /* for blade */
+		'Collective\Html\HtmlServiceProvider', /* for blade */
 		'Laravel\Socialite\SocialiteServiceProvider', /* for oAuth */
 		'Zizaco\Entrust\EntrustServiceProvider', /* for ACL */
 
@@ -196,8 +196,8 @@ return [
 		'URL'       => 'Illuminate\Support\Facades\URL',
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
-        'HTML'      => 'Illuminate\Html\HtmlFacade', /* for blade */
-        'Form'      => 'Illuminate\Html\Facades\FormFacade', /* for blade */
+        'HTML'      => 'Collective\Html\HtmlFacade', /* for blade */
+        'Form'      => 'Collective\Html\FormFacade', /* for blade */
         'Socialite' => 'Laravel\Socialite\Facades\Socialite', /* for oAuth */
         'Entrust' => 'Zizaco\Entrust\EntrustFacade', /* for ACL */
 
