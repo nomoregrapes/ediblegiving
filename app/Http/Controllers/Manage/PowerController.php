@@ -6,6 +6,7 @@ use App\User;
 use App\Models\Role;
 use App\Models\Permission;
 use DB;
+use \Illuminate\Http\Request;
 use \App\Http\Requests\CreateOrganisationRequest;
 use Illuminate\Support\Str; /* for creating slugs */
 
@@ -152,6 +153,14 @@ class PowerController extends \App\Http\Controllers\Controller {
 		$input['slug'] = $slug;
 
 		\App\Models\Organisation::create($input);
+
+		return redirect('manage/power/orgs');
+	}
+
+	public function orgsUpdate($id, CreateOrganisationRequest $request)
+	{
+		$organisation = \App\Models\Organisation::findOrFail($id);
+		$organisation->update($request->all());
 
 		return redirect('manage/power/orgs');
 	}

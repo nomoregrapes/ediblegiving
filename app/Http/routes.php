@@ -46,6 +46,7 @@ Route::get('manage/power/orgs/{slug}', 'Manage\PowerController@orgsView');
 Route::get('manage/power/orgs', 'Manage\PowerController@orgs');
 Route::get('manage/power/orgs/create', 'Manage\PowerController@orgsCreate');
 Route::post('manage/power/orgs', 'Manage\PowerController@orgsStore');
+Route::patch('manage/power/orgs/{slug}', 'Manage\PowerController@orgsUpdate');
 
 Route::get('manage/power/statistics', 'Manage\PowerController@statistics');
 Route::get('manage/power/bootup/{function}', 'Manage\PowerController@bootup');

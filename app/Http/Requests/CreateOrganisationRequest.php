@@ -21,8 +21,15 @@ class CreateOrganisationRequest extends Request {
 	 */
 	public function rules()
 	{
+		$slug_req = '';
+
+		if($this->method == "PATCH") {
+			$slug_req = 'required'; //TODO: should not match any org but itself
+		}
+
 		return [
 			'name' => 'required|min:5',
+			'slug' => $slug_req,
 			'description' => '',
 			'admin_note' => ''
 		];
