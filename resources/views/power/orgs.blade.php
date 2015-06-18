@@ -19,7 +19,7 @@
 	@foreach($organisations as $org)
 		<tr>
 			<td>{{$org->id}}</td>
-			<td>{{$org->name}}</td>
+			<td><a href="{{ URL::to('/manage/power/orgs/' . $org->slug) }}">{{$org->name}}</a></td>
 			<td>{{$org->description}}</td>
 			<td>{{$org->admin_note}}</td>
 			<td>{{$org->user_count}}</td>
