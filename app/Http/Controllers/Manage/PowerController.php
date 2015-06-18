@@ -6,7 +6,7 @@ use App\User;
 use App\Models\Role;
 use App\Models\Permission;
 use DB;
-use Request;
+use \App\Http\Requests\CreateOrganisationRequest;
 
 class PowerController extends \App\Http\Controllers\Controller {
 
@@ -105,9 +105,9 @@ class PowerController extends \App\Http\Controllers\Controller {
 	}
 
 
-	public function orgsStore()
+	public function orgsStore(CreateOrganisationRequest $request)
 	{
-		$input = Request::all();
+		$input = $request->all();
 		//$input['slug'] = '';
 
 		\App\Models\Organisation::create($input);

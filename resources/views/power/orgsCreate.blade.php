@@ -6,6 +6,15 @@
 
 @section('content')
 	<h1 class="cover-heading">Add a new organisation</h1>
+
+	@if($errors->any())
+	<ul class="alert alert-danger">
+		@foreach($errors->all() as $error)
+			<li>{{ $error }}</li>
+		@endforeach
+	</ul>
+	@endif
+
 	{!! Form::open(['url' => 'manage/power/orgs']) !!}
 		<div class="form-group">
 			{!! Form::label('name', 'Name') !!}
