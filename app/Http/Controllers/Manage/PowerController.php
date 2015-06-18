@@ -7,6 +7,7 @@ use App\Models\Role;
 use App\Models\Permission;
 use DB;
 use \App\Http\Requests\CreateOrganisationRequest;
+use Illuminate\Support\Str; /* for creating slugs */
 
 class PowerController extends \App\Http\Controllers\Controller {
 
@@ -108,7 +109,13 @@ class PowerController extends \App\Http\Controllers\Controller {
 	public function orgsStore(CreateOrganisationRequest $request)
 	{
 		$input = $request->all();
-		//$input['slug'] = '';
+
+		//make slug (TODO: use the org model and tidy this up)
+		$slug = Str::slug($input['name']);
+		$count = DB::select("SELECT COUNT(slug) as count FROM organisations WHERE slug RLIKE '^{$slug}(-[0-9]+)?$'");
+		$count = $count[0]->count;
+		$slug = $count ? "{$slug}-{$count}" : $slug;
+		$input['slug'] = $slug;
 
 		\App\Models\Organisation::create($input);
 
