@@ -40,6 +40,7 @@ Route::get('manage/login', 'AuthController@login');
 
 Route::get('manage/power', 'Manage\PowerController@index');
 
+Route::get('manage/power/users/{username}', 'Manage\PowerController@usersView');
 Route::get('manage/power/users', 'Manage\PowerController@users');
 
 Route::get('manage/power/orgs/{slug}', 'Manage\PowerController@orgsView');

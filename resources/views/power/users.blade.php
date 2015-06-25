@@ -18,7 +18,7 @@
 	@foreach($users as $user)
 		<tr>
 			<td>{{$user->id}}</td>
-			<td>{{$user->username}}</td>
+			<td><a href="{{ URL::to('/manage/power/users/' . $user->username) }}">{{$user->username}}</a></td>
 			<td>{{$user->email}}</td>
 			<td>
 			@foreach($user->orgs as $num => $org)

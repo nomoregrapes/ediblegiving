@@ -78,6 +78,50 @@ class PowerController extends \App\Http\Controllers\Controller {
 	}
 
 
+	public function usersView($username = '')
+	{
+		//check login and are an admin
+		if(!$curr_user = Auth::user())
+		{
+			return redirect('/manage');
+		}
+		if(!$curr_user->hasOrgRole('admin', 'edible-giving'))
+		{
+			die('404');	
+		}
+
+		$data = array();
+
+		//get user
+		$query = 'SELECT U.*
+					FROM users U
+					WHERE U.username = ?
+					';
+		$data['user'] = DB::select($query, array($username))[0];
+
+		if(!$data['user'])
+		{
+			die('User not found.');
+		}
+
+		//get roles/orgs of that user
+		$query = 'SELECT RU.*, R.*, O.*
+					FROM role_user RU
+					LEFT JOIN roles AS R ON RU.role_id = R.id
+					LEFT JOIN organisations AS O ON RU.organisation_id = O.id
+					WHERE RU.user_id = ?
+					ORDER BY RU.role_id ASC, O.name ASC';
+		$data['user_roles'] = DB::select($query, array($data['user']->id));
+
+
+		//get organisations and roles (for changing User Role).
+
+
+		//display
+		return view('power.usersView', $data);
+	}
+
+
 	public function orgsView($slug='')
 	{
 		//check login and are an admin
