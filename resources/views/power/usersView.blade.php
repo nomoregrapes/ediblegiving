@@ -35,7 +35,15 @@
 			<tr>
 				<td>{{$role->name}}</td>
 				<td title="{{$role->description}}">{{$role->display_name}}</td>
-				<td>Remove Role?</td>
+				<td>
+					{!! Form::open(['method' => 'post', 'url' => 'manage/power/usersrole/'. $user->username, 'class' => 'form-inline form-table-row']) !!}
+						{!! Form::hidden('user_id', $user->id) !!}
+						{!! Form::hidden('organisation_id', $role->organisation_id) !!}
+						{!! Form::hidden('role_id', $role->role_id) !!}
+						{!! Form::hidden('task', 'remove') !!}
+						{!! Form::submit('Remove Role', ['class' => "btn btn-default"]) !!}
+					{!! Form::close() !!}
+				</td>
 			</tr>
 		@endforeach
 	@endif

@@ -9,6 +9,7 @@ use DB;
 use \Illuminate\Http\Request;
 use \App\Http\Requests\CreateOrganisationRequest;
 use \App\Http\Requests\CreateUserRoleRequest;
+use \App\Http\Requests\RemoveUserRoleRequest;
 use Illuminate\Support\Str; /* for creating slugs */
 
 class PowerController extends \App\Http\Controllers\Controller {
@@ -160,6 +161,33 @@ class PowerController extends \App\Http\Controllers\Controller {
 
 		return redirect('manage/power/users/' . $username);
 
+	}
+
+	// Remove a role from a user
+	public function usersRoleRemove(RemoveUserRoleRequest $request, $username = '')
+	{
+		$input = $request->all();
+
+		//check login are an admin - or admin of that org?
+		if(!$curr_user = Auth::user())
+		{
+			return redirect('/manage');
+		}
+		if(!$curr_user->hasOrgRole('admin', 'edible-giving'))
+		{
+			die('404');	
+		}
+
+		$data = array();
+
+
+		$query = DB::table('role_user')
+			->where('user_id', $input['user_id'])
+			->where('role_id', $input['role_id'])
+			->where('organisation_id', $input['organisation_id'])
+			->delete();
+
+		return redirect('manage/power/users/' . $username);
 	}
 
 

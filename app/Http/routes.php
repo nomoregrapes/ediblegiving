@@ -42,6 +42,10 @@ Route::get('manage/power', 'Manage\PowerController@index');
 
 Route::get('manage/power/users/{username}', 'Manage\PowerController@usersView');
 Route::post('manage/power/users/{username}', 'Manage\PowerController@usersRoleSave');
+Route::post('manage/power/usersrole/{username}', 'Manage\PowerController@usersRoleRemove');
+Route::get('manage/power/usersrole/{username}', function($username='') {
+	return redirect('manage/power/users/' . $username);
+});
 Route::get('manage/power/users', 'Manage\PowerController@users');
 
 Route::get('manage/power/orgs/{slug}', 'Manage\PowerController@orgsView');

@@ -13,6 +13,7 @@
 		<!-- CSS are placed here -->
 		{!! HTML::style('css/bootstrap.min.css') !!}
 		{!! HTML::style('css/bootstrap-theme.min.css') !!}
+		{!! HTML::style('css/app.css') !!}
 		@yield('extra-css')
 	</head>
 
