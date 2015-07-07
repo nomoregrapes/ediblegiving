@@ -24,7 +24,6 @@
 		<tr>
 			<th>Organisation</th>
 			<th>Role</th>
-			<th>Held role since</th>
 			<th>Actions</th>
 		</tr>
 	@if (count($user_roles) < 1)
@@ -36,12 +35,46 @@
 			<tr>
 				<td>{{$role->name}}</td>
 				<td title="{{$role->description}}">{{$role->display_name}}</td>
-				<td>{{ date('dS M Y', strtotime($role->created_at)) }}</td>
 				<td>Remove Role?</td>
 			</tr>
 		@endforeach
 	@endif
 	</table>
+
+
+
+	<h3>Add Role</h3>
+
+	@if($errors->any())
+	<ul class="alert alert-danger">
+		@foreach($errors->all() as $error)
+			<li>{{ $error }}</li>
+		@endforeach
+	</ul>
+	@endif
+
+	{!! Form::open(['method' => 'post', 'url' => 'manage/power/users/'. $user->username]) !!}
+		{!! Form::hidden('user_id', $user->id) !!}
+		<div class="form-group">
+			{!! Form::label('organisation_id', 'Organisation') !!}
+			<select name="organisation_id">
+			@foreach($organisations as $org)
+				<option value="{!! $org->id !!}">{!! $org->name !!}</option>
+			@endforeach
+			</select>
+		</div>
+		<div class="form-group">
+			{!! Form::label('role_id', 'Role') !!}
+			<select name="role_id">
+			@foreach($roles as $role)
+				<option value="{!! $role->id !!}">{!! $role->display_name !!}</option>
+			@endforeach
+			</select>
+		</div>
+		<div class="form-group">
+			{!! Form::submit('Add', ['class' => "btn btn-default"]) !!}
+		</div>
+	{!! Form::close() !!}
 
 
 

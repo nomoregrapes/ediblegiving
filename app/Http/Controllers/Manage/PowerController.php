@@ -8,6 +8,7 @@ use App\Models\Permission;
 use DB;
 use \Illuminate\Http\Request;
 use \App\Http\Requests\CreateOrganisationRequest;
+use \App\Http\Requests\CreateUserRoleRequest;
 use Illuminate\Support\Str; /* for creating slugs */
 
 class PowerController extends \App\Http\Controllers\Controller {
@@ -115,10 +116,50 @@ class PowerController extends \App\Http\Controllers\Controller {
 
 
 		//get organisations and roles (for changing User Role).
+		$query = 'SELECT O.*
+					FROM organisations AS O
+					WHERE 1 = 1;';
+		$data['organisations'] = DB::select($query);
+		$query = 'SELECT R.*
+					FROM roles AS R
+					WHERE 1 = 1;';
+		$data['roles'] = DB::select($query);
 
 
 		//display
 		return view('power.usersView', $data);
+	}
+
+	// Save a new role
+	public function usersRoleSave(CreateUserRoleRequest $request, $username = '')
+	{
+		$input = $request->all();
+
+		//check login and are an admin - might not need to do this
+		if(!$curr_user = Auth::user())
+		{
+			return redirect('/manage');
+		}
+		if(!$curr_user->hasOrgRole('admin', 'edible-giving'))
+		{
+			die('404');	
+		}
+
+		$data = array();
+
+
+		//\App\Models\Organisation::create($input); //TODO: something like this, what model?
+		DB::table('role_user')->insert(
+			array(
+				'user_id' => $input['user_id'],
+				'role_id' => $input['role_id'],
+				'organisation_id' => $input['organisation_id']
+				)
+		);
+
+
+		return redirect('manage/power/users/' . $username);
+
 	}
 
 
