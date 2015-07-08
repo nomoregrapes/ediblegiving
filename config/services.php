@@ -41,6 +41,12 @@ return [
 		'redirect' =>  getenv('GITHUB_REDIRECT')
 	],
 
+	'twitter' => [
+		'client_id' => getenv('TWITTER_CLIENT_ID'),
+		'client_secret' => getenv('TWITTER_CLIENT_SECRET'),
+		'redirect' => getenv('TWITTER_REDIRECT')
+	],
+
 	'facebook' => [
 		'client_id' => getenv('FACEBOOK_APP_ID'),
 		'client_secret' => getenv('FACEBOOK_APP_SECRET'),

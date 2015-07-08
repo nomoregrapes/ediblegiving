@@ -19,6 +19,11 @@ class UserRepository {
 				$name_first = $userData->nickname;
 				$name_full = $userData->name;
 			}
+			if($provider == 'twitter') {
+				$name_first = $userData->nickname;
+				$name_full = $userData->name;
+				$userData->email = '@'. $userData->nickname;
+			}
 
 			//check username not taken (by a different provider)
 			$similarUsers = User::where('username', '=', $username)->count();
