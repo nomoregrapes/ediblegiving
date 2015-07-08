@@ -5,9 +5,9 @@
 @endsection
 
 @section('content')
-	<h1 class="cover-heading">{{$user->username}}</h1>
+	<h1 class="cover-heading">{{$user->name_full}}</h1>
 
-	<h3>Details of {{$user->username}}</h3>
+	<h3>Details of {{$user->name_full}}</h3>
 	<dl class="dl-horizontal">
 		<dt>ID</dt>
 			<dd>{{$user->id}}</dd>
@@ -17,9 +17,13 @@
 			<dd>{{$user->email}}</dd>
 		<dt>Signed Up</dt>
 			<dd>{{ date('dS M Y', strtotime($user->created_at)) }}</dd>
+		<dt>Logs in with</dt>
+			<dd>{{$user->provider}}</dd>
+		<dt>Picture</dt>
+			<dd><img src="{{$user->avatar_url}}" style="max-width:150px;"></dd>
 	</dl>
 
-	<h3>Roles of {{$user->username}}</h3>
+	<h3>Roles of {{$user->name_full}}</h3>
 	<table class="table table-condensed table-striped table-hover">
 		<tr>
 			<th>Organisation</th>

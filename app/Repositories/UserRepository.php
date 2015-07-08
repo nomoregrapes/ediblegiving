@@ -8,10 +8,16 @@ class UserRepository {
 	public function findByUsernameOrCreate($userData, $provider=null) {
 		$user = User::where('provider_id', '=', $userData->id)->first();
 		if(!$user) {
-			//some provider specific stuff
+			//some provider specific stuff before we create
 			$username = $userData->nickname;
 			if($provider == 'facebook' || $username == null) {
 				$username = $userData->id;
+				$name_first = $userData->user['first_name'];
+				$name_full = $userData->name;
+			}
+			if($provider == 'github') {
+				$name_first = $userData->nickname;
+				$name_full = $userData->name;
 			}
 
 			//check username not taken (by a different provider)
@@ -26,10 +32,10 @@ class UserRepository {
 				'username' => $username,
 				'email' => $userData->email,
 				'provider' => $provider,
-				'provider_id' => $userData->id
-				//'name' => $userData->name,
-				//'avatar' => $userData->avatar,
-				//'active' => 1,
+				'provider_id' => $userData->id,
+				'name_first' => $name_first,
+				'name_full' => $name_full,
+				'avatar_url' => $userData->avatar,
 			]);
 		}
 
