@@ -17,22 +17,23 @@ class AuthenticateUser {
 		$this->auth = $auth;
 	}
 
-	public function execute($hasCode, $listener) {
+	public function execute($hasCode, $listener, $provider) {
 
-		if(!$hasCode) return $this->getAuthorisationFirst();
+		if(!$hasCode) return $this->getAuthorisationFirst($provider);
 
-		$user = $this->users->findByUsernameOrCreate($this->getGithubUser());
+		$user = $this->users->findByUsernameOrCreate($this->getSocialUser($provider), $provider);
 
 		$this->auth->login($user, true);
 
 		return $listener->userHasLoggedIn($user);
 	}
 
-	private function getAuthorisationFirst() {
-		return $this->socialite->driver('github')->redirect();
+	private function getAuthorisationFirst($provider) {
+		return $this->socialite->driver($provider)->redirect();
 	}
 
-	private function getGithubUser() {
-		return $this->socialite->driver('github')->user();
+	private function getSocialUser($provider) {
+		return $this->socialite->driver($provider)->user();
 	}
+
 }

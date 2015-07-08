@@ -40,7 +40,7 @@ class ManageController extends Controller {
 			return view('manage.index'); //need to choose a provider & login
 		}
 		$user->orgs = Organisation::getByUser($user->id);
-		if(!$user->orgs[0])
+		if(!$user->orgs)
 		{
 			return view('manage.welcome'); //need a role in an org
 		}

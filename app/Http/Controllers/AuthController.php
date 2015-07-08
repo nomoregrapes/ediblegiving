@@ -9,9 +9,9 @@ use App\AuthenticateUser;
 
 class AuthController extends Controller {
 
-	public function login(AuthenticateUser $authenticateUser, Request $request) {
+	public function login(AuthenticateUser $authenticateUser, Request $request, $provider = null) {
 
-		return $authenticateUser->execute($request->has('code'), $this);
+		return $authenticateUser->execute($request->has('code'), $this, $provider);
 	}
 
 	public function userHasLoggedIn($user) {
