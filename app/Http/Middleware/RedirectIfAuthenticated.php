@@ -35,7 +35,8 @@ class RedirectIfAuthenticated {
 	{
 		if ($this->auth->check())
 		{
-			return new RedirectResponse(url('/home'));
+			//get here after AuthController
+			return new RedirectResponse(url('/manage'));
 		}
 
 		return $next($request);

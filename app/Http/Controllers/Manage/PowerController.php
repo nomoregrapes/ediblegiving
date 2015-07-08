@@ -65,6 +65,7 @@ class PowerController extends \App\Http\Controllers\Controller {
 		$data['users'] = DB::select('SELECT * FROM users where 1=1');
 		foreach($data['users'] as $u => $user)
 		{
+			//TODO: replace this by accessing the org model
 			$query = 'SELECT
 					organisations.name,
 					organisations.slug,
