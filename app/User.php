@@ -105,6 +105,36 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return false;
     }
 
+    /**
+     * Gets all the permissions a user has within an organisation
+     *
+     */
+    public function getOrgPermissions($org_id)
+    {
+        $parameters = array(
+            $this->id,
+            $org_id
+            );
+        $query = 'SELECT P.*
+                    FROM permissions P
+                    LEFT JOIN permission_role AS PR ON P.id = PR.permission_id
+                    LEFT JOIN roles AS R ON PR.role_id = R.id
+                    LEFT JOIN role_user AS RU ON R.id = RU.role_id
+                    WHERE RU.user_id = ?
+                        AND RU.organisation_id = ?
+                    ORDER BY RU.role_id ASC';
+        $result = DB::select($query, $parameters);
+
+        //make them accesible by term
+        $data = array();
+        foreach($result as $permis)
+        {
+            $data[$permis->name] = $permis;
+        }
+
+        return $data;
+    }
+
 
     /**
      * Alias to eloquent many-to-many relation's attach() method.

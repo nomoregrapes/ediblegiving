@@ -2,6 +2,7 @@
 
 use Auth;
 use App\Models\Organisation;
+use App\User;
 
 class ManageController extends Controller {
 
@@ -45,7 +46,18 @@ class ManageController extends Controller {
 			return view('manage.welcome'); //need a role in an org
 		}
 
-		return view('manage.home'); //all good, show some manage links
+		$data = array(
+			'user' => $user
+			);
+
+		//get the permissions they hold for each org
+		foreach($user->orgs as $org)
+		{
+			$org->permissions = $user->getOrgPermissions($org->id);
+			$data['orgs'][] = $org;
+		}
+
+		return view('manage.home', $data); //all good, show some manage links
 	}
 
 
