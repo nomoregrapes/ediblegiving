@@ -34,7 +34,7 @@
 						{!! Form::submit('Remove Role', ['class' => "btn btn-default"]) !!}
 					{!! Form::close() !!}
 				--}}
-				@if (count($user_roles) < 1)
+				@if (count($user_roles) > 1)
 					<br>
 				@endif
 			@endforeach
