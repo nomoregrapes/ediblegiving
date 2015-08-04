@@ -34,6 +34,7 @@ Route::get('manage', 'ManageController@index');
 Route::get('manage/login/{provider?}', 'AuthController@login');
 
 //Route::get('manage/organisation/{orgslug}', 'Manage\OrganisationController');
+Route::get('manage/organisation/{orgslug}/users/{username}', 'Manage\OrganisationController@usersView');
 Route::get('manage/organisation/{orgslug}/users', 'Manage\OrganisationController@users');
 
 Route::get('manage/power', 'Manage\PowerController@index');

@@ -92,4 +92,59 @@ class OrganisationController extends Controller {
 	}
 
 
+	public function usersView($orgslug = '', $username = '')
+	{
+		$org = Organisation::getBySlug($orgslug);
+
+		//check login and are an admin
+		if(!$curr_user = Auth::user())
+		{
+			return redirect('/manage');
+		}
+		if(!$curr_user->hasOrgRole(array('manager', 'admin'), $org->slug, false))
+		{
+			die('404');	
+		}
+
+		$data = array('org' => $org);
+
+		//get user
+		$query = 'SELECT U.*
+					FROM users U
+					WHERE U.username = ?
+					';
+		$data['user'] = DB::select($query, array($username))[0];
+
+		if(!$data['user'])
+		{
+			die('User not found.');
+		}
+
+		//get roles/orgs of that user
+		$query = 'SELECT RU.*, R.*, O.*
+					FROM role_user RU
+					LEFT JOIN roles AS R ON RU.role_id = R.id
+					LEFT JOIN organisations AS O ON RU.organisation_id = O.id
+					WHERE RU.user_id = ?
+					ORDER BY RU.role_id ASC, O.name ASC';
+		$data['user_roles'] = DB::select($query, array($data['user']->id));
+
+
+		//get organisations and roles (for changing User Role).
+		$query = 'SELECT O.*
+					FROM organisations AS O
+					WHERE 1 = 1;';
+		$data['organisations'] = DB::select($query);
+		$query = 'SELECT R.*
+					FROM roles AS R
+					WHERE 1 = 1;';
+		$data['roles'] = DB::select($query);
+
+
+		//display
+		return view('manage.organisation.usersView', $data);
+	}
+
+
+
 }
