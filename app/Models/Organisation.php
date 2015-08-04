@@ -21,4 +21,13 @@ class Organisation extends Model {
 			->get();
 		return $orgs;
 	}
+
+
+	public static function getBySlug($orgslug)
+	{
+		$orgs = DB::table('organisations')
+			->where('slug', '=', $orgslug)
+			->first();
+		return $orgs;
+	}
 }

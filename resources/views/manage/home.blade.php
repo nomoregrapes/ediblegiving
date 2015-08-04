@@ -1,4 +1,4 @@
-@extends('layouts.power')
+@extends('layouts.manage')
 
 @section('title')
 	Management

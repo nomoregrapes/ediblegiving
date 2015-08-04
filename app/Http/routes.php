@@ -33,6 +33,9 @@ Route::get('data/{data_request}.json', 'DataController@returnData');
 Route::get('manage', 'ManageController@index');
 Route::get('manage/login/{provider?}', 'AuthController@login');
 
+//Route::get('manage/organisation/{orgslug}', 'Manage\OrganisationController');
+Route::get('manage/organisation/{orgslug}/users', 'Manage\OrganisationController@users');
+
 Route::get('manage/power', 'Manage\PowerController@index');
 
 Route::get('manage/power/users/{username}', 'Manage\PowerController@usersView');
