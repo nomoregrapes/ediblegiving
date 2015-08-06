@@ -4,6 +4,7 @@ use Auth;
 use DB;
 use App\Http\Controllers\Controller;
 use App\Models\Organisation;
+use App\Models\OrganisationTagDefaults;
 use App\User;
 
 class OrganisationController extends Controller {
@@ -143,6 +144,32 @@ class OrganisationController extends Controller {
 
 		//display
 		return view('manage.organisation.usersView', $data);
+	}
+
+
+	/**
+	 * List defaults for this organisation
+	 **/
+	public function defaults($orgslug = '')
+	{
+		$org = Organisation::getBySlug($orgslug);
+
+		//check login and are a manager/admin of the org
+		if(!$curr_user = Auth::user())
+		{
+			return redirect('/manage');
+		}
+		//TODO: maybe let them see the defaults if they are an editor?
+		if(!$curr_user->hasOrgRole(array('manager', 'admin'), $org->slug, false))
+		{
+			die('404');	
+		}
+
+
+		$data = array('org' => $org);
+		$data['defaults'] = OrganisationTagDefaults::getWithTagDetail($org->id);
+
+		return view('manage.organisation.defaults', $data);
 	}
 
 
