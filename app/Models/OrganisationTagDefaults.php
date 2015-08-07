@@ -7,7 +7,7 @@ class OrganisationTagDefaults extends Model {
 
 	protected $table = 'organisation_tag_defaults';
 	
-	protected $fillable = ['key', 'value'];
+	protected $fillable = ['organisation_id', 'key', 'value'];
 	protected $hidden = [];
 
 
@@ -17,6 +17,7 @@ class OrganisationTagDefaults extends Model {
 		$defaults = OrganisationTagDefaults::where('organisation_id', $org_id)
 			->leftJoin('tag_key', 'organisation_tag_defaults.key', '=', 'tag_key.key')
 			->select(
+				'organisation_tag_defaults.id',
 				'organisation_tag_defaults.key', 
 				'organisation_tag_defaults.value as default_value', 
 				'organisation_tag_defaults.created_at', 

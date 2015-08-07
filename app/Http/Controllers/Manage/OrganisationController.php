@@ -5,7 +5,9 @@ use DB;
 use App\Http\Controllers\Controller;
 use App\Models\Organisation;
 use App\Models\OrganisationTagDefaults;
+use App\Models\TagKey;
 use App\User;
+use App\Http\Requests\CreateOrganisationTagDefaultRequest;
 
 class OrganisationController extends Controller {
 
@@ -169,7 +171,36 @@ class OrganisationController extends Controller {
 		$data = array('org' => $org);
 		$data['defaults'] = OrganisationTagDefaults::getWithTagDetail($org->id);
 
+		//get data for forms
+		$data['options_keys'] = TagKey::where('restricted', 0)
+			->get();
+
 		return view('manage.organisation.defaults', $data);
+	}
+
+
+	public function defaultsStore(CreateOrganisationTagDefaultRequest $request, $orgslug)
+	{
+		$org = Organisation::getBySlug($orgslug);
+
+		$input = $request->all();
+		$input['organisation_id'] = $org->id;
+
+		//use the right input
+		$input['value'] = $input['value-'. $input['value-type']];
+
+		if($input['id'] != null) {
+			//update!
+			$default = OrganisationTagDefaults::findOrFail($input['id']);
+			$default->update($input);
+		}
+		else {
+			//add!
+			OrganisationTagDefaults::create($input);
+		}
+
+		
+		return redirect('manage/organisation/'. $orgslug .'/defaults');
 	}
 
 

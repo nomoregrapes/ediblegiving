@@ -37,6 +37,7 @@ Route::get('manage/login/{provider?}', 'AuthController@login');
 Route::get('manage/organisation/{orgslug}/users/{username}', 'Manage\OrganisationController@usersView');
 Route::get('manage/organisation/{orgslug}/users', 'Manage\OrganisationController@users');
 Route::get('manage/organisation/{orgslug}/defaults', 'Manage\OrganisationController@defaults');
+Route::post('manage/organisation/{orgslug}/defaults', 'Manage\OrganisationController@defaultsStore');
 
 Route::get('manage/power', 'Manage\PowerController@index');
 
