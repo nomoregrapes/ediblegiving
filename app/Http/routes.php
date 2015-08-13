@@ -33,6 +33,9 @@ Route::get('data/{data_request}.json', 'DataController@returnData');
 Route::get('manage', 'ManageController@index');
 Route::get('manage/login/{provider?}', 'AuthController@login');
 
+//Route::get('manage/location/', 'Manage\LocationController');
+Route::get('manage/location/list/{orgslug}', 'Manage\LocationController@viewList');
+
 //Route::get('manage/organisation/{orgslug}', 'Manage\OrganisationController');
 Route::get('manage/organisation/{orgslug}/users/{username}', 'Manage\OrganisationController@usersView');
 Route::get('manage/organisation/{orgslug}/users', 'Manage\OrganisationController@users');
