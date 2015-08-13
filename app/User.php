@@ -106,6 +106,47 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     }
 
     /**
+     * Check if user has a permission by its name.
+     *
+     * @param string|array $permission Permission string or array of permissions.
+     * @param bool         $requireAll All permissions in the array are required.
+     *
+     * @return bool
+     */
+    public function canForOrg($permission, $org = null, $requireAll = false)
+    {
+        if (is_array($permission)) {
+            foreach ($permission as $permName) {
+                $hasPerm = $this->canforOrg($permName, $org);
+                if ($hasPerm && !$requireAll) {
+                    return true;
+                } elseif (!$hasPerm && $requireAll) {
+                    return false;
+                }
+            }
+            // If we've made it this far and $requireAll is FALSE, then NONE of the perms were found
+            // If we've made it this far and $requireAll is TRUE, then ALL of the perms were found.
+            // Return the value of $requireAll;
+            return $requireAll;
+        } else {
+            if(!is_integer($org)) {
+                //look up $org as a slug
+                $the_org = DB::select('SELECT id FROM organisations
+                    WHERE slug = ? LIMIT 1;', [$org])[0];
+                //okay
+                $org = (int)$the_org->id;
+            }
+            foreach ($this->getOrgPermissions($org) as $perm) {
+                // Validate against the Permission table
+                if ($perm->name == $permission) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    /**
      * Gets all the permissions a user has within an organisation
      *
      */
