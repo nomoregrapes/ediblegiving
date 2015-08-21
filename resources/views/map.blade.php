@@ -11,6 +11,7 @@
 @endsection
 @section('extra-js')
 	{!! HTML::script('https://api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.js') !!}
+	{!! HTML::script('js/map-functions.js') !!}
 	{!! HTML::script('js/map.js') !!}
 @endsection
 
