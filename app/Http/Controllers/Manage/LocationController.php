@@ -89,5 +89,32 @@ class LocationController extends Controller {
 		return view('manage.location.viewlist', $data);
 	}
 
+	/**
+	 * Add a new location
+	 **/
+	public function addLocation($orgslug = '')
+	{
+		$org = Organisation::getBySlug($orgslug);
+
+		//check login and are a manager/admin of the org
+		if(!$curr_user = Auth::user())
+		{
+			return redirect('/manage');
+		}
+		if(!$curr_user->canForOrg('org-locations-view', $org->slug, false))
+		{
+			die('404');	
+		}
+
+		
+		$data = array('org' => $org);
+		$data['defaults'] = OrganisationTagDefaults::getWithTagDetail($org->id);
+		$data['options_keys'] = TagKey::where('restricted', 0)->get();
+
+		return view('manage.location.addlocation', $data);
+
+
+	}
+
 
 }

@@ -35,6 +35,7 @@ Route::get('manage/login/{provider?}', 'AuthController@login');
 
 //Route::get('manage/location/', 'Manage\LocationController');
 Route::get('manage/location/list/{orgslug}', 'Manage\LocationController@viewList');
+Route::get('manage/location/add/{orgslug}', 'Manage\LocationController@addLocation');
 
 //Route::get('manage/organisation/{orgslug}', 'Manage\OrganisationController');
 Route::get('manage/organisation/{orgslug}/users/{username}', 'Manage\OrganisationController@usersView');

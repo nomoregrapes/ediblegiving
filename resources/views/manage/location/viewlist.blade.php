@@ -17,6 +17,7 @@
 
 @section('content')
 	<h1 class="cover-heading">Locations</h1>
+	<a href="{{ URL::to('/manage/location/add/' . $org->slug) }}">add a location</a>
 
 	<div class="row">
 		<div class="col-md-8">
