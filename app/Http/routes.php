@@ -34,8 +34,10 @@ Route::get('manage', 'ManageController@index');
 Route::get('manage/login/{provider?}', 'AuthController@login');
 
 //Route::get('manage/location/', 'Manage\LocationController');
-Route::get('manage/location/list/{orgslug}', 'Manage\LocationController@viewList');
-Route::get('manage/location/add/{orgslug}', 'Manage\LocationController@addLocation');
+Route::get('manage/location/{orgslug}', 'Manage\LocationController@viewList');
+Route::get('manage/location/{orgslug}/add', 'Manage\LocationController@addLocation');
+Route::get('manage/location/{orgslug}/{location_id}/edit', 'Manage\LocationController@updateLocation');
+Route::post('manage/location/{orgslug}/store', 'Manage\LocationController@storeLocation'); //send id by post
 
 //Route::get('manage/organisation/{orgslug}', 'Manage\OrganisationController');
 Route::get('manage/organisation/{orgslug}/users/{username}', 'Manage\OrganisationController@usersView');

@@ -9,7 +9,7 @@ use App\Models\Organisation;
 use App\Models\OrganisationTagDefaults;
 use App\Models\TagKey;
 use App\User;
-//use App\Http\Requests\CreateOrganisationTagDefaultRequest;
+use App\Http\Requests\CreateLocationRequest;
 
 class LocationController extends Controller {
 
@@ -113,7 +113,128 @@ class LocationController extends Controller {
 
 		return view('manage.location.addlocation', $data);
 
+	}
 
+
+	/**
+	 * Edit/update a location
+	 **/
+	public function updateLocation($orgslug = '', $location_id = null)
+	{
+		$org = Organisation::getBySlug($orgslug);
+
+		//check login and are a manager/admin of the org
+		if(!$curr_user = Auth::user())
+		{
+			return redirect('/manage');
+		}
+		if(!$curr_user->canForOrg('org-locations-view', $org->slug, false))
+		{
+			die('404');	
+		}
+
+		$data = array('org' => $org);
+
+		//find and get existing location
+		$data['location'] = Location::findOrFail($location_id);
+		$data['loc_tags'] = LocationTag::getAllTags($location_id);
+
+		//$data['defaults'] = OrganisationTagDefaults::getWithTagDetail($org->id);
+		$data['options_keys'] = TagKey::where('restricted', 0)->get();
+
+		return view('manage.location.updatelocation', $data);
+
+
+	}
+
+	/**
+	 * Save a new or edited location
+	 **/
+	public function storeLocation($orgslug = '', CreateLocationRequest $request)
+	{
+		$org = Organisation::getBySlug($orgslug);
+
+		$input = $request->all();
+		$input['organisation_id'] = $org->id; 
+
+		//is location_id null or not found?
+		if(array_key_exists('location-id', $input) && $input['location-id'] != null) {
+			$location = Location::findOrFail($input['location-id']);
+			
+			if($location->organisation_id != $org->id)
+			{
+				//location isn't in the org of the URL.
+				return redirect('/manage');
+			}
+			//TODO: better permission check $input['organisation_id'] = current org_id, and permissions
+			
+			$location->update($input);
+		} else {
+			//is new
+			$location = Location::create($input);
+
+			//now add default tags (cant rely on blade form to have done that), if they arent overridden
+			$default_tags = OrganisationTagDefaults::getWithTagDetail($org->id);
+			foreach($default_tags as $default) {
+				//if((!array_key_exists($default->key, $input['tag'])) || ($default->default_value != $input['tag'][$default->key])) {
+				if(1==1) {
+					//default not been overridden...
+					$this_tag = array(
+						'location_id' => $location->id,
+						'key' => $default->key,
+						'value' => $default->default_value,
+						'populated_by' => 'defaults'
+						);
+					LocationTag::create($this_tag);
+				}
+			}
+		}
+
+		//now add/update tags
+		foreach($input['tag'] as $key => $value) {
+			if($value == "") {
+				//value not given/changed, so don't update/empty it!
+				continue;
+			}
+			$tag = LocationTag::findOrFail($location->id, $key);
+			if($tag != null && $tag->value != $value) {
+				//tag needs updating...
+				$this_tag = array(
+					'value' => $value,
+					'populated_by' => 'manual'
+					);
+				//echo "UPDATE TAG"; print_r($tag); print_r($this_tag);
+				//$tag->update($this_tag);
+				//$match = array('location_id', 'key', 'value', 'populated_by');
+
+				$match = array(
+					'location_id' => $location->id,
+					'key' => $key
+					);
+				$populate = $match;
+				$populate['value'] = $value;
+				$populate['populated_by'] = 'manual';
+
+				//$values = array($location->id, $key, $value, 'manual');
+				$tag->updateTags($location, $key, $this_tag);
+			} elseif( $tag == null ) {
+				//create a new tag...
+				$this_tag = array(
+					'location_id' => $location->id,
+					'key' => $key,
+					'value' => $value,
+					'populated_by' => 'manual' //TODO: unless it is the default value for that tag
+					);
+				//echo "CREATE TAG"; print_r($this_tag);
+				LocationTag::create($this_tag);
+			}
+		}
+
+		//dd($location);
+
+
+		//all done, move on/back to location list
+		return redirect('manage/location/'. $orgslug);
 	}
 
 

@@ -37,7 +37,7 @@ $( document ).ready(function() {
 		$('.tag-value-input-'+ $(this).find('option:selected').attr('input-type')).show();
 		$('input[name="value-type"]').val( $(this).find('option:selected').attr('input-type') );
 
-		//populate with existing default?
+		//populate with existing value?
 		existing = $('.location-tag[key="'+ $(this).find('option:selected').val() +'"]');
 		//find the relevant value field and populate it?
 		switch($(this).find('option:selected').attr('input-type')) {

@@ -1,7 +1,7 @@
 @extends('layouts.manage')
 
 @section('title')
-	New - Locations - Manage
+	Edit - Locations - Manage
 @endsection
 
 @section('extra-js')
@@ -9,7 +9,7 @@
 @endsection
 
 @section('content')
-	<h1 class="cover-heading">Add A Location</h1>
+	<h1 class="cover-heading">Edit Location</h1>
 
 	@if($errors->any())
 	<ul class="alert alert-danger">
@@ -21,20 +21,21 @@
 
 	<div class="row">
 		{!! Form::open(['url' => '/manage/location/' . $org->slug . '/store', 'class'=>'form-horizontal']) !!}
+			{!! Form::hidden('location-id', $location->id, ['class' => "form-control"]) !!}
 			<div class="col-md-8">
 				<div class="control-group row">
 					{!! Form::label('location', 'Location co-ordinates', ['class'=>"col-md-3  control-label"]) !!}
 					<div class="col-md-2">
 						<span id="hidden-location">0,0</span>
-						{!! Form::hidden('latitude', 0, ['class' => "form-control", 'placeholder' => ""]) !!}
-						{!! Form::hidden('longitude', 0, ['class' => "form-control", 'placeholder' => ""]) !!}
+						{!! Form::hidden('latitude', $location->lat, ['class' => "form-control", 'placeholder' => ""]) !!}
+						{!! Form::hidden('longitude', $location->lon, ['class' => "form-control", 'placeholder' => ""]) !!}
 					</div>
-					<small>Use the map to set the location</small>
+					<small>Use the map to change the location</small>
 				</div>
 				<div class="control-group row">
 					{!! Form::label('visible', 'Published', ['class'=>"col-md-3  control-label"]) !!}
 					<div class="col-md-2">
-					{!! Form::checkbox('visible', 1, ['class' => "form-control"]) !!}
+					{!! Form::checkbox('visible', $location->visible, ['class' => "form-control"]) !!}
 					</div>
 					<small>Leaving this unticked keeps the location as a draft and not shown publicaly.</small>
 				</div>
@@ -46,10 +47,10 @@
 						<th>Value</th>
 						<th></th>
 					</tr>
-				@foreach($defaults as $tag)
+				@foreach($loc_tags as $tag)
 					<tr class="default-row location-tag" key="{{$tag->key}}" tag-id="{{$tag->id}}">
 						<td>{{$tag->label}}</td>
-						<td class="tag-value">{{$tag->default_value}}</td>
+						<td class="tag-value">{{$tag->value}}</td>
 						<td>{!! Form::button('change', ['class' => "btn btn-default action-change-item"]) !!}</td>
 						{!! Form::hidden('tag['. $tag->key .']', $tag->default_value, ['class' => "form-control tag-hidden"]) !!}
 					</tr>
@@ -88,18 +89,10 @@
 							{!! Form::text('value-website', null, ['class' => "form-control", 'placeholder' => "http://"]) !!}
 						</div>
 					</div>
-					<!--
-					<div class="control-group row">
-						<div class="col-md-3"></div>
-						<div class="col-md-4">
-							{!! Form::button('change', ['class' => "btn btn-default action-change-item"]) !!}
-						</div>
-					</div>
-					--!>
 
 
 				<div class="form-group">
-					{!! Form::submit('Add Location', ['class' => "btn btn-default"]) !!}
+					{!! Form::submit('Update Location and Tags', ['class' => "btn btn-default"]) !!}
 				</div>
 			</div>
 
