@@ -17,7 +17,7 @@
 
 @section('content')
 	<h1 class="cover-heading">Locations</h1>
-	<a href="{{ URL::to('/manage/location/add/' . $org->slug) }}">add a location</a>
+	<a href="{{ URL::to('/manage/location/' . $org->slug .'/add') }}">add a location</a>
 
 	<div class="row">
 		<div class="col-md-8">
@@ -38,7 +38,11 @@
 			@foreach($locations as $location)
 				<tr>
 					<td>{{$location->id}}</td>
-					<td>{{$location->tags['name']}}</td>
+					<td>
+						@if(isset($location->tags['name']))
+							{{$location->tags['name']}}
+						@endif
+					</td>
 					<td><small>{{$location->lat}}, {{$location->lon}}</small></td>
 					<td>
 					@foreach($location->more_tags as $key => $value)
@@ -46,7 +50,7 @@
 					@endforeach
 					</td>
 					<td>{{ date('dS M Y', strtotime($location->created_at)) }}</td>
-					<td><a href="{{ URL::to('/manage/location/edit'. $location->id) }}">edit</a></td>
+					<td><a href="{{ URL::to('/manage/location/' . $org->slug .'/'. $location->id .'/edit') }}">edit</a></td>
 				</tr>
 			@endforeach
 			</table>
