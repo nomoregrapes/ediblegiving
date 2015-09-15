@@ -26,7 +26,13 @@ Route::get('map', function() {
 	return view('map');
 });
 
-Route::get('data/{data_request}.json', 'DataController@returnData');
+
+//Feeds are public URLS (may need authorisation)
+	//TODO
+
+//Data is for the system to use (ie geojson to populate the map)
+Route::get('data/{data_request}.json', 'DataController@returnData'); //old style, static files combined. TODO: depreciate
+Route::get('data/{orgslug}/locations.json', 'DataController@orgLocations');
 
 
 

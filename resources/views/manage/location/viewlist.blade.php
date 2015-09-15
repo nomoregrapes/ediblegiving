@@ -10,6 +10,9 @@
 	{!! HTML::style('css/map.css') !!}
 @endsection
 @section('extra-js')
+	<script type="text/javascript">
+		var mapDataURL = "{{URL::to('/data/testing-super-cafes/locations.json')}}";
+	</script>
 	{!! HTML::script('https://api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.js') !!}
 	{!! HTML::script('js/map-functions.js') !!}
 	{!! HTML::script('js/views/manage/location-list.js') !!}

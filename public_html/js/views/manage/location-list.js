@@ -4,6 +4,17 @@
 	var lyrStuff;
 
 
+	function getEGLocations() {
+		//TODO: update this to get from the Db
+		var data = 'bbox=' + map.getBounds().toBBoxString();
+		$.ajax({
+				url: mapDataURL,
+				dataType: 'json',
+				data: data,
+				success: showLocations
+		});
+	}
+
 	$( document ).ready(function() {
 		//load map
 		if( location.hash != undefined && location.hash != '') {
