@@ -110,6 +110,7 @@ class DataController extends Controller {
 			{
 				$feature['properties'][$k] = $v;
 			}
+			$feature['properties']['id'] = $loc->id;
 			$newJson['features'][] = $feature;
 		}
 

@@ -4,7 +4,19 @@
 	Edit - Locations - Manage
 @endsection
 
+@section('extra-css')
+	{!! HTML::style('css/jquery-ui-lightness/jquery-ui-1.10.4.min.css') !!}
+	{!! HTML::style('https://api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.css') !!}
+	{!! HTML::style('css/map.css') !!}
+@endsection
 @section('extra-js')
+	<script type="text/javascript">
+		var mapDataURL = "{{URL::to('/data/testing-super-cafes/locations.json')}}";
+		var mapCurrentLocationID = "{{$location->id}}";
+	</script>
+	{!! HTML::script('https://api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.js') !!}
+	{!! HTML::script('js/map-functions.js') !!}
+	{!! HTML::script('js/views/manage/location-edit-map.js') !!}
 	{!! HTML::script('js/views/manage/location-edit.js') !!}
 @endsection
 
@@ -26,7 +38,13 @@
 				<div class="control-group row">
 					{!! Form::label('location', 'Location co-ordinates', ['class'=>"col-md-3  control-label"]) !!}
 					<div class="col-md-2">
-						<span id="hidden-location">0,0</span>
+						<span id="hidden-location">
+							@if($location->lat != 0 && $location->lon != 0)
+								{!! $location->lat !!}, {!! $location->lon !!}
+							@else
+								<em>-not set-</em>
+							@endif
+						</span>
 						{!! Form::hidden('latitude', $location->lat, ['class' => "form-control", 'placeholder' => ""]) !!}
 						{!! Form::hidden('longitude', $location->lon, ['class' => "form-control", 'placeholder' => ""]) !!}
 					</div>
