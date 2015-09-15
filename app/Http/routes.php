@@ -26,12 +26,24 @@ Route::get('map', function() {
 	return view('map');
 });
 
-Route::get('data/{data_request}.json', 'DataController@returnData');
+
+//Feeds are public URLS (may need authorisation)
+	//TODO
+
+//Data is for the system to use (ie geojson to populate the map)
+Route::get('data/{data_request}.json', 'DataController@returnData'); //old style, static files combined. TODO: depreciate
+Route::get('data/{orgslug}/locations.json', 'DataController@orgLocations');
 
 
 
 Route::get('manage', 'ManageController@index');
 Route::get('manage/login/{provider?}', 'AuthController@login');
+
+//Route::get('manage/location/', 'Manage\LocationController');
+Route::get('manage/location/{orgslug}', 'Manage\LocationController@viewList');
+Route::get('manage/location/{orgslug}/add', 'Manage\LocationController@addLocation');
+Route::get('manage/location/{orgslug}/{location_id}/edit', 'Manage\LocationController@updateLocation');
+Route::post('manage/location/{orgslug}/store', 'Manage\LocationController@storeLocation'); //send id by post
 
 //Route::get('manage/organisation/{orgslug}', 'Manage\OrganisationController');
 Route::get('manage/organisation/{orgslug}/users/{username}', 'Manage\OrganisationController@usersView');

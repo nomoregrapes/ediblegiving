@@ -21,7 +21,7 @@
 			<tr>
 				<td>{{$org->name}}</td>
 				@if(array_key_exists('org-locations-view', $org->permissions))
-					<td><a href="{{ URL::to('/manage/location/list/' . $org->slug) }}">locations</a></td>
+					<td><a href="{{ URL::to('/manage/location/' . $org->slug) }}">locations</a></td>
 					@else <td>-</td>
 				@endif
 				@if(array_key_exists('org-locations-view', $org->permissions))

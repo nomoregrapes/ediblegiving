@@ -1,5 +1,12 @@
 <?php namespace App\Http\Controllers;
 
+
+use App\Models\Location;
+use App\Models\LocationTag;
+use App\Models\TagKey;
+use App\Models\Organisation;
+
+
 class DataController extends Controller {
 
 
@@ -67,6 +74,51 @@ class DataController extends Controller {
 		} else {
 			abort(404, 'That data is not available.');
 		}
+	}
+
+
+	/*
+	 * Get all locations in an org
+	 */
+	public function orgLocations($orgslug) {
+
+		//first we need some data
+		$org = Organisation::getBySlug($orgslug);
+		$locations = Location::where('organisation_id', '=', $org->id)
+			->where('visible', '=', 1)
+			->get();
+
+		//let's make a geojson!
+		$newJson = array(
+			'type' => 'FeatureCollection',
+			'features' => array()
+			);
+		//put in the locations
+		foreach($locations as $loc) {
+			$feature = array(
+				'type' => 'Feature',
+				'geometry' => array(
+					'type' => 'Point',
+					'coordinates' => array($loc->lon, $loc->lat)
+					)
+				);
+
+			//add tags. TODO: this could be one call to LocationTag, and negate the need for a loop?
+			$tags = new LocationTag(); //yeah, I'm confused
+			$feature['properties'] = $tags->getCoreTags($loc->id);
+			foreach( $tags->getTopTags($loc->id) as $k => $v)
+			{
+				$feature['properties'][$k] = $v;
+			}
+			$feature['properties']['id'] = $loc->id;
+			$newJson['features'][] = $feature;
+		}
+
+
+		//okay, spit out the json now
+		return json_encode($newJson);
+
+
 	}
 
 }

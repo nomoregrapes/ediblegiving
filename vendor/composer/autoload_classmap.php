@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'AlterUsers' => $baseDir . '/database/migrations/2015_07_08_135759_alter_users.php',
+    'CreateLocationTables' => $baseDir . '/database/migrations/2015_08_13_111002_create_location_tables.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
     'CreateTagTables' => $baseDir . '/database/migrations/2015_08_06_090150_create_tag_tables.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
