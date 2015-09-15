@@ -79,6 +79,7 @@ class LocationController extends Controller {
 		$locations = Location::where('organisation_id', '=', $org->id)
 			->get();
 
+		$data['locations'] = array();
 		foreach($locations as $loc) {
 			$tags = new LocationTag(); //yeah, I'm confused
 			$loc->tags = $tags->getCoreTags($loc->id);
