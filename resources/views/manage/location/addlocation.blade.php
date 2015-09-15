@@ -4,7 +4,18 @@
 	New - Locations - Manage
 @endsection
 
+@section('extra-css')
+	{!! HTML::style('css/jquery-ui-lightness/jquery-ui-1.10.4.min.css') !!}
+	{!! HTML::style('https://api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.css') !!}
+	{!! HTML::style('css/map.css') !!}
+@endsection
 @section('extra-js')
+	<script type="text/javascript">
+		var mapDataURL = "{{URL::to('/data/testing-super-cafes/locations.json')}}";
+	</script>
+	{!! HTML::script('https://api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.js') !!}
+	{!! HTML::script('js/map-functions.js') !!}
+	{!! HTML::script('js/views/manage/location-add-map.js') !!}
 	{!! HTML::script('js/views/manage/location-edit.js') !!}
 @endsection
 
@@ -26,8 +37,8 @@
 					{!! Form::label('location', 'Location co-ordinates', ['class'=>"col-md-3  control-label"]) !!}
 					<div class="col-md-2">
 						<span id="hidden-location">0,0</span>
-						{!! Form::hidden('latitude', 0, ['class' => "form-control", 'placeholder' => ""]) !!}
-						{!! Form::hidden('longitude', 0, ['class' => "form-control", 'placeholder' => ""]) !!}
+						{!! Form::hidden('lat', 0, ['class' => "form-control", 'placeholder' => ""]) !!}
+						{!! Form::hidden('lon', 0, ['class' => "form-control", 'placeholder' => ""]) !!}
 					</div>
 					<small>Use the map to set the location</small>
 				</div>
@@ -88,14 +99,6 @@
 							{!! Form::text('value-website', null, ['class' => "form-control", 'placeholder' => "http://"]) !!}
 						</div>
 					</div>
-					<!--
-					<div class="control-group row">
-						<div class="col-md-3"></div>
-						<div class="col-md-4">
-							{!! Form::button('change', ['class' => "btn btn-default action-change-item"]) !!}
-						</div>
-					</div>
-					--!>
 
 
 				<div class="form-group">
