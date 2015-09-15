@@ -26,7 +26,7 @@
 		});
 		//colour marker that we're editing
 		lyrStuff.eachLayer(function(marker) {
-			if (marker.toGeoJSON().properties.id === mapCurrentLocationID) {
+			if (marker.toGeoJSON().properties.id == mapCurrentLocation.id) {
 				marker.setIcon(L.mapbox.marker.icon({
 					'marker-color': '#551a8b',
 					'marker-size': 'large'
@@ -37,18 +37,8 @@
 
 	$( document ).ready(function() {
 		//load map
-		if( location.hash != undefined && location.hash != '') {
-			var thehash = location.hash.substr(1),
-			hashlocation = thehash.substr(thehash.indexOf('location=')).split('&')[0].split('=')[1];
-			locparts = hashlocation.split('/');
-			map = L.mapbox.map('map').setView([locparts[1], locparts[2]], locparts[0]); //from URL
-		} else {
-			//map = L.mapbox.map('map').setView([54.8, -1.6], 11); //Durham
-			map = L.mapbox.map('map').setView([52.92, -1.08], 6); //UK
-
-			//geolocate attempt
-			map.locate({setView: true, maxZoom: 10}); //causes browser to hang, just in Saddler St office?
-		}
+		//no predefined location or geolocate, zoom to one were editing
+		map = L.mapbox.map('map').setView([mapCurrentLocation.lat, mapCurrentLocation.lon], 14);
 
 		//more base layers
 		var OSMLayer = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
