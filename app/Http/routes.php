@@ -25,6 +25,8 @@ Route::get('about/addlocations', function() {
 Route::get('map', function() {
 	return view('map');
 });
+//The new map style, to replace the homepage
+Route::get('newmap', 'MapController@index');
 
 
 //Feeds are public URLS (may need authorisation)

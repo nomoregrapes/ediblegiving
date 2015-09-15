@@ -1,0 +1,30 @@
+body {
+	margin: 0;
+	padding: 0;
+}
+
+#map { 
+	clear: both;
+	height: 100%;
+}
+
+#site-title-container {
+	position:absolute;
+	width: 100%;
+	z-index: 400;
+	text-align: center;;
+}
+	#site-title {
+		margin: auto;
+		padding: 10px 20px;
+		width: 156px;
+		background: #d0cdc4;
+	}
+	#site-title h1 {
+		display:none;
+		margin: auto;
+	}
+	#site-title img#site-logo {
+		width: 116px;
+		height: 80px;
+	}
