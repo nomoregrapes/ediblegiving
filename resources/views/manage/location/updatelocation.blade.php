@@ -33,7 +33,7 @@
 
 	<div class="row">
 		{!! Form::open(['url' => '/manage/location/' . $org->slug . '/store', 'class'=>'form-horizontal']) !!}
-			{!! Form::hidden('location-id', $location->id, ['class' => "form-control"]) !!}
+			{!! Form::hidden('id', $location->id, ['class' => "form-control"]) !!}
 			<div class="col-md-8">
 				<div class="control-group row">
 					{!! Form::label('location', 'Location co-ordinates', ['class'=>"col-md-3  control-label"]) !!}
@@ -45,8 +45,8 @@
 								<em>-not set-</em>
 							@endif
 						</span>
-						{!! Form::hidden('latitude', $location->lat, ['class' => "form-control", 'placeholder' => ""]) !!}
-						{!! Form::hidden('longitude', $location->lon, ['class' => "form-control", 'placeholder' => ""]) !!}
+						{!! Form::hidden('lat', $location->lat, ['class' => "form-control", 'placeholder' => ""]) !!}
+						{!! Form::hidden('lon', $location->lon, ['class' => "form-control", 'placeholder' => ""]) !!}
 					</div>
 					<small>Use the map to change the location</small>
 				</div>
@@ -66,7 +66,7 @@
 						<th></th>
 					</tr>
 				@foreach($loc_tags as $tag)
-					<tr class="default-row location-tag" key="{{$tag->key}}" tag-id="{{$tag->id}}">
+					<tr class="default-row location-tag" key="{{$tag->key}}" tag-key-id="{{$tag->id}}">
 						<td>{{$tag->label}}</td>
 						<td class="tag-value">{{$tag->value}}</td>
 						<td>{!! Form::button('change', ['class' => "btn btn-default action-change-item"]) !!}</td>

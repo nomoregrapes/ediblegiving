@@ -10,7 +10,7 @@ $( document ).ready(function() {
 
 			if(curr_tag.length < 1) {
 				$('table.location-tag-table tr:last').after(
-					'<tr class="location-tag" key="'+ curr_key +'" tag-id="">'
+					'<tr class="location-tag" key="'+ curr_key +'" tag-key-id="">'
 					+'<td>'+ curr_key_label +'</td>'
 					+'<td class="tag-value">'+ $(this).val() +'</td>'
 					+'<td><button class="btn btn-default action-change-item" type="button">change</button></td>'
@@ -61,10 +61,10 @@ $( document ).ready(function() {
 		}
 		//are we editing a value?
 		if( existing.length > 0 ) {
-			$('input[name="id"]').val( existing.first().attr('tag-id') );
+			$('input[name="tag-key-id"]').val( existing.first().attr('tag-key-id') );
 		}
 		else {
-			$('input[name="id"]').val('');
+			$('input[name="tag-key-id"]').val('');
 		}
 
 	});

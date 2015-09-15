@@ -44,7 +44,7 @@ $( document ).ready(function() {
 		}
 		//are we editing a value?
 		if( existing.length > 0 ) {
-			$('input[name="id"]').val( existing.first().attr('tag-id') );
+			$('input[name="id"]').val( existing.first().attr('tag-key-id') );
 		}
 		else {
 			$('input[name="id"]').val('');

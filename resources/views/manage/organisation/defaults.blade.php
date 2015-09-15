@@ -20,7 +20,7 @@
 			<th></th>
 		</tr>
 	@foreach($defaults as $tag)
-		<tr class="default-row" key="{{$tag->key}}" tag-id="{{$tag->id}}">
+		<tr class="default-row" key="{{$tag->key}}" tag-key-id="{{$tag->id}}">
 			<td>{{$tag->label}}</td>
 			<td class="tag-value">{{$tag->default_value}}</td>
 			<td>{{ date('dS M Y', strtotime($tag->updated_at)) }}</td>

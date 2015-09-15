@@ -26,8 +26,8 @@ class CreateLocationRequest extends Request {
 
 		// http://laravel.com/docs/5.0/validation#available-validation-rules
 		$rules = array(
-			'latitude' => 'required|numeric|min:-90|max:90', //|not_in:0',
-			'longitude' => 'required|numeric|min:-180|max:180', //|not_in:0',
+			'lat' => 'required|numeric|min:-90|max:90', //|not_in:0',
+			'lon' => 'required|numeric|min:-180|max:180', //|not_in:0',
 			//'organisation_id' => 'required|numeric', //TODO: check it exists //Don't do: it gets added later
 			'visible' => 'boolean'
 		);

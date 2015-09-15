@@ -15,8 +15,8 @@ class CreateLocationTables extends Migration {
 		Schema::create('location', function(Blueprint $table)
 		{
 			$table->increments('id')->unsigned()->unique();
-			$table->float('lat');
-			$table->float('lon');
+			$table->float('lat', 10, 7);
+			$table->float('lon', 10, 7);
 			$table->integer('organisation_id')->unsigned();
 			$table->boolean('visible')->default(1);		//visible = shown to users
 			$table->timestamps();

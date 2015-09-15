@@ -47,7 +47,7 @@
 						<th></th>
 					</tr>
 				@foreach($defaults as $tag)
-					<tr class="default-row location-tag" key="{{$tag->key}}" tag-id="{{$tag->id}}">
+					<tr class="default-row location-tag" key="{{$tag->key}}" tag-key-id="{{$tag->id}}">
 						<td>{{$tag->label}}</td>
 						<td class="tag-value">{{$tag->default_value}}</td>
 						<td>{!! Form::button('change', ['class' => "btn btn-default action-change-item"]) !!}</td>

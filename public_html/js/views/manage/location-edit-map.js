@@ -21,7 +21,8 @@
 		lyrStuff.setGeoJSON(ajaxresponse);
 		//(on click removed)
 		//register click event again, because the option "onEachFeature: attachClickEvent" doesn't work.
-		lyrStuff.on('click', function(e) {
+		lyrStuff.on('dragend', function(e) {
+			console.log('dragged');
 			markerInfo(e.layer.feature);
 		});
 		//colour marker that we're editing
@@ -31,8 +32,16 @@
 					'marker-color': '#551a8b',
 					'marker-size': 'large'
 				}));
+				marker.dragging.enable();
+				marker.on('dragend', locationMoved);
 			}
 		});
+	}
+	function locationMoved(e) {
+		//update the location in the form (to 6 decimal places)
+		$('#hidden-location').html(+e.target.getLatLng().lat.toFixed(6) + ", " + +e.target.getLatLng().lng.toFixed(6)); //display
+		$('input[name="lat"]').val( +e.target.getLatLng().lat.toFixed(6) );
+		$('input[name="lon"]').val( +e.target.getLatLng().lng.toFixed(6) );
 	}
 
 	$( document ).ready(function() {

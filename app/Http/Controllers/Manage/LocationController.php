@@ -158,8 +158,9 @@ class LocationController extends Controller {
 		$input['organisation_id'] = $org->id; 
 
 		//is location_id null or not found?
-		if(array_key_exists('location-id', $input) && $input['location-id'] != null) {
-			$location = Location::findOrFail($input['location-id']);
+		if(array_key_exists('id', $input) && $input['id'] != null) {
+			//updating
+			$location = Location::findOrFail($input['id']);
 			
 			if($location->organisation_id != $org->id)
 			{
@@ -167,7 +168,6 @@ class LocationController extends Controller {
 				return redirect('/manage');
 			}
 			//TODO: better permission check $input['organisation_id'] = current org_id, and permissions
-			
 			$location->update($input);
 		} else {
 			//is new
