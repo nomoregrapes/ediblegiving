@@ -13,6 +13,10 @@
 		<!-- CSS are placed here -->
 		{!! HTML::style('css/bootstrap.min.css') !!}
 		{!! HTML::style('css/bootstrap-theme.min.css') !!}
+		{!! HTML::style('css/jquery-ui-lightness/jquery-ui-1.10.4.min.css') !!}
+		{!! HTML::style('https://api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.css') !!}
+		{!! HTML::style('https://fonts.googleapis.com/css?family=Courgette|Lato') !!}
+		{!! HTML::style('css/map-full.css') !!}
 		@yield('extra-css')
 	</head>
 
@@ -30,10 +34,10 @@
 
 		<div id="side-boxes" class="row">
 			<div id="side-control" class="side-box col-md-2 col-sm-4">
-				Search, and filters
+				@yield('side-control')
 			</div>
 			<div id="side-info" class="side-box col-md-2 col-sm-4 col-md-offset-8 col-sm-offset-8">
-				Info
+				@yield('side-info')
 			</div>
 		</div>
 
