@@ -18,7 +18,7 @@
 		<p>Coming soon...</p>
 
 	<h2>Find places...</h2>
-		<div class="container map-filters">
+		<div class="map-filters">
 			<div class="input-group" id="filter-activity">
 				<div>
 					<label for="donation-points">Donation points
