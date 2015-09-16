@@ -112,14 +112,15 @@ function filterMarkers() {
 
 $( document ).ready(function() {
 	//load map
+	var mapSettings = {zoomControl: false};
 	if( location.hash != undefined && location.hash != '') {
 		var thehash = location.hash.substr(1),
 		hashlocation = thehash.substr(thehash.indexOf('location=')).split('&')[0].split('=')[1];
 		locparts = hashlocation.split('/');
-		map = L.mapbox.map('map').setView([locparts[1], locparts[2]], locparts[0]); //from URL
+		map = L.mapbox.map('map', null, mapSettings).setView([locparts[1], locparts[2]], locparts[0]); //from URL
 	} else {
 		//map = L.mapbox.map('map').setView([54.8, -1.6], 11); //Durham
-		map = L.mapbox.map('map').setView([52.92, -1.08], 6); //UK
+		map = L.mapbox.map('map', null, mapSettings).setView([52.92, -1.08], 6); //UK
 
 		//geolocate attempt
 		map.locate({setView: true, maxZoom: 10}); //causes browser to hang, just in Saddler St office?
@@ -135,7 +136,7 @@ $( document ).ready(function() {
 	var baseMaps = {
 		"OpenStretMap": OSMLayer
 	};
-	L.control.layers(baseMaps).addTo(map);
+	//L.control.layers(baseMaps).addTo(map);
 
 
 
