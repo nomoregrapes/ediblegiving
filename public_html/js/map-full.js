@@ -101,6 +101,9 @@ function filterMarkers() {
 			}
 		});
 
+		//first colour it?
+		f.properties['marker-color'] = '#551a8b';
+
 		//if the marker is a checked activity AND a checked food type, show it
 		if(tickedActivity && tickedFoodType) {
 			return true; //show
@@ -130,7 +133,16 @@ $( document ).ready(function() {
 	var OSMLayer = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 	attribution: 'Base map © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
 	});
-	map.addLayer(OSMLayer);
+	//map.addLayer(OSMLayer);
+	var mapboxStyles = [
+		'mapbox.streets', 'mapbox.light', 'mapbox.dark', 'mapbox.satellite', 'mapbox.streets-satellite', //5
+		'mapbox.wheatpaste', 'mapbox.streets-basic', 'mapbox.comic', 'mapbox.outdoors', 'mapbox.run-bike-hike', //10
+		'mapbox.pencil', 'mapbox.pirates', 'mapbox.emerald', 'mapbox.high-contrast' //14
+		];
+	var MapboxLayer = L.tileLayer('https://api.mapbox.com/v4/'+ mapboxStyles[0] +'/{z}/{x}/{y}.png?access_token=pk.eyJ1Ijoibm9tb3JlZ3JhcGVzIiwiYSI6IjBCZTk3eVUifQ.No55nZtxByLYKNnyKMglbA', {
+	attribution: 'Base map © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, with Mapbox style',
+	});
+	map.addLayer(MapboxLayer);
 
 	//add a layer switcher
 	var baseMaps = {
