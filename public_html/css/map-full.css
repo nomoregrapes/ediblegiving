@@ -49,12 +49,14 @@
 	margin-top: 100px;
 	width: 100%;
 	z-index: 400;
+	pointer-events: none;
 }
 	.side-box {
 		padding: 10px 10px;
 		min-height: 100px;
 		background: #d0cdc4;
 		border: 3px solid #8c8dab;
+		pointer-events: auto;
 	}
 	#side-control {
 		border-left-style: none;
