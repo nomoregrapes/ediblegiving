@@ -20,6 +20,11 @@
 
 	<div id="content">
 		<div id="site-title-container">
+			<div id="site-tagline">A destination for your generosity.</div>
+			<div id="site-links">
+				<a href="" id="about"><span class="link-label">about</span><span class="link-icon">A</span></a>
+				<a href="" id="login"><span class="link-label">login</span><span class="link-icon">i</span></a>
+			</div>
 			<div id="site-title"><img id="site-logo" src="/images/site-title.png"><h1>Edible Giving</h1></div>
 		</div>
 		<div id="map"></div>

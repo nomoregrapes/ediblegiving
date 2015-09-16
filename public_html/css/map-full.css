@@ -12,19 +12,37 @@ body {
 	position:absolute;
 	width: 100%;
 	z-index: 400;
-	text-align: center;;
+	background: #d0cdc4;
+	height: 2em;
+	vertical-align: top;
 }
+	#site-tagline {
+		float: left;
+		margin: 0;
+		padding: 0.1em 20px;
+	}
+	#site-links {
+		float: right;
+		margin: 0;
+		right: 0;
+		padding: 0.1em 20px;
+	}
+		#site-links .link-label {
+			display: none;
+		}
 	#site-title {
-		margin: auto;
+		margin: 0 auto;
 		padding: 10px 20px;
 		width: 156px;
 		background: #d0cdc4;
+		border-bottom-left-radius: 20px;
+		border-bottom-right-radius: 20px;
 	}
-	#site-title h1 {
-		display:none;
-		margin: auto;
-	}
-	#site-title img#site-logo {
-		width: 116px;
-		height: 80px;
-	}
+		#site-title h1 {
+			display:none;
+			margin: auto;
+		}
+		#site-title img#site-logo {
+			width: 116px;
+			height: 80px;
+		}
