@@ -27,6 +27,16 @@
 			</div>
 			<div id="site-title"><img id="site-logo" src="/images/site-title.png"><h1>Edible Giving</h1></div>
 		</div>
+
+		<div id="side-boxes" class="row">
+			<div id="side-control" class="side-box col-md-2 col-sm-4">
+				Search, and filters
+			</div>
+			<div id="side-info" class="side-box col-md-2 col-sm-4 col-md-offset-8 col-sm-offset-8">
+				Info
+			</div>
+		</div>
+
 		<div id="map"></div>
 	</div>
 

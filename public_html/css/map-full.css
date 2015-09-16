@@ -46,3 +46,27 @@ body {
 			width: 116px;
 			height: 80px;
 		}
+
+#side-boxes {
+	position: absolute;
+	margin: 0;
+	margin-top: 100px;
+	width: 100%;
+	z-index: 400;
+}
+	.side-box {
+		padding: 10px 10px;
+		min-height: 100px;
+		background: #d0cdc4;
+		border: 3px solid #8c8dab;
+	}
+	#side-control {
+		border-left-style: none;
+		border-top-right-radius: 20px;
+		border-bottom-right-radius: 20px;
+	}
+	#side-info {
+		border-right-style: none;
+		border-top-left-radius: 20px;
+		border-bottom-left-radius: 20px;
+	}
