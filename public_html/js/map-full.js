@@ -3,7 +3,7 @@ var map;
 var lyrStuff;
 
 
-function getStuffLocations() {
+function getEGLocations() {
 	var data = 'bbox=' + map.getBounds().toBBoxString();
 	$.ajax({
 			url: 'data/simpledata.json',
@@ -152,7 +152,7 @@ $( document ).ready(function() {
 	.addTo(map);
 
 
-	getStuffLocations();
+	getEGLocations();
 
 	//when the map get panned
 	map.on('moveend', function(e){

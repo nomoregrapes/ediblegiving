@@ -69,6 +69,21 @@
 		border-bottom-left-radius: 20px;
 	}
 
+.map-filters input[type=checkbox] {
+	display:none;
+}
+	.map-filters input[type=checkbox] + .checkbox-eye {
+		height: 17px;
+		width: 30px;
+		display:inline-block;
+		padding: 0 0 0 5px;
+		background-image: url('/images/display-off.png');
+	}
+	.map-filters input[type=checkbox]:checked + .checkbox-eye {
+		background-image: url('/images/display-on.png');
+	}
+
+
 body {
 	margin: 0;
 	padding: 0;
