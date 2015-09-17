@@ -36,7 +36,7 @@
 			<div id="side-control" class="side-box col-md-2 col-sm-4">
 				@yield('side-control')
 			</div>
-			<div id="side-info" class="side-box col-md-2 col-sm-4 col-md-offset-8 col-sm-offset-8">
+			<div id="side-info" class="side-box col-md-2 col-sm-4">
 				@yield('side-info')
 			</div>
 		</div>

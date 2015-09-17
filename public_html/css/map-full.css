@@ -64,6 +64,7 @@
 		border-bottom-right-radius: 20px;
 	}
 	#side-info {
+		float: right;
 		border-right-style: none;
 		border-top-left-radius: 20px;
 		border-bottom-left-radius: 20px;
@@ -83,6 +84,9 @@
 		background-image: url('/images/display-on.png');
 	}
 
+#location-list {
+	overflow: auto;
+}
 
 body {
 	margin: 0;

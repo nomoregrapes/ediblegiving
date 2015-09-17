@@ -48,6 +48,9 @@ function markerInfo(thisFeature)
 
 		$('#map-marker-details').removeClass('hide').fadeIn();
 	});
+
+	//calculate the maximum height for location list (in side-info box)
+	limitListSize($('#location-list'));
 	
 }
 
@@ -64,12 +67,16 @@ function addToList(e)
 	$('#location-list').append( $newItem );
 	
 	$('.location-list-heading').removeClass('hide').show(); //incase that hasn't happened yet
+
+	limitListSize($('#location-list'));
 }
 //and when they want to remove it
 function removeFromList(e)
 {
 	e.preventDefault();
 	$($(this).context).parentsUntil('#location-list').remove();
+
+	limitListSize($('#location-list'));
 }
 
 //
@@ -112,6 +119,21 @@ function filterMarkers() {
 		}
 	});
 } //end filterMarkers function
+
+/**
+ * calculate the maximum height for location list (in side-info box),
+ * This needs to be triggered whenever the viewport changes or the content changes
+ **/
+function limitListSize($theList) {
+		//do it for the whole side box
+		//window - top - padding - margin
+		var maxInfoSize = +($(window).height() - parseInt($('#side-boxes').css('margin-top')) - parseInt($('#side-info').css('padding-bottom')) - parseInt($('#side-info').css('margin-bottom')));
+		$('#side-info').css('max-height', maxInfoSize);
+
+		//maximum space - current contents +[ie not including] list contents
+		var maxListSize = maxInfoSize - $('#side-info').innerHeight() + $theList.outerHeight(true) - 20;
+		$theList.css('max-height', maxListSize);
+}
 
 $( document ).ready(function() {
 	//load map
@@ -183,5 +205,12 @@ $( document ).ready(function() {
 	//some display stuff for startup...
 	$('.hide').hide();
 	updatePermalink();
+	//calculate the maximum height for location list (in side-info box)
+	limitListSize($('#location-list'));
+
+	//some display stuff when the viewport/window size changes
+	$(window).resize(function() {
+		limitListSize($('#location-list'));
+	});
 
 });
