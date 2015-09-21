@@ -26,8 +26,8 @@
 		<div id="site-title-container">
 			<div id="site-tagline">A destination for your generosity.</div>
 			<div id="site-links">
-				<a href="" id="about"><span class="link-label">about</span><span class="link-icon">A</span></a>
-				<a href="" id="login"><span class="link-label">login</span><span class="link-icon">i</span></a>
+				<a href="/about" id="about"><span class="link-label">About</span><span class="link-icon">About</span></a>
+				<a href="/manage" id="login"><span class="link-label">Login</span><span class="link-icon">Login</span></a>
 			</div>
 			<div id="site-title"><img id="site-logo" src="/images/site-title.png"><h1>Edible Giving</h1></div>
 		</div>

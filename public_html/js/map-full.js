@@ -138,6 +138,8 @@ function limitListSize($theList) {
 $( document ).ready(function() {
 	//load map
 	var mapSettings = {
+		center: [52.92, -1.08], //UK
+		zoom: 6,
 		zoomControl: {
 			position: 'topleft'
 		}
@@ -149,7 +151,7 @@ $( document ).ready(function() {
 		map = L.mapbox.map('map', null, mapSettings).setView([locparts[1], locparts[2]], locparts[0]); //from URL
 	} else {
 		//map = L.mapbox.map('map').setView([54.8, -1.6], 11); //Durham
-		map = L.mapbox.map('map', null, mapSettings).setView([52.92, -1.08], 6); //UK
+		map = L.mapbox.map('map', null, mapSettings);//.setView([52.92, -1.08], 6); //UK
 
 		//geolocate attempt
 		map.locate({setView: true, maxZoom: 10}); //causes browser to hang, just in Saddler St office?

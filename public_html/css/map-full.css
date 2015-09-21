@@ -23,9 +23,37 @@
 		right: 0;
 		padding: 0.1em 20px;
 	}
-		#site-links .link-label {
+		#site-links a {
+			margin-left: 15px;
+		}
+		#site-links a .link-label {
 			display: none;
 		}
+		#site-links a:hover .link-label {
+			display: inline;
+		}
+		#site-links .link-icon {
+			display: inline-block;
+			width: 24px;
+			height: 24px;
+			content: '';
+			text-indent: -999em;
+			background-size: 24px 24px;
+			margin-left: 3px;
+		}
+		#about .link-icon {
+			background-image: url("/images/icon-about.png");
+		}
+		#about:hover .link-icon {
+			background-image: url("/images/icon-about-hover.png");
+		}
+		#login .link-icon {
+			background-image: url("/images/icon-login.png");
+		}
+		#login:hover .link-icon {
+			background-image: url("/images/icon-login-hover.png");
+		}
+
 	#site-title {
 		margin: 0 auto;
 		padding: 10px 20px;
