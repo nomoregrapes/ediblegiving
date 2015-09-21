@@ -137,7 +137,11 @@ function limitListSize($theList) {
 
 $( document ).ready(function() {
 	//load map
-	var mapSettings = {zoomControl: false};
+	var mapSettings = {
+		zoomControl: {
+			position: 'topleft'
+		}
+	};
 	if( location.hash != undefined && location.hash != '') {
 		var thehash = location.hash.substr(1),
 		hashlocation = thehash.substr(thehash.indexOf('location=')).split('&')[0].split('=')[1];

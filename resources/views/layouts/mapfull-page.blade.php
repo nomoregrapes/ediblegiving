@@ -42,6 +42,10 @@
 		</div>
 
 		<div id="map"></div>
+
+		<div id="site-footer">
+			Website created by <a href="http://www.nomoregrapes.com">No More Grapes</a>
+		</div>
 	</div>
 
 		<!-- Scripts are placed here -->

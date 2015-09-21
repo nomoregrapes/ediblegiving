@@ -83,9 +83,39 @@
 	.map-filters input[type=checkbox]:checked + .checkbox-eye {
 		background-image: url('/images/display-on.png');
 	}
+	.map-filters label:hover, .map-filters input[type=checkbox] + .checkbox-eye:hover {
+		cursor: pointer;
+	}
 
 #location-list {
 	overflow: auto;
+}
+
+.leaflet-control-zoom {
+	top: 34px;
+	left: 34px;
+}
+	.leaflet-control-zoom a {
+		display: inline-block;
+		width: 32px;
+		height: 32px;
+	}
+	.leaflet-control-zoom-in {
+		background-size: 32px 320px;
+	}
+	.leaflet-bar .leaflet-control-zoom-out {
+		background-position: 0 -32px;
+		background-size: 32px 320px;
+	}
+
+#site-footer {
+	position:absolute;
+	z-index: 400;
+	bottom: 0;
+	height: 2em;
+	padding: 3px 10px;
+	background: #d0cdc4;
+	vertical-align: middle;
 }
 
 body {
