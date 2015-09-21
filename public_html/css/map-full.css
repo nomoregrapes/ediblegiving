@@ -107,6 +107,20 @@
 		background-position: 0 -32px;
 		background-size: 32px 320px;
 	}
+	.leaflet-control-zoom-uk {
+		background-image: url("/images/map-icons.png");
+		background-position: 4px 4px;
+		background-size: 26px 56px;
+		content: '';
+		text-indent: -999em;
+	}
+	.leaflet-control-zoom-world {
+		background-image: url("/images/map-icons.png");
+		background-position: 2px -28px;
+		background-size: 28px 58px;
+		content: '';
+		text-indent: -999em;
+	}
 
 #site-footer {
 	position:absolute;

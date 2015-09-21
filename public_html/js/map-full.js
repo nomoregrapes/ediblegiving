@@ -176,6 +176,17 @@ $( document ).ready(function() {
 	};
 	//L.control.layers(baseMaps).addTo(map);
 
+	//add clever zoom controls?
+	$('.leaflet-control-zoom').append('<a class="leaflet-control-zoom-uk" href="#" title="Zoom to UK">U</a>');
+	$('.leaflet-control-zoom').append('<a class="leaflet-control-zoom-world" href="#" title="Zoom to World">W</a>');
+	$('.leaflet-control-zoom-uk').on('click', function() {
+		//map.setView([55.1,-2.1], 5);
+		map.fitBounds([[50.9,-5.73],[57.82,0.95]]);
+	});
+	$('.leaflet-control-zoom-world').on('click', function() {
+		//map.fitWorld();
+		map.fitBounds([[-21,-105.6],[61.68,131.9]]);
+	});
 
 
 	var baseJson = {
