@@ -53,6 +53,10 @@ Route::get('manage/organisation/{orgslug}/users', 'Manage\OrganisationController
 Route::get('manage/organisation/{orgslug}/defaults', 'Manage\OrganisationController@defaults');
 Route::post('manage/organisation/{orgslug}/defaults', 'Manage\OrganisationController@defaultsStore');
 
+Route::get('manage/import/{orgslug}', 'Manage\ImportController@index');
+
+
+/* Power areas, for EG admins only */
 Route::get('manage/power', 'Manage\PowerController@index');
 
 Route::get('manage/power/users/{username}', 'Manage\PowerController@usersView');

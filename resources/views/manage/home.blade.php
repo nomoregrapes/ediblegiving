@@ -29,7 +29,7 @@
 					@else <td>-</td>
 				@endif
 				@if(array_key_exists('org-locations-edit', $org->permissions))
-					<td><a href="{{ URL::to('/manage/organisation/' . $org->slug . '/input') }}">import</a></td>
+					<td><a href="{{ URL::to('/manage/import/' . $org->slug . '') }}">import</a></td>
 					@else <td>-</td>
 				@endif
 				@if(array_key_exists('org-defaults-edit', $org->permissions))
