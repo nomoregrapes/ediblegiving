@@ -63,9 +63,9 @@ Route::get('manage/power/usersrole/{username}', function($username='') {
 });
 Route::get('manage/power/users', 'Manage\PowerController@users');
 
+Route::get('manage/power/orgs/create', 'Manage\PowerController@orgsCreate');
 Route::get('manage/power/orgs/{slug}', 'Manage\PowerController@orgsView');
 Route::get('manage/power/orgs', 'Manage\PowerController@orgs');
-Route::get('manage/power/orgs/create', 'Manage\PowerController@orgsCreate');
 Route::post('manage/power/orgs', 'Manage\PowerController@orgsStore');
 Route::patch('manage/power/orgs/{slug}', 'Manage\PowerController@orgsUpdate');
 
