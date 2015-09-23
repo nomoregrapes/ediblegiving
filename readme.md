@@ -1,27 +1,22 @@
-## Laravel PHP Framework
+## Edible Giving
+The online website lives at [EdibleGiving.org](http://www.ediblegiving.org), go there to see it in action. Edible Giving can be used to find where you can give food to organisations that need it. Left over buffet food, or non-perishable unopened items, there are places where it can go! Or perhaps you want to give your time to one of these organisations or find out where and how they can help you.
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+## History & Credit
+Edible Giving was created by [Gregory Marler](https://twitter.com/gregorymarler) of [No More Grapes](http://www.nomoregrapes.com) to fill a lack of help and support those organisations meeting needs in our local communities. 
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
+Originally the website was a proof-of-interest website built in March 2015 following Open Data Camp. Gregory was able to extend functionality and build a more self-sustaining website that launched October 2015. The pre-launch development was possible thanks to a private donation. Continual hosting costs are met by No More Grapes.
 
-Laravel is accessible, yet powerful, providing powerful tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
 
-## Official Documentation
+## Online Presence
+ - [@ediblegiving](https://twitter.com/ediblegiving) is the Twitter account.
+ - Use info@ediblegiving.com if you wish to contact the team privately.
 
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
+## Website Data
+The website creates and manages data of locations for organisations. If you wish to add data and want access to the system, then get in touch. Currently this is a semi-manual process, so that we can encourage organisations to join and curate the data themselves.
 
-## Contributing
+It is intended that the data will soon be very open and ready for you to use the data in your own websites/systems. The format is likely to be geojson, perhaps with the occasional csv dump. If this interests you, contact Edible Giving so data outputs can be built and maintained in a way that suits you.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+## Website Code
+The bulk of the website is programmed in PHP, using the Laravel Framework. A lot of the frontend, especially the maps, are programmed in Javascript and use the Mapbox JS library along with JQuery.
 
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
-
-### License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+Currently programming is a one-man team and not expecting any other contributions. Pull requests will be considered, but it would be better to talk to the team about what you intend to do first. I maintain a private to-do list, and I don't always push my changes to Github right away. I might try using Github issue tracking for some things, yu could add issues or requests there if you really want.
