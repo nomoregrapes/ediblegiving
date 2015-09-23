@@ -202,7 +202,7 @@ class ImportController extends Controller {
 					'lat' => $loc['lat'],
 					'lon' => $loc['lon'],
 					'organisation_id' => $org->id,
-					'visible' => 1 //TODO: review if this should be an option when importing?
+					'visible' => 0 //TODO: review if this should be an option when importing?
 					));
 				//add default tags?...
 				//add imported tags...
