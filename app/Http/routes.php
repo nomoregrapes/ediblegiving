@@ -53,7 +53,10 @@ Route::get('manage/organisation/{orgslug}/users', 'Manage\OrganisationController
 Route::get('manage/organisation/{orgslug}/defaults', 'Manage\OrganisationController@defaults');
 Route::post('manage/organisation/{orgslug}/defaults', 'Manage\OrganisationController@defaultsStore');
 
+//imports
 Route::get('manage/import/{orgslug}', 'Manage\ImportController@index');
+Route::post('manage/import/{orgslug}/geojson', 'Manage\ImportController@geojson');
+Route::post('manage/import/{orgslug}/geojson/store', 'Manage\ImportController@geojsonStore');
 
 
 /* Power areas, for EG admins only */

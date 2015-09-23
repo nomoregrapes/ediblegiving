@@ -21,9 +21,9 @@
 			<div class="col-md-8">
 				<h3>Import geoJSON file</h3>
 				<div class="control-group row">
-					{!! Form::label('jsonurl', 'Online geoJSON URL', ['class'=>"col-md-3 control-label"]) !!}
+					{!! Form::label('dataurl', 'Online geoJSON URL', ['class'=>"col-md-3 control-label"]) !!}
 					<div class="col-md-4">
-						{!! Form::text('jsonurl', null, ['class' => "form-control", 'placeholder' => "http://www. ... .json"]) !!}
+						{!! Form::text('dataurl', null, ['class' => "form-control", 'placeholder' => "http://www. ... .json"]) !!}
 					</div>
 				</div>
 
