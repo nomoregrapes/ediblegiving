@@ -3,12 +3,13 @@
 use Auth;
 use DB;
 use App\Http\Controllers\Controller;
+use App\Models\Location;
+use App\Models\LocationTag;
 use App\Models\Organisation;
 use App\Models\OrganisationTagDefaults;
 use App\Models\TagKey;
 use App\User;
 use App\Http\Requests\NewImportRequest;
-use App\Http\Requests\CreateOrganisationTagDefaultRequest;
 
 class ImportController extends Controller {
 
@@ -188,7 +189,48 @@ class ImportController extends Controller {
 
 		//okay, what data we got?
 		$input = $request->all();
-		dd($input);
+
+		//prep for impotrting
+		$default_tags = OrganisationTagDefaults::getWithTagDetail($org->id);
+
+		//do the import
+		$completed = array();
+		foreach($input['location'] as $ref => $loc) {
+			if($loc['importit'] == 1) {
+				//TODO: refractor to improve the create function? It could include default tags for an org. It could add tags on inm the func.
+				$location = Location::create(array(
+					'lat' => $loc['lat'],
+					'lon' => $loc['lon'],
+					'organisation_id' => $org->id,
+					'visible' => 1 //TODO: review if this should be an option when importing?
+					));
+				//add default tags?...
+				//add imported tags...
+				foreach($loc['tags'] as $key => $value) {
+					//create a new tag... (because we didn't add defaults, theres no chance we'll need to update)
+					$this_tag = array(
+						'location_id' => $location->id,
+						'key' => $key,
+						'value' => $value,
+						'populated_by' => 'feed'
+						);
+					LocationTag::create($this_tag);
+				}
+				//done adding location and tags...
+				$completed[] = array(
+					"newid" => $location->id,
+					"ref" => $ref
+					);
+			}
+			//otherwise, don't import
+		}
+		//all locations imported?
+		$data['completed'] = $completed;
+
+		//done, now show what?
+		//all done, move on/back to location list
+		return redirect('manage/location/'. $orgslug);
+
 	}
 
 
