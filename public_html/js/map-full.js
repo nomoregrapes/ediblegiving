@@ -187,7 +187,7 @@ $( document ).ready(function() {
 	//L.control.layers(baseMaps).addTo(map);
 
 	//add clever zoom controls?
-	if(windowSmall == false) {
+	if(windowSmall != true) {
 		$('.leaflet-control-zoom').append('<a class="leaflet-control-zoom-uk" href="#" title="Zoom to UK">U</a>');
 		$('.leaflet-control-zoom').append('<a class="leaflet-control-zoom-world" href="#" title="Zoom to World">W</a>');
 		$('.leaflet-control-zoom-uk').on('click', function() {
