@@ -79,6 +79,11 @@
 	z-index: 400;
 	pointer-events: none;
 }
+	@media (max-width: 768px) {
+		#side-boxes {
+			margin-top: 550px;
+		}
+	}
 	.side-box {
 		padding: 10px 10px;
 		min-height: 100px;
@@ -123,6 +128,12 @@
 	top: 34px;
 	left: 34px;
 }
+	@media (max-width: 768px) {
+		.leaflet-control-zoom {
+			top: 17px;
+			left: 0;
+		}
+	}
 	.leaflet-control-zoom a {
 		display: inline-block;
 		width: 32px;
@@ -149,6 +160,11 @@
 		content: '';
 		text-indent: -999em;
 	}
+	@media (max-width: 768px) {
+		.leaflet-container .leaflet-control-attribution {
+			bottom: 4em;
+		}
+	}
 
 #site-footer {
 	position:absolute;
@@ -159,12 +175,18 @@
 	background: #d0cdc4;
 	vertical-align: middle;
 }
+	@media (max-width: 768px) {
+		#site-footer {
+			width: 100%;
+			bottom: 17px;
+		}
 
 body {
 	margin: 0;
 	padding: 0;
 	font-family: 'Lato', sans-serif;
 	color: #333;
+	background: #d0cdc4;
 }
 
 h2 {
