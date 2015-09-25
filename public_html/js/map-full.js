@@ -31,7 +31,14 @@ function attachClickEvent(feature, layer)
 }
 function markerInfo(thisFeature)
 {
-	$('#map-marker-details').fadeOut(400, function() {
+	//hide the welcome message?
+	if( $('#side-welcome').is(":visible") == true ) {
+		var toHideObj = '#side-welcome';
+	} else {
+		var toHideObj = '#map-marker-details';
+	}
+
+	$(toHideObj).fadeOut(400, function() {
 		//clear old details
 		$('#map-marker-details .mmd-dynamic').text('');
 		//set details

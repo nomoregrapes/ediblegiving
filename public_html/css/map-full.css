@@ -1,4 +1,21 @@
 
+body {
+	margin: 0;
+	padding: 0;
+	font-family: 'Lato', sans-serif;
+	color: #333;
+	background: #d0cdc4;
+}
+
+h2 {
+	margin: 0;
+	font-size: 1.5em;
+	font-weight: bold;
+	font-family: 'Courgette', cursive;
+	color: #333;
+}
+
+
 #map { 
 	clear: both;
 	height: 100%;
@@ -180,19 +197,3 @@
 			width: 100%;
 			bottom: 17px;
 		}
-
-body {
-	margin: 0;
-	padding: 0;
-	font-family: 'Lato', sans-serif;
-	color: #333;
-	background: #d0cdc4;
-}
-
-h2 {
-	margin: 0;
-	font-size: 1.5em;
-	font-weight: bold;
-	font-family: 'Courgette', cursive;
-	color: #333;
-}
