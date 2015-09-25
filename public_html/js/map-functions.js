@@ -48,3 +48,55 @@
 			markerInfo(e.layer.feature);
 		});
 	}
+
+
+	function placeSearch() {
+		$('#results').html('Loading...');
+		var inp = document.getElementById("query");
+ 		$.getJSON('http://nominatim.openstreetmap.org/search?format=json&limit=5&q=' + inp.value, function(data) {
+			var items = [];
+			$.each(data, function(key, val) {
+				items.push(
+					"<li><a href='#' onclick='placeChoose(" +
+					val.lat + ", " + val.lon + ");return false;'>" + val.display_name +
+					'</a></li>'
+				);
+			});
+			$('#results').empty();
+			if (items.length != 0) {
+				items.push(
+					"<li><a href='#' onclick='placeResultClose();return false;'>" + " [Close search results]" +
+					"</a></li>"
+				);
+				//$('<p>', { html: "Search results:" }).appendTo('#results');
+				$('<ul/>', {
+					'class': 'searchResultsList',
+					html: items.join('')
+				}).appendTo('#results');
+			} else {
+				$('<p>', { html: "No places found" }).appendTo('#results');
+			}
+			$('#results').fadeIn();
+		});
+	}
+	$('#search-form').on('submit', function() {
+		placeSearch();
+		return false;
+	});
+	$('#results').hide(); //bug fix?
+
+	function placeChoose(lat, lng, type) {
+		var location = new L.LatLng(lat, lng);
+		map.panTo(location);
+		if (type == 'city' || type == 'administrative') {
+			map.setZoom(11);
+		} else {
+			map.setZoom(13);
+		}
+	}
+
+	function placeResultClose() {
+		$('#results').fadeOut(400, function() {
+			$('#results').empty();
+		});
+	}

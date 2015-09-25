@@ -15,7 +15,13 @@
 
 @section('side-control')
 	<h2>Find your area...</h2>
-		<p>Coming soon...</p>
+	<div id="search">
+	{!! Form::open(['id'=>'search-form']) !!}
+		{!! Form::text('query', null, ['id'=>"query", 'class' => "form-control", 'size'=>"6", 'placeholder' => "City or area name"]) !!}
+		<button type="button" onclick="placeSearch();">Find</button>
+	{!! Form::close() !!}
+		<div id="results"></div>
+	</div>
 
 	<h2>Map display</h2>
 		<div class="map-filters">
