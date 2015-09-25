@@ -11,7 +11,7 @@
 @endsection
 @section('extra-js')
 	<script type="text/javascript">
-		var mapDataURL = "{{URL::to('/data/testing-super-cafes/locations.json')}}";
+		var mapDataURL = "{{URL::to('/data/testing-super-cafes/locations.geojson')}}";
 		var mapCurrentLocation = {id:{{$location->id}}, lat:{{$location->lat}}, lon:{{$location->lon}}};
 	</script>
 	{!! HTML::script('https://api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.js') !!}

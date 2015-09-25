@@ -35,7 +35,7 @@ Route::get('newmap', 'MapController@index');
 //Data is for the system to use (ie geojson to populate the map)
 Route::get('data/all.geojson', 'DataController@getData');
 Route::get('data/{data_request}.json', 'DataController@returnData'); //old style, static files combined. TODO: depreciate
-Route::get('data/{orgslug}/locations.json', 'DataController@orgLocations'); //for manage area
+Route::get('data/{orgslug}/locations.geojson', 'DataController@orgLocations'); //for manage area
 
 
 

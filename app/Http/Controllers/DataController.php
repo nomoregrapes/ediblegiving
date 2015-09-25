@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
-
+use Auth;
+use DB;
 use App\Models\Location;
 use App\Models\LocationTag;
 use App\Models\TagKey;
@@ -91,14 +92,14 @@ class DataController extends Controller {
 		} else {
 			//you must be requesting an org if you want to include draft locations!
 			if(empty($parameters['org'])) {
-				die('404'); //TODO: better failing
+				die('404a'); //TODO: better failing
 			}
 			if(!$user = Auth::user()) {
-				die('404'); //not logged in
+				die('404b'); //not logged in
 			}
 			//check they can (org can be id or slug)
-			if(!canForOrg('org-locations-view', $parameters['org'])) {
-				die('404'); //don't have permission for this org
+			if(!$user->canForOrg('org-locations-view', $parameters['org'])) {
+				die('404c'); //don't have permission for this org
 			}
 		}
 
@@ -107,8 +108,8 @@ class DataController extends Controller {
 			$query = Location::where('organisation_id', '=', $parameters['org']);
 		} elseif(!empty($parameters['org'])) {
 			//need to convert org slug before querying
-			$the_org = DB::select('SELECT id FROM organisations
-			    WHERE slug = ? LIMIT 1;', [$org])[0];
+			$org = DB::select('SELECT id FROM organisations
+			    WHERE slug = ? LIMIT 1;', [$parameters['org']])[0];
 			//okay
 			$query = Location::where('organisation_id', '=', (int)$org->id);
 		}
@@ -130,7 +131,7 @@ class DataController extends Controller {
 			//add tags. TODO: this could be one call to LocationTag, and negate the need for a loop?
 			$tags = new LocationTag(); //yeah, I'm confused
 			$feature['properties'] = $tags->getCoreTags($loc->id);
-			foreach( $tags->getAllTags($loc->id) as $k => $v)
+			foreach( $tags->getAllLocTags($loc->id) as $k => $v)
 			{
 				//hmm, mysql and php lose our data types
 				if($v == "0") {
@@ -168,42 +169,7 @@ class DataController extends Controller {
 	 */
 	public function orgLocations($orgslug) {
 
-		//first we need some data
-		$org = Organisation::getBySlug($orgslug);
-		$locations = Location::where('organisation_id', '=', $org->id)
-			->where('visible', '=', 1)
-			->get();
-
-		//let's make a geojson!
-		$newJson = array(
-			'type' => 'FeatureCollection',
-			'features' => array()
-			);
-		//put in the locations
-		foreach($locations as $loc) {
-			$feature = array(
-				'type' => 'Feature',
-				'geometry' => array(
-					'type' => 'Point',
-					'coordinates' => array($loc->lon, $loc->lat)
-					)
-				);
-
-			//add tags. TODO: this could be one call to LocationTag, and negate the need for a loop?
-			$tags = new LocationTag(); //yeah, I'm confused
-			$feature['properties'] = $tags->getCoreTags($loc->id);
-			foreach( $tags->getTopTags($loc->id) as $k => $v)
-			{
-				$feature['properties'][$k] = $v;
-			}
-			$feature['properties']['id'] = $loc->id;
-			$newJson['features'][] = $feature;
-		}
-
-
-		//okay, spit out the json now
-		return json_encode($newJson);
-
+		return $this->getData($public=0, array('org'=>$orgslug));
 
 	}
 

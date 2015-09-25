@@ -55,6 +55,25 @@ class LocationTag extends Model {
 			->leftJoin('tag_key', 'location_tag.key', '=', 'tag_key.key')
 			->get();
 		
+		return $result;
+		/*
+		$tags = array();
+		foreach($result as $row)
+		{
+			$tags[ $row->key ] = $row->value;
+		}
+		return $tags;
+		*/
+	}
+
+	//TODO: can we refractor to remove the need for getAllTags and getAllLocTags?
+	public static function getAllLocTags($location_id)
+	{
+		$result = LocationTag::where('location_id', '=', $location_id)
+			->leftJoin('tag_key', 'location_tag.key', '=', 'tag_key.key')
+			->get();
+		
+		
 		$tags = array();
 		foreach($result as $row)
 		{
