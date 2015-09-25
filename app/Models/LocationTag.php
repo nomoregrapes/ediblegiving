@@ -54,7 +54,7 @@ class LocationTag extends Model {
 		$result = LocationTag::where('location_id', '=', $location_id)
 			->leftJoin('tag_key', 'location_tag.key', '=', 'tag_key.key')
 			->get();
-		return $result;
+		
 		$tags = array();
 		foreach($result as $row)
 		{

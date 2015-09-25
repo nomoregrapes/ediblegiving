@@ -7,7 +7,7 @@ var windowSmall = false;
 function getEGLocations() {
 	var data = 'bbox=' + map.getBounds().toBBoxString();
 	$.ajax({
-			url: 'data/simpledata.json',
+			url: 'data/all.geojson',
 			dataType: 'json',
 			data: data,
 			success: showLocations
@@ -109,6 +109,7 @@ function filterMarkers() {
 		$('#filter-foodtype input:checked').each(function(index, thisCheck) {
 			//for this filter, does the layer have that activity?
 			var thisFoodType = 'food_type_' + $(thisCheck).attr('foodtype');
+
 			if(f.properties[thisFoodType] != undefined && f.properties[thisFoodType] == true) {
 				tickedFoodType = true;
 				//one filter being true is enough, skip out of the each loop
