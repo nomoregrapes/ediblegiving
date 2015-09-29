@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-	<h1 class="cover-heading">Management index</h1>
+	<h1 class="cover-heading">Management dashboard</h1>
 	<p class="lead">
 		Welcome back, {!! Auth::user()->name_first; !!}!
 	</p>

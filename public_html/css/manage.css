@@ -1,0 +1,53 @@
+html {
+}
+
+body {
+	background: #fff;
+	color: #333;
+}
+
+.navbar-manage {
+	background-color: #d0cdc4;
+	border: 0;
+}
+	.navbar-brand {
+		padding: 5px 25px;
+		position: absolute;
+		width: 145px;
+		height: 80px;
+		border-bottom-right-radius: 20px;
+		background-color: #d0cdc4;
+	}
+	#site-title {
+	}
+	#site-title img#site-logo {
+		width: 94px;
+		height: 65px;
+	}
+	#site-title h1 {
+		display:none;
+		margin: auto;
+	}
+	.navbar .navbar-nav {
+		margin-top: 20px;
+		margin-left: 145px;
+	}
+		.navbar-nav>li>a {
+			padding: 5px 10px;
+		}
+		.navbar-nav>li.active>a {
+			border-top-left-radius: 10px;
+			border-top-right-radius: 10px;
+			background-color: #fff;
+			color: #333;
+		}
+		.navbar-nav>li.org-title {
+			margin-top: 5px;
+			margin-left: 20px;
+			margin-right: 5px;
+			font-weight: bold;
+		}
+
+form.form-table-row {
+	margin-bottom: 0;
+}

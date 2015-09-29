@@ -13,13 +13,13 @@
 		<!-- CSS are placed here -->
 		{!! HTML::style('css/bootstrap.min.css') !!}
 		{!! HTML::style('css/bootstrap-theme.min.css') !!}
-		{!! HTML::style('css/app.css') !!}
+		{!! HTML::style('css/manage.css') !!}
 		@yield('extra-css')
 	</head>
 
 	<body>
 
-		<nav class="navbar navbar-inverse navbar-static-top">
+		<nav class="navbar navbar-manage navbar-static-top">
 			<div class="container-fluid">
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -28,14 +28,21 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button> 
-					<a class="navbar-brand" href="/">Edible Giving .org</a>
+					<a class="navbar-brand" href="/">
+						<div id="site-title"><img id="site-logo" src="/images/site-title.png"><h1>Edible Giving</h1></div>
+					</a>
 				</div>
 				<div id="navbar" class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
-						<li {{ Request::is( 'manage') ? 'class=active' : '' }}><a href="/manage">Management</a></li>
-						@if (Request::is( 'manage/organisation/*'))
-							<li><a href="/manage/{{$org->slug}}">{{$org->name}}</a></li>
+						<li {{ Request::is( 'manage') ? 'class=active' : '' }}><a href="/manage">Management Dashboard</a></li>
+						@if (isset($org) && !Request::is( 'manage') )
+							<li class="org-title">{{$org->name}}</li>
 							{{-- TODO: list links depending what the user can manage in this org --}}
+							<li {{ Request::is( 'manage/location/*') ? 'class=active' : '' }}><a href="{{ URL::to('/manage/location/' . $org->slug) }}">locations</a></li>
+							<li {{ Request::is( 'manage/organisation/*/output') ? 'class=active' : '' }}><a href="{{ URL::to('/manage/organisation/' . $org->slug . '/output') }}">export</a></li>
+							<li {{ Request::is( 'manage/import/*') ? 'class=active' : '' }}><a href="{{ URL::to('/manage/import/' . $org->slug . '') }}">import</a></li>
+							<li {{ Request::is( 'manage/organisation/*/defaults') ? 'class=active' : '' }}><a href="{{ URL::to('/manage/organisation/' . $org->slug . '/defaults') }}">defaults</a></li>
+							<li {{ Request::is( 'manage/organisation/*/users') ? 'class=active' : '' }}><a href="{{ URL::to('/manage/organisation/' . $org->slug . '/users') }}">users</a></li>
 						@endif
 					</ul>
 				</div>
