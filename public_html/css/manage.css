@@ -48,6 +48,30 @@ body {
 			font-weight: bold;
 		}
 
+ul.login-providers {
+
+}
+	ul.login-providers>li {
+		display: inline-block;
+		margin-right: 25px;
+		width: 150px;
+		text-align: center;
+	}
+	ul.login-providers>li .img-container {
+		display::inline-block;
+		width: 150px;
+		height: 150px;
+	}
+	ul.login-providers>li>a:hover img.standard {
+		display: none;
+	}
+	ul.login-providers>li>a img.active {
+		display: none;
+	}
+	ul.login-providers>li>a:hover img.active {
+		display: inline-block;
+	}
+
 form.form-table-row {
 	margin-bottom: 0;
 }

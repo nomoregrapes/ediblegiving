@@ -34,8 +34,9 @@
 				</div>
 				<div id="navbar" class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
-						<li {{ Request::is( 'manage') ? 'class=active' : '' }}><a href="/manage">Management Dashboard</a></li>
+						
 						@if (isset($org) && !Request::is( 'manage') )
+							<li {{ Request::is( 'manage') ? 'class=active' : '' }}><a href="/manage">Management Dashboard</a></li>
 							<li class="org-title">{{$org->name}}</li>
 							{{-- TODO: list links depending what the user can manage in this org --}}
 							<li {{ Request::is( 'manage/location/*') ? 'class=active' : '' }}><a href="{{ URL::to('/manage/location/' . $org->slug) }}">locations</a></li>
