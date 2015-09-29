@@ -41,14 +41,15 @@ class ManageController extends Controller {
 			return view('manage.index'); //need to choose a provider & login
 		}
 		$user->orgs = Organisation::getByUser($user->id);
+
+		$data = array(
+			'user' => $user
+			);
 		if(!$user->orgs)
 		{
 			return view('manage.welcome'); //need a role in an org
 		}
 
-		$data = array(
-			'user' => $user
-			);
 
 		//get the permissions they hold for each org
 		foreach($user->orgs as $org)
