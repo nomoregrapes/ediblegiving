@@ -72,6 +72,16 @@ ul.login-providers {
 		display: inline-block;
 	}
 
+form.new-user-contact-form {
+
+}
+	.new-user-contact-form .row {
+		margin-bottom: 5px;
+	}
+	.new-user-contact-form textarea {
+		height: 6em;
+	}
+
 form.form-table-row {
 	margin-bottom: 0;
 }

@@ -42,6 +42,7 @@ Route::get('data/{orgslug}/locations.geojson', 'DataController@orgLocations'); /
 Route::get('manage', 'ManageController@index');
 Route::get('manage/login/{provider?}', 'AuthController@login');
 //Route::get('manage/logout', );
+Route::post('manage/newcontact', 'ManageController@contactNew');
 
 //Route::get('manage/location/', 'Manage\LocationController');
 Route::get('manage/location/{orgslug}', 'Manage\LocationController@viewList');
