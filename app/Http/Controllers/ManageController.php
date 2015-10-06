@@ -46,6 +46,10 @@ class ManageController extends Controller {
 		$data = array(
 			'user' => $user
 			);
+		//get orgs that the user is in
+		$user->orgs = Organisation::getByUser($user->id);
+
+		//work out if they were in any orgs.
 		if(!$user->orgs)
 		{
 			return view('manage.welcome', $data); //need a role in an org
@@ -53,7 +57,6 @@ class ManageController extends Controller {
 
 
 		//get the permissions they hold for each org
-		$user->orgs = Organisation::getByUser($user->id);
 		foreach($user->orgs as $org)
 		{
 			$org->permissions = $user->getOrgPermissions($org->id);
