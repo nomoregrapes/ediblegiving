@@ -99,6 +99,7 @@ class DataController extends Controller {
 			}
 			//check they can (org can be id or slug)
 			if(!$user->canForOrg('org-locations-view', $parameters['org'])) {
+				print_r($parameters);
 				die('404c'); //don't have permission for this org
 			}
 		}
