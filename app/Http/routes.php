@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function() {
-	return view('home');
-});
+Route::get('/', 'MapController@index');
 
 Route::get('about', function() {
 	return view('about');
@@ -22,11 +20,10 @@ Route::get('about/addlocations', function() {
 	return view('about-addlocations');
 });
 
-Route::get('map', function() {
-	return view('map');
-});
-//The new map style, to replace the homepage
-Route::get('newmap', 'MapController@index');
+//TODO: depreciate
+Route::get('map', function() { return redirect('/'); });
+Route::get('newmap', function() { return redirect('/'); });
+
 
 
 //Feeds are public URLS (may need authorisation)
