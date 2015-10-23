@@ -26,36 +26,9 @@
 	<h2>Map display</h2>
 		<div class="map-filters">
 			<div class="input-group" id="filter-activity">
-				<span class="filter-intro">Show locations for...</span>
+				<span class="filter-intro">Show places if they accept...</span>
 				<div>
-					<label for="donation-points">Donating
-					<input type="checkbox" activity="donation" id="donation-points" checked="checked">
-					<div class="checkbox-eye"></div>
-					</label>
-				</div>
-				<div>
-					<label for="distribution-points">Receiving food
-					<input type="checkbox" activity="distribution" id="distribution-points" checked="checked">
-					<div class="checkbox-eye"></div>
-					</label>
-				</div>
-				<div>
-					<label for="volunteering-locations">Volunteering
-					<input type="checkbox" activity="volunteering" id="volunteering-locations" checked="checked">
-					<div class="checkbox-eye"></div>
-					</label>
-				</div>
-				<div>
-					<label for="office-locations">Organisation offices
-					<input type="checkbox" activity="office" id="office-locations" checked="checked">
-					<div class="checkbox-eye"></div>
-					</label>
-				</div>
-			</div>
-			<div class="input-group" id="filter-foodtype">
-				<span class="filter-intro">Include places that accept...</span>
-				<div>
-					<label for="unopened-food">Unopened food
+					<label for="unopened-food">Non-perishable food
 					<input type="checkbox" foodtype="unopened" id="unopened-food" checked="checked">
 					<div class="checkbox-eye"></div>
 					</label>
@@ -64,6 +37,56 @@
 					<label for="fresh-food">Fresh food
 					<input type="checkbox" foodtype="fresh" id="fresh-food" checked="checked">
 					<div class="checkbox-eye"></div>
+					</label>
+				</div>
+				<!-- unharvested produce -->
+			</div>
+			<div class="input-group" id="filter-foodtype">
+				<span class="filter-intro">Show places that...</span>
+				<div>
+					<label for="donation-points">you can Donate
+					<input type="checkbox" activity="donation" id="donation-points" checked="checked">
+					<div class="checkbox-eye"></div>
+					</label>
+				</div>
+				{{--
+				<div>
+					<label for="distribution-points">you can Receive
+					<input type="checkbox" activity="distribution" id="distribution-points" checked="checked">
+					<div class="checkbox-eye"></div>
+					</label>
+				</div>
+				--}}
+				<div>
+					<label for="volunteering-locations">you can Volunteer
+					<input type="checkbox" activity="volunteering" id="volunteering-locations" checked="no">
+					<div class="checkbox-eye"></div>
+					</label>
+				</div>
+				<div>
+					<label for="office-locations">is the organisation Office
+					<input type="checkbox" activity="office" id="office-locations" checked="no">
+					<div class="checkbox-eye"></div>
+					</label>
+				</div>
+				<div>
+					<label for="opening-today">is open Today
+					<input type="checkbox" opening="{{}}" id="opening-today" checked="no">
+					<div class="checkbox-eye"></div>
+					</label>
+				</div>
+				<div>
+					<label for="opening">open on
+					<select id="opening-on">
+						<option value="any" selected="selected">Any day</option>
+						<option value="Mo">Monday</option>
+						<option value="Tu">Tuesday</option>
+						<option value="We">Wednesday</option>
+						<option value="Th">Thursday</option>
+						<option value="Fr">Friday</option>
+						<option value="Sa">Saturday</option>
+						<option value="Su">Sunday</option>
+					</select>
 					</label>
 				</div>
 			</div>
