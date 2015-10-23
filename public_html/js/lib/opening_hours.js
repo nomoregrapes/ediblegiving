@@ -244,6 +244,7 @@
 						}}(minutes_from, minutes_to - minutes_in_day));
 					} else {
 						selectors.time.push(function(minutes_from, minutes_to) { return function(date) {
+							date = new Date(date);
 							var ourminutes = date.getHours() * 60 + date.getMinutes();
 
 							if (ourminutes < minutes_from)
@@ -356,7 +357,7 @@
 						selectors.weekday.push(function(date) { return [true]; });
 					} else {
 						selectors.weekday.push(function(weekday_from, weekday_to, inside) { return function(date) {
-							var ourweekday = date.getDay();
+							var ourweekday = (new Date(date)).getDay();
 
 							if (ourweekday < weekday_from || ourweekday > weekday_to) {
 								return [!inside, dateAtNextWeekday(date, weekday_from)];
@@ -406,6 +407,7 @@
 
 		// for given date, returns date moved to the specific day of week
 		function dateAtNextWeekday(date, day) {
+			date = (new Date(date));
 			var delta = day - date.getDay();
 			return new Date(date.getFullYear(), date.getMonth(), date.getDate() + delta + (delta < 0 ? 7 : 0));
 		}
