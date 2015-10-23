@@ -118,6 +118,9 @@ class DataController extends Controller {
 		//on our query, we can get the data
 		$locations = $query->get();
 
+		//organisations, to attach to location
+		$organisations = new Organisation();
+
 		//let's make a geojson!
 		$newJson = array(
 			'type' => 'FeatureCollection',
@@ -131,7 +134,7 @@ class DataController extends Controller {
 
 			//add tags. TODO: this could be one call to LocationTag, and negate the need for a loop?
 			$tags = new LocationTag(); //yeah, I'm confused
-			$feature['properties'] = $tags->getCoreTags($loc->id);
+			//$feature['properties'] = $tags->getCoreTags($loc->id); //why was this here, we get them in/for the foreach loop
 			foreach( $tags->getAllLocTags($loc->id) as $k => $v)
 			{
 				//hmm, mysql and php lose our data types
@@ -145,6 +148,7 @@ class DataController extends Controller {
 				
 			}
 			$feature['properties']['id'] = (int)$loc->id;
+			$feature['properties']['organisation'] = Organisation::find($loc->organisation_id);
 
 			//geometry last, to match old style (for flick-past comparing)
 			$feature['geometry'] = array(

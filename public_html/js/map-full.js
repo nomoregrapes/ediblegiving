@@ -40,6 +40,7 @@ function markerInfo(thisFeature)
 	}
 
 	$(toHideObj).fadeOut(400, function() {
+		console.log(thisFeature);
 		//clear old details
 		$('#map-marker-details .mmd-dynamic').text('');
 		//set details
@@ -53,7 +54,7 @@ function markerInfo(thisFeature)
 		}
 		$('#map-marker-details .mmd-opening').text(thisFeature.properties.opening_times);
 
-		$('#map-marker-details .mmd-description').text(thisFeature.properties.loc_text);
+		$('#map-marker-details .mmd-description').html('<strong>'+ thisFeature.properties.organisation.name +'</strong>: '+ thisFeature.properties.organisation.description);
 
 		$('#map-marker-details').removeClass('hide').fadeIn();
 	});
