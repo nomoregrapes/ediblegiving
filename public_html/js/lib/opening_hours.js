@@ -5042,6 +5042,7 @@
                             }}(minutes_from, minutes_to - minutes_in_day, timevar_string, timevar_add, has_open_end, is_point_in_time, point_in_time_period, extended_open_end));
                         } else {
                             selectors.time.push(function(minutes_from, minutes_to, timevar_string, timevar_add, has_open_end, is_point_in_time, point_in_time_period, extended_open_end) { return function(date) {
+                            	date = new Date(date);
                                 var ourminutes = date.getHours() * 60 + date.getMinutes();
 
                                 if (timevar_string[0]) {
@@ -5355,6 +5356,7 @@
                         // WRONG: This only works if there is no other selector in this selector group ...
                     } else {
                         selectors.weekday.push(function(weekday_from, weekday_to, inside) { return function(date) {
+                        	date = new Date(date);
                             var ourweekday = date.getDay();
 
                             if (ourweekday < weekday_from || ourweekday > weekday_to) {
