@@ -8,6 +8,7 @@
 @endsection
 @section('extra-js')
 	{!! HTML::script('https://api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.js') !!}
+	{!! HTML::script('js/lib/opening_hours.min.js') !!}
 	{!! HTML::script('js/map-functions.js') !!}
 	{!! HTML::script('js/map-full.js') !!}
 @endsection
@@ -71,7 +72,7 @@
 				</div>
 			</div>
 			<div class="input-group" id="filter-opening">
-				{{--
+				{{-- this is not supported in the mapFilter yet
 				<div>
 					<label for="opening-today">is open Today
 					<input type="checkbox" opening="{{}}" id="opening-today">
@@ -83,13 +84,12 @@
 					<label for="opening">open on
 					<select id="opening-on">
 						<option value="any" selected="selected">Any day</option>
-						<option value="Mo">Monday</option>
-						<option value="Tu">Tuesday</option>
-						<option value="We">Wednesday</option>
-						<option value="Th">Thursday</option>
-						<option value="Fr">Friday</option>
-						<option value="Sa">Saturday</option>
-						<option value="Su">Sunday</option>
+						<option value="<?php echo date('d M Y 13:00'); ?>">Today ({{date('l')}})</option>
+					<?php $next_date = new DateTime() ?>
+					@for ($i = 0; $i < 6; $i++)
+						<?php $next_date->modify('+1 day'); ?>
+						<option value="<?php echo $next_date->format('d M Y 13:00'); ?>">{{$next_date->format('l')}}</option>
+					@endfor
 					</select>
 					</label>
 				</div>
