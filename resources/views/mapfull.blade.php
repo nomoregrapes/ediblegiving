@@ -59,22 +59,24 @@
 				--}}
 				<div>
 					<label for="volunteering-locations">you can Volunteer
-					<input type="checkbox" activity="volunteering" id="volunteering-locations" checked="no">
+					<input type="checkbox" activity="volunteering" id="volunteering-locations">
 					<div class="checkbox-eye"></div>
 					</label>
 				</div>
 				<div>
 					<label for="office-locations">is the organisation Office
-					<input type="checkbox" activity="office" id="office-locations" checked="no">
+					<input type="checkbox" activity="office" id="office-locations">
 					<div class="checkbox-eye"></div>
 					</label>
 				</div>
+				{{--
 				<div>
 					<label for="opening-today">is open Today
-					<input type="checkbox" opening="{{}}" id="opening-today" checked="no">
+					<input type="checkbox" opening="{{}}" id="opening-today">
 					<div class="checkbox-eye"></div>
 					</label>
 				</div>
+				--}}
 				<div>
 					<label for="opening">open on
 					<select id="opening-on">
