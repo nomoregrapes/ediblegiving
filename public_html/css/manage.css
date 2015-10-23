@@ -85,3 +85,7 @@ form.new-user-contact-form {
 form.form-table-row {
 	margin-bottom: 0;
 }
+
+.location-editing-hints {
+	margin-top: 10px;
+}

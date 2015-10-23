@@ -1,6 +1,13 @@
 
 $( document ).ready(function() {
 
+	$('.tag-hint').hide();
+	function displayHint(editing_key) {
+			//display hint?
+			$('.tag-hint').hide();
+			$('.tag-hint[hintfor="'+ editing_key +'"]').show();
+	}
+
 	//when changing a value of this location
 	$('.tag-value-input .form-control').on('change', function () {
 		if( $(this).is(':visible') ) {
@@ -36,6 +43,10 @@ $( document ).ready(function() {
 		$('.tag-value-input').hide();
 		$('.tag-value-input-'+ $(this).find('option:selected').attr('input-type')).show();
 		$('input[name="value-type"]').val( $(this).find('option:selected').attr('input-type') );
+
+
+		//display any hints for editing
+		displayHint($(this).find('option:selected').val());
 
 		//populate with existing value?
 		existing = $('.location-tag[key="'+ $(this).find('option:selected').val() +'"]');
@@ -73,5 +84,6 @@ $( document ).ready(function() {
 	$('.location-tag-table').on('click', '.action-change-item', function() {
 		thekey = $(this).parentsUntil('tr').parent().attr('key');
 		$('select[name="key"] option[value="'+ thekey +'"]').prop('selected', true).trigger('change');
+		displayHint(thekey);
 	});
 });

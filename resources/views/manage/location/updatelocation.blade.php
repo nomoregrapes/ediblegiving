@@ -116,6 +116,19 @@
 
 			<div class="col-md-4">
 				<div id="map"></div>
+
+				<div class="location-editing-hints">
+					<div class="tag-hint" hintfor="opening_times">
+						The value must follow the <a href="http://wiki.openstreetmap.org/wiki/Key:opening_hours" target="blank">opening times</a> format. Common examples are...
+						<ul>
+							<li>Mo 10:00-13:00</li>
+							<li>Mo-Fr 11:00-12:00</li>
+							<li>Mo,We,Fr 13:30-16:00</li>
+							<li>Mo 10:00-12:00, Mo 13:00-15:00</li>
+							<li>Mo,We,Fr 10:00-16:00, Sat 11:00-14:00</li>
+						</ul>
+					</div>
+				</div>
 			</div>
 		{!! Form::close() !!}
 	</div>
