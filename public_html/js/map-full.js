@@ -2,6 +2,7 @@
 var map;
 var lyrStuff;
 var windowSmall = false;
+var oh; //for opening_hours
 
 
 function getEGLocations() {
@@ -91,8 +92,8 @@ function removeFromList(e)
 function filterMarkers() {
 	//define the function to filter each marker
 	lyrStuff.setFilter(function(f) {
-		tickedActivity = false; //shall we show this marker?
 
+		tickedActivity = false; //shall we show this marker?
 		//go through each of the CHECKED activity filters
 		$('#filter-activity input:checked').each(function(index, thisCheck) {
 			//for this filter, does the layer have that activity?
@@ -117,11 +118,33 @@ function filterMarkers() {
 			}
 		});
 
+		tickedOpeningTime = false;
+		//is it open on the day of interest?
+		var dayRequired = $('#opening-on option:selected').val();
+		if(dayRequired == 'any') {
+			tickedOpeningTime = true;
+		} else if(f.properties['opening_times'] == undefined) {
+			tickedOpeningTime = true;
+		} else {
+			//check the opening_hours value (complicated - needs a library!)
+		//	console.log(f.properties['opening_times']);
+			try {
+				oh = new opening_hours(f.properties['opening_times']);
+				tickedOpeningTime = (oh.getState(dayRequired) ? true: false);
+		//		console.log( "marker is open: "+ f.properties['opening_times'] + ", date desired is " + new Date(dayRequired) + ", result="+ tickedOpeningTime);
+			} catch(error) {
+		//		console.log("Error parsing +loc"+f.properties['id']+"+"+ f.properties['opening_times'] + "++");
+		//		console.log(error);
+		//		//could not parse opening_times, hide it
+				tickedOpeningTime = false;
+			}
+		}
+
 		//first colour it?
 		f.properties['marker-color'] = '#551a8b';
 
 		//if the marker is a checked activity AND a checked food type, show it
-		if(tickedActivity && tickedFoodType) {
+		if(tickedActivity && tickedFoodType && tickedOpeningTime) {
 			return true; //show
 		} else {
 			return false; //hide
@@ -228,7 +251,7 @@ $( document ).ready(function() {
 		updatePermalink();
 	});
 
-	$(".map-filters input").change(function(e){
+	$(".map-filters input, .map-filters select").change(function(e){
 		filterMarkers();
 	});
 	filterMarkers();

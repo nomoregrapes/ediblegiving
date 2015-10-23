@@ -8,6 +8,7 @@
 @endsection
 @section('extra-js')
 	{!! HTML::script('https://api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.js') !!}
+	{!! HTML::script('js/lib/opening_hours.min.js') !!}
 	{!! HTML::script('js/map-functions.js') !!}
 	{!! HTML::script('js/map-full.js') !!}
 @endsection
@@ -25,37 +26,10 @@
 
 	<h2>Map display</h2>
 		<div class="map-filters">
-			<div class="input-group" id="filter-activity">
-				<span class="filter-intro">Show locations for...</span>
-				<div>
-					<label for="donation-points">Donating
-					<input type="checkbox" activity="donation" id="donation-points" checked="checked">
-					<div class="checkbox-eye"></div>
-					</label>
-				</div>
-				<div>
-					<label for="distribution-points">Receiving food
-					<input type="checkbox" activity="distribution" id="distribution-points" checked="checked">
-					<div class="checkbox-eye"></div>
-					</label>
-				</div>
-				<div>
-					<label for="volunteering-locations">Volunteering
-					<input type="checkbox" activity="volunteering" id="volunteering-locations" checked="checked">
-					<div class="checkbox-eye"></div>
-					</label>
-				</div>
-				<div>
-					<label for="office-locations">Organisation offices
-					<input type="checkbox" activity="office" id="office-locations" checked="checked">
-					<div class="checkbox-eye"></div>
-					</label>
-				</div>
-			</div>
 			<div class="input-group" id="filter-foodtype">
-				<span class="filter-intro">Include places that accept...</span>
+				<span class="filter-intro">Show places if they accept...</span>
 				<div>
-					<label for="unopened-food">Unopened food
+					<label for="unopened-food">Non-perishable food
 					<input type="checkbox" foodtype="unopened" id="unopened-food" checked="checked">
 					<div class="checkbox-eye"></div>
 					</label>
@@ -64,6 +38,59 @@
 					<label for="fresh-food">Fresh food
 					<input type="checkbox" foodtype="fresh" id="fresh-food" checked="checked">
 					<div class="checkbox-eye"></div>
+					</label>
+				</div>
+				<!-- unharvested produce -->
+			</div>
+			<div class="input-group" id="filter-activity">
+				<span class="filter-intro">Show places that...</span>
+				<div>
+					<label for="donation-points">you can Donate
+					<input type="checkbox" activity="donation" id="donation-points" checked="checked">
+					<div class="checkbox-eye"></div>
+					</label>
+				</div>
+				{{--
+				<div>
+					<label for="distribution-points">you can Receive
+					<input type="checkbox" activity="distribution" id="distribution-points" checked="checked">
+					<div class="checkbox-eye"></div>
+					</label>
+				</div>
+				--}}
+				<div>
+					<label for="volunteering-locations">you can Volunteer
+					<input type="checkbox" activity="volunteering" id="volunteering-locations">
+					<div class="checkbox-eye"></div>
+					</label>
+				</div>
+				<div>
+					<label for="office-locations">is the organisation Office
+					<input type="checkbox" activity="office" id="office-locations">
+					<div class="checkbox-eye"></div>
+					</label>
+				</div>
+			</div>
+			<div class="input-group" id="filter-opening">
+				{{-- this is not supported in the mapFilter yet
+				<div>
+					<label for="opening-today">is open Today
+					<input type="checkbox" opening="{{}}" id="opening-today">
+					<div class="checkbox-eye"></div>
+					</label>
+				</div>
+				--}}
+				<div>
+					<label for="opening">open on
+					<select id="opening-on">
+						<option value="any" selected="selected">Any day</option>
+						<option value="<?php echo date('d M Y 13:00'); ?>">Today ({{date('l')}})</option>
+					<?php $next_date = new DateTime() ?>
+					@for ($i = 0; $i < 6; $i++)
+						<?php $next_date->modify('+1 day'); ?>
+						<option value="<?php echo $next_date->format('d M Y 13:00'); ?>">{{$next_date->format('l')}}</option>
+					@endfor
+					</select>
 					</label>
 				</div>
 			</div>

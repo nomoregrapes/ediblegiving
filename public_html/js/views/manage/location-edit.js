@@ -1,6 +1,36 @@
 
 $( document ).ready(function() {
 
+	$('.tag-hint').hide();
+	function displayHint(editing_key) {
+			//display hint?
+			$('.tag-hint').hide();
+			$('.tag-hint[hintfor="'+ editing_key +'"]').show();
+	}
+
+	//in hint, they can check the opening hours value is good.
+	$('#opening_hours_validate').on('click', function() {
+		$('#opening_hours_validation').fadeOut(400, function() {
+			$(this).html('');
+			try {
+				var oh = new opening_hours( $('.tag-value-input-text input').val() );
+				oh_pass=true;
+				oh_warnings = "The opening times value was understood by the computer";
+			}
+			catch(error) {
+				oh_pass = false;
+				oh_warnings = error;
+			}
+			if(oh_pass == true) {
+				$('#opening_hours_validate').removeClass('btn-danger').addClass('btn-success');
+			} else {
+				$('#opening_hours_validate').removeClass('btn-success').addClass('btn-danger');
+			}
+			$('#opening_hours_validation').html(oh_warnings).fadeIn();
+		});
+		return false;
+	})
+
 	//when changing a value of this location
 	$('.tag-value-input .form-control').on('change', function () {
 		if( $(this).is(':visible') ) {
@@ -36,6 +66,10 @@ $( document ).ready(function() {
 		$('.tag-value-input').hide();
 		$('.tag-value-input-'+ $(this).find('option:selected').attr('input-type')).show();
 		$('input[name="value-type"]').val( $(this).find('option:selected').attr('input-type') );
+
+
+		//display any hints for editing
+		displayHint($(this).find('option:selected').val());
 
 		//populate with existing value?
 		existing = $('.location-tag[key="'+ $(this).find('option:selected').val() +'"]');
@@ -73,5 +107,6 @@ $( document ).ready(function() {
 	$('.location-tag-table').on('click', '.action-change-item', function() {
 		thekey = $(this).parentsUntil('tr').parent().attr('key');
 		$('select[name="key"] option[value="'+ thekey +'"]').prop('selected', true).trigger('change');
+		displayHint(thekey);
 	});
 });

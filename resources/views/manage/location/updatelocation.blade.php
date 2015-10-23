@@ -15,6 +15,7 @@
 		var mapCurrentLocation = {id:{{$location->id}}, lat:{{$location->lat}}, lon:{{$location->lon}}};
 	</script>
 	{!! HTML::script('https://api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.js') !!}
+	{!! HTML::script('js/lib/opening_hours.min.js') !!}
 	{!! HTML::script('js/map-functions.js') !!}
 	{!! HTML::script('js/views/manage/location-edit-map.js') !!}
 	{!! HTML::script('js/views/manage/location-edit.js') !!}
@@ -116,6 +117,21 @@
 
 			<div class="col-md-4">
 				<div id="map"></div>
+
+				<div class="location-editing-hints">
+					<div class="tag-hint" hintfor="opening_times">
+						The value must follow the <a href="http://wiki.openstreetmap.org/wiki/Key:opening_hours" target="blank">opening times</a> format. Common examples are...
+						<ul>
+							<li>Mo 10:00-13:00</li>
+							<li>Mo-Fr 11:00-12:00</li>
+							<li>Mo,We,Fr 13:30-16:00</li>
+							<li>Mo 10:00-12:00, Mo 13:00-15:00</li>
+							<li>Mo,We,Fr 10:00-16:00, Sat 11:00-14:00</li>
+						</ul>
+						<button id="opening_hours_validate" class="btn btn-primary btn-sm">Check your value</button>
+						<div id="opening_hours_validation"></div>
+					</div>
+				</div>
 			</div>
 		{!! Form::close() !!}
 	</div>
