@@ -136,7 +136,7 @@ function filterMarkers() {
 		//		console.log("Error parsing +loc"+f.properties['id']+"+"+ f.properties['opening_times'] + "++");
 		//		console.log(error);
 		//		//could not parse opening_times, hide it
-				tickedOpeningTime = false;
+				tickedOpeningTime = true;
 			}
 		}
 
