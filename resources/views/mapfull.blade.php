@@ -25,7 +25,7 @@
 
 	<h2>Map display</h2>
 		<div class="map-filters">
-			<div class="input-group" id="filter-activity">
+			<div class="input-group" id="filter-foodtype">
 				<span class="filter-intro">Show places if they accept...</span>
 				<div>
 					<label for="unopened-food">Non-perishable food
@@ -41,7 +41,7 @@
 				</div>
 				<!-- unharvested produce -->
 			</div>
-			<div class="input-group" id="filter-foodtype">
+			<div class="input-group" id="filter-activity">
 				<span class="filter-intro">Show places that...</span>
 				<div>
 					<label for="donation-points">you can Donate
@@ -69,6 +69,8 @@
 					<div class="checkbox-eye"></div>
 					</label>
 				</div>
+			</div>
+			<div class="input-group" id="filter-opening">
 				{{--
 				<div>
 					<label for="opening-today">is open Today

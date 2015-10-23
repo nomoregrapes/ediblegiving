@@ -91,8 +91,8 @@ function removeFromList(e)
 function filterMarkers() {
 	//define the function to filter each marker
 	lyrStuff.setFilter(function(f) {
-		tickedActivity = false; //shall we show this marker?
 
+		tickedActivity = false; //shall we show this marker?
 		//go through each of the CHECKED activity filters
 		$('#filter-activity input:checked').each(function(index, thisCheck) {
 			//for this filter, does the layer have that activity?
