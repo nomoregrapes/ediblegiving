@@ -22,6 +22,7 @@
 			<button>Generate CSV file</button>
 
 			<p>When a CSV file has been generated, it will be here for you to save to your computer.</p>
+			<p><a href="{{$csvLatest}}">fresh CSV file</a></p>
 		</div>
 	</div>
 

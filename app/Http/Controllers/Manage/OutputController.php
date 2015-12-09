@@ -3,12 +3,16 @@
 use Auth;
 use DB;
 use App\Http\Controllers\Controller;
+use App\User;
+use App\Models\Organisation;
+use App\Models\OutputCsv;
+
+/*
 use App\Models\Location;
 use App\Models\LocationTag;
-use App\Models\Organisation;
 use App\Models\OrganisationTagDefaults;
 use App\Models\TagKey;
-use App\User;
+*/
 
 class OutputController extends Controller {
 
@@ -58,10 +62,43 @@ class OutputController extends Controller {
 
 		$data = array(
 			'user' => $curr_user,
+			'org' => $org,
+			);
+
+		//figure out what the latest csv filename is
+		//TODO: take this from a cache folder?
+		$data['csvLatest'] = "/manage/output/$orgslug/edible-giving_". $orgslug ."_". date('Ymd_His') .".csv" ;
+
+		return view('manage.output.index', $data); //all good, show some manage links
+	}
+
+
+	/**
+	 * Generate and download the CSV file - straight off, no cache or anything
+	 * TODO: depreciate this, because it's probably not the best thing to do.
+	 *
+	 */
+	public function csvDirect($orgslug = '', $filename = '')
+	{
+		$org = Organisation::getBySlug($orgslug);
+
+		//work out what to do with them
+		if(!$curr_user = Auth::user())
+		{
+			return redirect('/manage');
+		}
+
+		if(!$curr_user->getOrgPermissions($org->id))
+		{
+			die('404');	
+		}
+
+		$data = array(
+			'user' => $curr_user,
 			'org' => $org
 			);
 
-		return view('manage.output.index', $data); //all good, show some manage links
+		return OutputCsv::generateCsv($org, $filename);
 	}
 
 

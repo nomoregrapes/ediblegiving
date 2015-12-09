@@ -55,6 +55,7 @@ Route::post('manage/organisation/{orgslug}/defaults', 'Manage\OrganisationContro
 
 //exports
 Route::get('manage/output/{orgslug}', 'Manage\OutputController@index');
+Route::get('manage/output/{orgslug}/{filename}.csv', 'Manage\OutputController@csvDirect'); //straight download link!
 	//Route::post('manage/import/{orgslug}/geojson', 'Manage\ImportController@geojson');
 	//Route::post('manage/import/{orgslug}/geojson/store', 'Manage\ImportController@geojsonStore');
 

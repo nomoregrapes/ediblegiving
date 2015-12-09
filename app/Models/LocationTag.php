@@ -82,6 +82,28 @@ class LocationTag extends Model {
 		return $tags;
 	}
 
+	/* 
+	 * This gets any & all tags that are used by an org
+	 * primary use for CSV export, so we know what columns are needed
+	 */
+	public static function getOrgUsedTags($org_id) {
+		$result = LocationTag::where('location.organisation_id', '=', $org_id)
+			->leftJoin('tag_key', 'location_tag.key', '=', 'tag_key.key')
+			->leftJoin('location', 'location_tag.location_id', '=', 'location.id')
+			->groupBy('location_tag.key')
+			->get();
+		
+		return $result;
+		/*
+		$tags = array();
+		foreach($result as $row)
+		{
+			$tags[ $row->key ] = $row->value;
+		}
+		return $tags;
+		*/
+	}
+
 	/**
 	 * override update function, needs to do it on two keys
 	 **/
