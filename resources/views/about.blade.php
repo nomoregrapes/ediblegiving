@@ -43,11 +43,12 @@
 			<input type="text" value="" name="LNAME" class="" id="mce-LNAME">
 		</div>
 		<div class="mc-field-group input-group">
-		    <strong>Your interest in Edible Giving </strong>
-		    <ul><li><input type="checkbox" value="1" name="group[9129][1]" id="mce-group[9129]-9129-0"><label for="mce-group[9129]-9129-0">Updating locations and information</label></li>
-		<li><input type="checkbox" value="2" name="group[9129][2]" id="mce-group[9129]-9129-1"><label for="mce-group[9129]-9129-1">News specific to Edible Giving</label></li>
-		<li><input type="checkbox" value="4" name="group[9129][4]" id="mce-group[9129]-9129-2"><label for="mce-group[9129]-9129-2">News about meeting community food needs</label></li>
-		<li><input type="checkbox" value="8" name="group[9129][8]" id="mce-group[9129]-9129-3"><label for="mce-group[9129]-9129-3">Using the data from Edible Giving</label></li>
+		    <strong>Select the areas of interest for you. Updates are about once a month. </strong>
+		<ul>
+			<li><input type="checkbox" value="4" name="group[9129][4]" id="mce-group[9129]-9129-2"><label for="mce-group[9129]-9129-2"> News about meeting community food needs</label></li>
+			<li><input type="checkbox" value="2" name="group[9129][2]" id="mce-group[9129]-9129-1"><label for="mce-group[9129]-9129-1"> Edible Giving: news and updates</label></li>
+			<li><input type="checkbox" value="1" name="group[9129][1]" id="mce-group[9129]-9129-0"><label for="mce-group[9129]-9129-0"> Edible Giving: updating locations &amp; info</label></li>
+			<li><input type="checkbox" value="8" name="group[9129][8]" id="mce-group[9129]-9129-3"><label for="mce-group[9129]-9129-3"> Edible Giving: using the data (technical)</label></li>
 		</ul>
 		</div>
 			<div id="mce-responses" class="clear">
