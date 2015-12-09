@@ -8,14 +8,6 @@
 	<h1 class="cover-heading">Locations</h1>
 	<p>Your organisation has <strong>??</strong> locations in Edible Giving.</p>
 
-	@if($errors->any())
-	<ul class="alert alert-danger">
-		@foreach($errors->all() as $error)
-			<li>{{ $error }}</li>
-		@endforeach
-	</ul>
-	@endif
-
 	<p><a href="{{$csvLatest}}">Download CSV file</a></p>
 	<p>The format of the CSV file has the following aspects.
 	<ul>
