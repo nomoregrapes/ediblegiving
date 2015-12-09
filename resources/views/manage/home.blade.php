@@ -25,7 +25,7 @@
 					@else <td>-</td>
 				@endif
 				@if(array_key_exists('org-locations-view', $org->permissions))
-					<td><a href="{{ URL::to('/manage/organisation/' . $org->slug . '/output') }}">export</a></td>
+					<td><a href="{{ URL::to('/manage/output/' . $org->slug . '/') }}">export</a></td>
 					@else <td>-</td>
 				@endif
 				@if(array_key_exists('org-locations-edit', $org->permissions))
