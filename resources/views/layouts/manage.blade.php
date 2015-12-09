@@ -40,7 +40,7 @@
 							<li class="org-title">{{$org->name}}</li>
 							{{-- TODO: list links depending what the user can manage in this org --}}
 							<li {{ Request::is( 'manage/location/*') ? 'class=active' : '' }}><a href="{{ URL::to('/manage/location/' . $org->slug) }}">locations</a></li>
-							<li {{ Request::is( 'manage/organisation/*/output') ? 'class=active' : '' }}><a href="{{ URL::to('/manage/organisation/' . $org->slug . '/output') }}">export</a></li>
+							<li {{ Request::is( 'manage/output/*') ? 'class=active' : '' }}><a href="{{ URL::to('/manage/output/' . $org->slug . '/') }}">export</a></li>
 							<li {{ Request::is( 'manage/import/*') ? 'class=active' : '' }}><a href="{{ URL::to('/manage/import/' . $org->slug . '') }}">import</a></li>
 							<li {{ Request::is( 'manage/organisation/*/defaults') ? 'class=active' : '' }}><a href="{{ URL::to('/manage/organisation/' . $org->slug . '/defaults') }}">defaults</a></li>
 							<li {{ Request::is( 'manage/organisation/*/users') ? 'class=active' : '' }}><a href="{{ URL::to('/manage/organisation/' . $org->slug . '/users') }}">users</a></li>
