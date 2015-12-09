@@ -53,6 +53,12 @@ Route::get('manage/organisation/{orgslug}/users', 'Manage\OrganisationController
 Route::get('manage/organisation/{orgslug}/defaults', 'Manage\OrganisationController@defaults');
 Route::post('manage/organisation/{orgslug}/defaults', 'Manage\OrganisationController@defaultsStore');
 
+//exports
+Route::get('manage/output/{orgslug}', 'Manage\OutputController@index');
+Route::get('manage/output/{orgslug}/{filename}.csv', 'Manage\OutputController@csvDirect'); //straight download link!
+	//Route::post('manage/import/{orgslug}/geojson', 'Manage\ImportController@geojson');
+	//Route::post('manage/import/{orgslug}/geojson/store', 'Manage\ImportController@geojsonStore');
+
 //imports
 Route::get('manage/import/{orgslug}', 'Manage\ImportController@index');
 Route::post('manage/import/{orgslug}/geojson', 'Manage\ImportController@geojson');

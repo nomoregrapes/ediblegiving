@@ -20,11 +20,23 @@ class Location extends Model {
 
 	//TODO: I want to know how to write tags properly so I can chain them
 
+	//TODO: should append ->whereNull('deleted_at'); by default - then remove that from other places
+
 
 	public static function inOrg($org_id)
 	{
 		return DB::table('location')
-			->where('organisation_id', '=', $org_id);
+			->where('organisation_id', '=', $org_id)
+			->whereNull('deleted_at');
+	}
+
+
+	public static function inOrgCount($org_id)
+	{
+		return DB::table('location')
+			->where('organisation_id', '=', $org_id)
+			->whereNull('deleted_at')
+			->count();
 	}
 
 
