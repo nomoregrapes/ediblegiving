@@ -26,7 +26,17 @@ class Location extends Model {
 	public static function inOrg($org_id)
 	{
 		return DB::table('location')
-			->where('organisation_id', '=', $org_id);
+			->where('organisation_id', '=', $org_id)
+			->whereNull('deleted_at');
+	}
+
+
+	public static function inOrgCount($org_id)
+	{
+		return DB::table('location')
+			->where('organisation_id', '=', $org_id)
+			->whereNull('deleted_at')
+			->count();
 	}
 
 

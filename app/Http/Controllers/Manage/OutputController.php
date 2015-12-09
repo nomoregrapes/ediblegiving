@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\User;
 use App\Models\Organisation;
 use App\Models\OutputCsv;
+use App\Models\Location;
 
 /*
 use App\Models\Location;
@@ -63,6 +64,7 @@ class OutputController extends Controller {
 		$data = array(
 			'user' => $curr_user,
 			'org' => $org,
+			'location_count' => Location::inOrgCount($org->id)
 			);
 
 		//figure out what the latest csv filename is

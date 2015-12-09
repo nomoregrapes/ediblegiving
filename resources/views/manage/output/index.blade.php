@@ -6,7 +6,7 @@
 
 @section('content')
 	<h1 class="cover-heading">Locations</h1>
-	<p>Your organisation has <strong>??</strong> locations in Edible Giving.</p>
+	<p>Your organisation has <strong>{{$location_count}}</strong> locations in Edible Giving.</p>
 
 	<p><a href="{{$csvLatest}}">Download CSV file</a></p>
 	<p>The format of the CSV file has the following aspects.
