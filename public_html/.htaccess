@@ -1,4 +1,4 @@
-AddType x-httpd-php54 .php
+AddType x-httpd-php55 .php
 
 <IfModule mod_rewrite.c>
     <IfModule mod_negotiation.c>
