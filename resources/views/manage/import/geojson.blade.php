@@ -4,6 +4,20 @@
 	geoJSON preview - Import Locations - Manage
 @endsection
 
+
+@section('extra-css')
+	{!! HTML::style('https://api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.css') !!}
+	{!! HTML::style('css/map.css') !!}
+@endsection
+@section('extra-js')
+	<script type="text/javascript">
+		var mapDataURL = "{{URL::to($geojsonurl)}}";
+	</script>
+	{!! HTML::script('https://api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.js') !!}
+	{!! HTML::script('js/map-functions.js') !!}
+	{!! HTML::script('js/map-basic.js') !!}}
+@endsection
+
 @section('content')
 	<h1 class="cover-heading">geoJSON</h1>
 	<p>Displayed is the contents of the geoJSON feed for you to preview.</p>
@@ -36,6 +50,15 @@
 		@endforeach
 	</ul>
 	@endif
+
+	<div class="row">
+		<div class="col-md-8">
+			<h2>{{count($newdata)}} locations can be imported</h2>
+		</div>
+		<div class="col-md-4">
+			<div id="map"></div>
+		</div>
+	</div>
 
 	@if(count($failreason) < 10)
 		{!! Form::open(['url' => '/manage/import/' . $org->slug . '/geojson/store', 'class'=>'form-horizontal']) !!}

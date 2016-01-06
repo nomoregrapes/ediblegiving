@@ -15,7 +15,7 @@
 	</script>
 	{!! HTML::script('https://api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.js') !!}
 	{!! HTML::script('js/map-functions.js') !!}
-	{!! HTML::script('js/views/manage/location-list.js') !!}
+	{!! HTML::script('js/map-basic.js') !!}
 @endsection
 
 @section('content')
