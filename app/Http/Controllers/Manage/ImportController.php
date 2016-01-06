@@ -149,7 +149,12 @@ class ImportController extends Controller {
 			$location->reference = $loc_ref;
 			$data['newdata'][] = $location;
 			$failreason = array_merge($failreason, $location->fails);
-			$warnreason = array_merge($warnreason, $location->warns);
+			$warnreason[] = array(
+				'key' => 'location-'.$loc_ref,
+				'description' => 'Multiple warnings('. count($location->warns) .') for location '. $loc_ref .'.',
+				'items' => $location->warns
+				);
+			//$warnreason = array_merge($warnreason, $location->warns);
 		}
 
 		$data['warnreason'][] = "This import will add new locations, not checking if they already exist.";
