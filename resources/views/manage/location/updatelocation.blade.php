@@ -54,7 +54,7 @@
 				<div class="control-group row">
 					{!! Form::label('visible', 'Published', ['class'=>"col-md-3  control-label"]) !!}
 					<div class="col-md-2">
-					{!! Form::checkbox('visible', $location->visible, ['class' => "form-control"]) !!}
+					{!! Form::checkbox('visible', 1, $location->visible, ['class' => "form-checkbox"]) !!}
 					</div>
 					<small>Leaving this unticked keeps the location as a draft and not shown publicaly.</small>
 				</div>
