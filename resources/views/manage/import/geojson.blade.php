@@ -18,7 +18,21 @@
 	@if(count($warnreason) > 0)
 	<ul class="alert alert-warning">
 		@foreach($warnreason as $warn)
-			<li>{{ $warn }}</li>
+			@if($warn == null OR $warn['items'] == null)
+			@elseif(is_array($warn))
+				<li>
+					<a href="#{{$warn['key']}}" data-toggle="collapse" aria-expanded="false">{{$warn['description']}}  <span class="caret"></a>
+					<div id="{{$warn['key']}}" class="collapse">
+						<ul>
+						@foreach($warn['items'] as $warndetail)
+							<li>{{ $warndetail }}</li>
+						@endforeach
+						</ul>
+					</div>
+				</li>
+			@else
+				<li>{{ $warn }}</li>
+			@endif
 		@endforeach
 	</ul>
 	@endif
