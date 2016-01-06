@@ -66,7 +66,7 @@
 		<table class="table table-condensed table-striped table-hover">
 			<tr>
 				<th>Import reference</th>
-				<th>Location co-ordinates</th>
+				<th title="Latitude, Longitude">Location co-ordinates</th>
 				<th>Properties</th>
 				<th>Import?</th>
 			</tr>
@@ -74,9 +74,9 @@
 			@foreach($newdata as $location)
 				<tr>
 					<td>{{$location->reference}}</td>
-					<td>{{$location->geometry->coordinates[0]}}, {{$location->geometry->coordinates[0]}}</td>
-					{!! Form::hidden('location['.$location->reference.'][lat]', $location->geometry->coordinates[0]) !!}
-					{!! Form::hidden('location['.$location->reference.'][lon]', $location->geometry->coordinates[1]) !!}
+					<td>{{$location->geometry->coordinates[1]}}, {{$location->geometry->coordinates[0]}}</td>
+					{!! Form::hidden('location['.$location->reference.'][lat]', $location->geometry->coordinates[1]) !!}
+					{!! Form::hidden('location['.$location->reference.'][lon]', $location->geometry->coordinates[0]) !!}
 					<td>
 						<ul>
 						@if(count($location->properties) > 0)
@@ -85,7 +85,7 @@
 									<li>{{$key . ' = ' . $value}}</li>
 									{!! Form::hidden('location['.$location->reference.'][tags]['.$key.']', $value) !!}
 								@else
-									<li><strikeout>{{$key . ' = ' . $value}}</strikeout></li>
+									<li><strike>{{$key . ' = ' . $value}}</strike></li>
 								@endif
 							@endforeach
 						@endif
