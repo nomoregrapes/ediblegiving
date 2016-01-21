@@ -85,6 +85,7 @@ class DataController extends Controller {
 		//hack attempt
 		//$parameters = array('org' => 6);
 		//parameters sent over get?
+		$parameters = \Input::all();
 
 		//public or private?
 		if($public == 1) {

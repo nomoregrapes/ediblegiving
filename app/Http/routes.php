@@ -20,8 +20,10 @@ Route::get('about/addlocations', function() {
 	return view('about-addlocations');
 });
 
+// Map URLs
+Route::get('map/{orgslug}', 'MapController@index');
+Route::get('map', 'MapController@index');
 //TODO: depreciate
-Route::get('map', function() { return redirect('/'); });
 Route::get('newmap', function() { return redirect('/'); });
 
 

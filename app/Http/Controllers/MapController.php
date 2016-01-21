@@ -1,5 +1,7 @@
 <?php namespace App\Http\Controllers;
 
+use App\Models\Organisation;
+
 class MapController extends Controller {
 
 
@@ -17,9 +19,19 @@ class MapController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function index($orgslug=null)
 	{
-		return view('mapfull');
+		$data['org_specific'] = false;
+
+		if($orgslug != null) {
+			//specific org display, look it up
+			$data['org'] = Organisation::getBySlug($orgslug);
+			if($data['org'] != null) {
+				$data['org_specific'] = true;
+			}
+		}
+
+		return view('mapfull', $data);
 	}
 
 }

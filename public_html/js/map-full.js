@@ -6,9 +6,19 @@ var oh; //for opening_hours
 
 
 function getEGLocations() {
-	var data = 'bbox=' + map.getBounds().toBBoxString();
+	var data = '';
+	if(window.data_params == undefined) {
+		window.data_params = [];
+	}
+	if(window.data_params['bbox'] == undefined) {
+		window.data_params['bbox'] =  map.getBounds().toBBoxString();
+	}
+	for (var key in window.data_params) {
+		data += '&' + key + '=' + window.data_params[key];
+	}
+	data = data.substr(1);
 	$.ajax({
-			url: 'data/all.geojson',
+			url: '/data/all.geojson',
 			dataType: 'json',
 			data: data,
 			success: showLocations
@@ -40,7 +50,6 @@ function markerInfo(thisFeature)
 	}
 
 	$(toHideObj).fadeOut(400, function() {
-		console.log(thisFeature);
 		//clear old details
 		$('#map-marker-details .mmd-dynamic').text('');
 		//set details
@@ -106,18 +115,24 @@ function filterMarkers() {
 			}
 		});
 
-		tickedFoodType = false;
-		//go through each of the CHECKED food types
-		$('#filter-foodtype input:checked').each(function(index, thisCheck) {
-			//for this filter, does the layer have that activity?
-			var thisFoodType = 'food_type_' + $(thisCheck).attr('foodtype');
+		//are we filtering on FOOD TYPE?
+		if ($('#filter-foodtype').length) {
+			tickedFoodType = false;
+			//go through each of the CHECKED food types
+			$('#filter-foodtype input:checked').each(function(index, thisCheck) {
+				//for this filter, does the layer have that activity?
+				var thisFoodType = 'food_type_' + $(thisCheck).attr('foodtype');
 
-			if(f.properties[thisFoodType] != undefined && f.properties[thisFoodType] == true) {
-				tickedFoodType = true;
-				//one filter being true is enough, skip out of the each loop
-				return false;
-			}
-		});
+				if(f.properties[thisFoodType] != undefined && f.properties[thisFoodType] == true) {
+					tickedFoodType = true;
+					//one filter being true is enough, skip out of the each loop
+					return false;
+				}
+			});
+		} else {
+			//accept regardless of food type
+			tickedFoodType = true;
+		}
 
 		tickedOpeningTime = false;
 		//is it open on the day of interest?
