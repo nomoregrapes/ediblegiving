@@ -8,6 +8,8 @@
 	<h1 class="cover-heading">Locations</h1>
 	<p>Your organisation has <strong>{{$location_count}}</strong> locations in Edible Giving.</p>
 
+	<p>Public view of <strong><a href="http://www.ediblegiving.org/map/{{$org->slug}}">{{$org->name}} locations</strong> on Edible Giving</a> (with no other locations shown).</p>
+
 	<p><a href="{{$csvLatest}}">Download CSV file</a></p>
 	<p>The format of the CSV file has the following aspects.
 	<ul>
